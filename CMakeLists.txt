@@ -80,6 +80,10 @@ target_sources(ShredDouble
         Source/DSP/DelayLineFrac.cpp
         Source/DSP/MonoSafetyCrossover.cpp
         Source/DSP/WidthProcessor.cpp
+        Source/DSP/RandomWalk.cpp
+        Source/DSP/AllpassChain.cpp
+        Source/DSP/TiltFilter.cpp
+        Source/DSP/Voice.cpp
         Source/GUI/CustomLookAndFeel.cpp
         Source/GUI/RotarySlider.cpp
         Source/GUI/GoniometerComponent.cpp
@@ -105,3 +109,46 @@ target_link_libraries(ShredDouble
 )
 
 enable_testing()
+
+# -----------------------------------------------------------------------------
+# DSP primitive test target. Sole owner of tests/* in phase B (task b.5).
+# Registers a console executable that exercises the public APIs of the
+# DSP primitives produced by b.1-b.4 (RandomWalk, AllpassChain, TiltFilter,
+# Voice) plus the reused shared primitives (PitchShifter, DelayLineFrac)
+# that Voice transitively depends on. Does not instantiate a full plugin
+# host. The harness is juce::UnitTest-based (mirrors the sibling ShredWidth
+# pattern) — no Catch2 / FetchContent is pulled in over the network so the
+# build remains hermetic.
+# -----------------------------------------------------------------------------
+add_executable(ShredDoubleTests
+    tests/TestMain.cpp
+    tests/DSPPrimitiveTests.cpp
+    Source/DSP/PitchShifter.cpp
+    Source/DSP/DelayLineFrac.cpp
+    Source/DSP/RandomWalk.cpp
+    Source/DSP/AllpassChain.cpp
+    Source/DSP/TiltFilter.cpp
+    Source/DSP/Voice.cpp
+)
+
+target_compile_definitions(ShredDoubleTests PRIVATE
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_VST3_CAN_REPLACE_VST2=0
+    SHREDWIDTH_XOVER_ORDER=${SHREDWIDTH_XOVER_ORDER}
+)
+
+target_include_directories(ShredDoubleTests PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(ShredDoubleTests
+    PRIVATE
+        juce::juce_audio_utils
+        juce::juce_dsp
+        juce::juce_recommended_config_flags
+        juce::juce_recommended_lto_flags
+        juce::juce_recommended_warning_flags
+)
+
+add_test(NAME ShredDoubleTests COMMAND ShredDoubleTests)

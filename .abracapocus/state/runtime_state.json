@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-b.4",
+  "plan_version": "task-b.5",
   "active_phase": "B",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "b.4",
-      "title": "Voice - container owning 2 RandomWalks + PitchShifter + DelayLineFrac + AllpassChain + TiltFilter + constant-power pan, per-sample process with interpolated walk values",
+      "task_id": "b.5",
+      "title": "TestMain harness and DSP primitive tests - walk bounds and mean-reversion, allpass magnitude-flat, tilt response, voice decorrelation, CMakeLists registration",
       "phase": "B",
-      "status": "completed",
-      "backend": "antigravity_cli",
-      "last_run": "2026-07-27T21:08:25.747789",
+      "status": "planned",
+      "backend": "pi_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

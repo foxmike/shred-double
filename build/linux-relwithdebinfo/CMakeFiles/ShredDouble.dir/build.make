@@ -170,10 +170,66 @@ CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/WidthProcessor.cpp -o CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.s
 
+CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
+CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/RandomWalk.cpp
+CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/RandomWalk.cpp
+
+CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/RandomWalk.cpp > CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.i
+
+CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/RandomWalk.cpp -o CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.s
+
+CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
+CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/AllpassChain.cpp
+CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/AllpassChain.cpp
+
+CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/AllpassChain.cpp > CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.i
+
+CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/AllpassChain.cpp -o CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.s
+
+CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
+CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/TiltFilter.cpp
+CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/TiltFilter.cpp
+
+CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/TiltFilter.cpp > CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.i
+
+CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/TiltFilter.cpp -o CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.s
+
+CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
+CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/Voice.cpp
+CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/Voice.cpp
+
+CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/Voice.cpp > CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.i
+
+CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/Voice.cpp -o CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.s
+
 CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.cpp
 CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.cpp
 
 CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.i: cmake_force
@@ -187,7 +243,7 @@ CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.s: cmake_force
 CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/RotarySlider.cpp
 CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/RotarySlider.cpp
 
 CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.i: cmake_force
@@ -201,7 +257,7 @@ CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.s: cmake_force
 CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/GoniometerComponent.cpp
 CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/GoniometerComponent.cpp
 
 CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.i: cmake_force
@@ -215,7 +271,7 @@ CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.s: cmake_force
 CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CorrelationMeter.cpp
 CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o -MF CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o.d -o CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CorrelationMeter.cpp
 
 CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.i: cmake_force
@@ -229,7 +285,7 @@ CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.s: cmake_force
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i: cmake_force
@@ -243,7 +299,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_process
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i: cmake_force
@@ -257,7 +313,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s: cma
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i: cmake_force
@@ -271,7 +327,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s: c
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i: cmake_force
@@ -285,7 +341,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s:
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i: cmake_force
@@ -299,7 +355,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s:
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i: cmake_force
@@ -313,7 +369,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s:
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i: cmake_force
@@ -327,7 +383,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s:
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.i: cmake_force
@@ -341,7 +397,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.s: cmake
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i: cmake_force
@@ -355,7 +411,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i: cmake_force
@@ -369,7 +425,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_events/juce_events.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_events/juce_events.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.i: cmake_force
@@ -383,7 +439,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.s: cmake_for
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_core/juce_core.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_core/juce_core.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.i: cmake_force
@@ -397,7 +453,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.s: cmake_force
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_core/juce_core_CompilationTime.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_core/juce_core_CompilationTime.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i: cmake_force
@@ -411,7 +467,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_data_structures/juce_data_structures.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_data_structures/juce_data_structures.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.i: cmake_force
@@ -425,7 +481,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structure
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i: cmake_force
@@ -439,7 +495,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audi
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i: cmake_force
@@ -453,7 +509,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audi
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i: cmake_force
@@ -467,7 +523,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audi
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i: cmake_force
@@ -481,7 +537,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i: cmake_force
@@ -495,7 +551,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s:
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i: cmake_force
@@ -509,7 +565,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i: cmake_force
@@ -523,7 +579,7 @@ CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o: CMakeFiles/ShredDouble.dir/flags.make
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o: /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_dsp/juce_dsp.cpp
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o: CMakeFiles/ShredDouble.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o -MF CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o.d -o CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/juce_dsp/juce_dsp.cpp
 
 CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.i: cmake_force
@@ -543,6 +599,10 @@ ShredDouble_OBJECTS = \
 "CMakeFiles/ShredDouble.dir/Source/DSP/DelayLineFrac.cpp.o" \
 "CMakeFiles/ShredDouble.dir/Source/DSP/MonoSafetyCrossover.cpp.o" \
 "CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.o" \
+"CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o" \
+"CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o" \
+"CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o" \
+"CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o" \
 "CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o" \
 "CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o" \
 "CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o" \
@@ -580,6 +640,10 @@ ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/Shr
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/DelayLineFrac.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/MonoSafetyCrossover.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.o
+ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o
+ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o
+ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o
+ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o
@@ -608,7 +672,7 @@ ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/Shr
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/build.make
 ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a: CMakeFiles/ShredDouble.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX static library ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking CXX static library ShredDouble_artefacts/RelWithDebInfo/libShredDouble_SharedCode.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ShredDouble.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ShredDouble.dir/link.txt --verbose=$(VERBOSE)
 

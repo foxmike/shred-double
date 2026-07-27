@@ -481,5 +481,67 @@
       "version": "task-b.3",
       "created_at": "2026-07-27T21:00:56.162469"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:08:25.820111",
+    "project_name": "shred-double",
+    "goal": "Implement Source/DSP/Voice.h and Source/DSP/Voice.cpp \u2014 one virtual double-track performer per ShredDouble_Build_Spec.md \u00a74.2, \u00a74.3\u20134.6.\n\nBefore editing, inspect:\n- Source/DSP/RandomWalk.h, AllpassChain.h, TiltFilter.h (b.1\u2013b.3 APIs)\n- Source/DSP/PitchShifter.h (setDetuneCents, processSample, setLatencyMode, prepare)\n- Source/DSP/DelayLineFrac.h (setDelayMs, processSample, prepare)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.2 voice composition, \u00a74.4 shifter drive, \u00a74.6 pan law + wet accumulation, \u00a74.9 latency modes, \u00a78 buffer sizing\n\nImplement class Voice:\n1. Owns: RandomWalk delayWalk + pitchWalk; PitchShifter shifter; DelayLineFrac delay; AllpassChain diffusion; TiltFilter tilt; float nominalDelayMs, panL, panR (constant-power pan from panPercent in [-100,100]); voiceIndex.\n2. prepare(sampleRate, maxBlockSize): prepare all children; size DelayLineFrac for >=35 ms + guard via its prepare; PitchShifter studio max; set AllpassChain/TiltFilter voice index; reseed both walks from masterSeed + voiceIndex + distinct axis tags; reset walks to mean.\n3. setPanPercent(p): panL/panR via constant-power (e.g. cos/sin of mapped angle).\n4. setParams block-rate: timingSpreadMs, pitchSpreadCents, humanRate/tightness forwarded to walks; setLatencyMode to shifter; optional muteGain for V=2 unused voices.\n5. reseed(masterSeed) reseeds both axis streams and reset().\n6. Per-sample processSample(float x) noexcept chain:\n   - advance/interpolated delayWalk \u2192 tau_ms; pitchWalk \u2192 deltaC\n   - shifter.setDetuneCents(deltaC) (or equivalent per-sample path if already smoothed inside shifter) then y = shifter.processSample(x)\n   - delay.setDelayMs(tau_ms); y = delay.processSample(y)\n   - y = diffusion.processSample(y); y = tilt.processSample(y)\n   - outL += y * panL * mute; outR += y * panR * mute (either accumulate into caller refs or return mono and let caller pan \u2014 prefer processSample(x, &accL, &accR) matching \u00a74.6)\n7. Getters for current tau_ms and deltaC for DriftDisplay/tests. No allocation outside prepare. Do not wire MonoSafetyCrossover/Width/mix (engine owns those later).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not edit RandomWalk/AllpassChain/TiltFilter implementations unless a missing public API absolutely blocks Voice \u2014 prefer using existing APIs; if a tiny public getter is missing, note it but do not expand scope (b.1\u2013b.3 own those files).",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: Voice - container owning 2 RandomWalks + PitchShifter + DelayLineFrac + AllpassChain + TiltFilter + constant-power pan, per-sample process with interpolated walk values",
+      "phases": [
+        {
+          "name": "B",
+          "objective": "Implement Source/DSP/Voice.h and Source/DSP/Voice.cpp \u2014 one virtual double-track performer per ShredDouble_Build_Spec.md \u00a74.2, \u00a74.3\u20134.6.\n\nBefore editing, inspect:\n- Source/DSP/RandomWalk.h, AllpassChain.h, TiltFilter.h (b.1\u2013b.3 APIs)\n- Source/DSP/PitchShifter.h (setDetuneCents, processSample, setLatencyMode, prepare)\n- Source/DSP/DelayLineFrac.h (setDelayMs, processSample, prepare)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.2 voice composition, \u00a74.4 shifter drive, \u00a74.6 pan law + wet accumulation, \u00a74.9 latency modes, \u00a78 buffer sizing\n\nImplement class Voice:\n1. Owns: RandomWalk delayWalk + pitchWalk; PitchShifter shifter; DelayLineFrac delay; AllpassChain diffusion; TiltFilter tilt; float nominalDelayMs, panL, panR (constant-power pan from panPercent in [-100,100]); voiceIndex.\n2. prepare(sampleRate, maxBlockSize): prepare all children; size DelayLineFrac for >=35 ms + guard via its prepare; PitchShifter studio max; set AllpassChain/TiltFilter voice index; reseed both walks from masterSeed + voiceIndex + distinct axis tags; reset walks to mean.\n3. setPanPercent(p): panL/panR via constant-power (e.g. cos/sin of mapped angle).\n4. setParams block-rate: timingSpreadMs, pitchSpreadCents, humanRate/tightness forwarded to walks; setLatencyMode to shifter; optional muteGain for V=2 unused voices.\n5. reseed(masterSeed) reseeds both axis streams and reset().\n6. Per-sample processSample(float x) noexcept chain:\n   - advance/interpolated delayWalk \u2192 tau_ms; pitchWalk \u2192 deltaC\n   - shifter.setDetuneCents(deltaC) (or equivalent per-sample path if already smoothed inside shifter) then y = shifter.processSample(x)\n   - delay.setDelayMs(tau_ms); y = delay.processSample(y)\n   - y = diffusion.processSample(y); y = tilt.processSample(y)\n   - outL += y * panL * mute; outR += y * panR * mute (either accumulate into caller refs or return mono and let caller pan \u2014 prefer processSample(x, &accL, &accR) matching \u00a74.6)\n7. Getters for current tau_ms and deltaC for DriftDisplay/tests. No allocation outside prepare. Do not wire MonoSafetyCrossover/Width/mix (engine owns those later).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not edit RandomWalk/AllpassChain/TiltFilter implementations unless a missing public API absolutely blocks Voice \u2014 prefer using existing APIs; if a tiny public getter is missing, note it but do not expand scope (b.1\u2013b.3 own those files).",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "b.4",
+                "title": "Voice - container owning 2 RandomWalks + PitchShifter + DelayLineFrac + AllpassChain + TiltFilter + constant-power pan, per-sample process with interpolated walk values",
+                "description": "Implement Source/DSP/Voice.h and Source/DSP/Voice.cpp \u2014 one virtual double-track performer per ShredDouble_Build_Spec.md \u00a74.2, \u00a74.3\u20134.6.\n\nBefore editing, inspect:\n- Source/DSP/RandomWalk.h, AllpassChain.h, TiltFilter.h (b.1\u2013b.3 APIs)\n- Source/DSP/PitchShifter.h (setDetuneCents, processSample, setLatencyMode, prepare)\n- Source/DSP/DelayLineFrac.h (setDelayMs, processSample, prepare)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.2 voice composition, \u00a74.4 shifter drive, \u00a74.6 pan law + wet accumulation, \u00a74.9 latency modes, \u00a78 buffer sizing\n\nImplement class Voice:\n1. Owns: RandomWalk delayWalk + pitchWalk; PitchShifter shifter; DelayLineFrac delay; AllpassChain diffusion; TiltFilter tilt; float nominalDelayMs, panL, panR (constant-power pan from panPercent in [-100,100]); voiceIndex.\n2. prepare(sampleRate, maxBlockSize): prepare all children; size DelayLineFrac for >=35 ms + guard via its prepare; PitchShifter studio max; set AllpassChain/TiltFilter voice index; reseed both walks from masterSeed + voiceIndex + distinct axis tags; reset walks to mean.\n3. setPanPercent(p): panL/panR via constant-power (e.g. cos/sin of mapped angle).\n4. setParams block-rate: timingSpreadMs, pitchSpreadCents, humanRate/tightness forwarded to walks; setLatencyMode to shifter; optional muteGain for V=2 unused voices.\n5. reseed(masterSeed) reseeds both axis streams and reset().\n6. Per-sample processSample(float x) noexcept chain:\n   - advance/interpolated delayWalk \u2192 tau_ms; pitchWalk \u2192 deltaC\n   - shifter.setDetuneCents(deltaC) (or equivalent per-sample path if already smoothed inside shifter) then y = shifter.processSample(x)\n   - delay.setDelayMs(tau_ms); y = delay.processSample(y)\n   - y = diffusion.processSample(y); y = tilt.processSample(y)\n   - outL += y * panL * mute; outR += y * panR * mute (either accumulate into caller refs or return mono and let caller pan \u2014 prefer processSample(x, &accL, &accR) matching \u00a74.6)\n7. Getters for current tau_ms and deltaC for DriftDisplay/tests. No allocation outside prepare. Do not wire MonoSafetyCrossover/Width/mix (engine owns those later).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not edit RandomWalk/AllpassChain/TiltFilter implementations unless a missing public API absolutely blocks Voice \u2014 prefer using existing APIs; if a tiny public getter is missing, note it but do not expand scope (b.1\u2013b.3 own those files).",
+                "phase": "B",
+                "dependencies": [
+                  "b.1",
+                  "b.2",
+                  "b.3"
+                ],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/DSP/Voice.h and Source/DSP/Voice.cpp exist",
+                  "Voice owns delayWalk pitchWalk PitchShifter DelayLineFrac AllpassChain TiltFilter plus nominalDelayMs and panL/panR",
+                  "prepare prepares all child DSP objects and allocates nothing in processSample",
+                  "Per-sample path feeds interpolated walk delay into DelayLineFrac and interpolated deltaC into PitchShifter then AllpassChain and TiltFilter",
+                  "Constant-power pan law applied when accumulating into wet L/R",
+                  "reseed(masterSeed) deterministically reseeds both RandomWalk axes using voiceIndex and axis tags",
+                  "Voice includes headers from RandomWalk AllpassChain TiltFilter PitchShifter DelayLineFrac only as dependencies (does not redefine them)",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T21:06:08.903226",
+                "selected_backend": "antigravity_cli",
+                "model": null,
+                "task_timeout_seconds": 1200.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/DSP/Voice.h",
+                  "Source/DSP/Voice.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:08:25.698797",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-b.4",
+      "created_at": "2026-07-27T21:06:08.977834"
+    }
   }
 ]

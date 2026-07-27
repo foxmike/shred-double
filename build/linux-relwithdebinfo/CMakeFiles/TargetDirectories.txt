@@ -5,6 +5,7 @@
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/juce_lv2_helper.dir
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/ShredDouble_VST3.dir
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/ShredDouble_vst3_helper.dir
+/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/ShredDoubleTests.dir
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/test.dir
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/edit_cache.dir
 /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles/rebuild_cache.dir

@@ -97,4 +97,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/juce_lv2_helper.dir/DependInfo.cmake"
   "CMakeFiles/ShredDouble_VST3.dir/DependInfo.cmake"
   "CMakeFiles/ShredDouble_vst3_helper.dir/DependInfo.cmake"
+  "CMakeFiles/ShredDoubleTests.dir/DependInfo.cmake"
   )

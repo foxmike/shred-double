@@ -263,12 +263,26 @@ ShredDouble_vst3_helper/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_vst3_helper.dir/build.make CMakeFiles/ShredDouble_vst3_helper.dir/build
 .PHONY : ShredDouble_vst3_helper/fast
 
+#=============================================================================
+# Target rules for targets named ShredDoubleTests
+
+# Build rule for target.
+ShredDoubleTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ShredDoubleTests
+.PHONY : ShredDoubleTests
+
+# fast build rule for target.
+ShredDoubleTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/build
+.PHONY : ShredDoubleTests/fast
+
 JUCE/modules/juce_audio_basics/juce_audio_basics.o: JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
 .PHONY : JUCE/modules/juce_audio_basics/juce_audio_basics.o
 
 # target to build an object file
 JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
 .PHONY : JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
 
 JUCE/modules/juce_audio_basics/juce_audio_basics.i: JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i
@@ -277,6 +291,7 @@ JUCE/modules/juce_audio_basics/juce_audio_basics.i: JUCE/modules/juce_audio_basi
 # target to preprocess a source file
 JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i
 .PHONY : JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.i
 
 JUCE/modules/juce_audio_basics/juce_audio_basics.s: JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.s
@@ -285,6 +300,7 @@ JUCE/modules/juce_audio_basics/juce_audio_basics.s: JUCE/modules/juce_audio_basi
 # target to generate assembly for a file
 JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.s
 .PHONY : JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.s
 
 JUCE/modules/juce_audio_devices/juce_audio_devices.o: JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
@@ -293,6 +309,7 @@ JUCE/modules/juce_audio_devices/juce_audio_devices.o: JUCE/modules/juce_audio_de
 # target to build an object file
 JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
 .PHONY : JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
 
 JUCE/modules/juce_audio_devices/juce_audio_devices.i: JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i
@@ -301,6 +318,7 @@ JUCE/modules/juce_audio_devices/juce_audio_devices.i: JUCE/modules/juce_audio_de
 # target to preprocess a source file
 JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i
 .PHONY : JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.i
 
 JUCE/modules/juce_audio_devices/juce_audio_devices.s: JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.s
@@ -309,6 +327,7 @@ JUCE/modules/juce_audio_devices/juce_audio_devices.s: JUCE/modules/juce_audio_de
 # target to generate assembly for a file
 JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.s
 .PHONY : JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.s
 
 JUCE/modules/juce_audio_formats/juce_audio_formats.o: JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
@@ -317,6 +336,7 @@ JUCE/modules/juce_audio_formats/juce_audio_formats.o: JUCE/modules/juce_audio_fo
 # target to build an object file
 JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
 .PHONY : JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
 
 JUCE/modules/juce_audio_formats/juce_audio_formats.i: JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i
@@ -325,6 +345,7 @@ JUCE/modules/juce_audio_formats/juce_audio_formats.i: JUCE/modules/juce_audio_fo
 # target to preprocess a source file
 JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i
 .PHONY : JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.i
 
 JUCE/modules/juce_audio_formats/juce_audio_formats.s: JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.s
@@ -333,6 +354,7 @@ JUCE/modules/juce_audio_formats/juce_audio_formats.s: JUCE/modules/juce_audio_fo
 # target to generate assembly for a file
 JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.s
 .PHONY : JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.s
 
 JUCE/modules/juce_audio_plugin_client/LV2/juce_LV2ManifestHelper.o: JUCE/modules/juce_audio_plugin_client/LV2/juce_LV2ManifestHelper.cpp.o
@@ -605,6 +627,7 @@ JUCE/modules/juce_audio_processors/juce_audio_processors.o: JUCE/modules/juce_au
 # target to build an object file
 JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o
 .PHONY : JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o
 
 JUCE/modules/juce_audio_processors/juce_audio_processors.i: JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i
@@ -613,6 +636,7 @@ JUCE/modules/juce_audio_processors/juce_audio_processors.i: JUCE/modules/juce_au
 # target to preprocess a source file
 JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i
 .PHONY : JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.i
 
 JUCE/modules/juce_audio_processors/juce_audio_processors.s: JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.s
@@ -621,6 +645,7 @@ JUCE/modules/juce_audio_processors/juce_audio_processors.s: JUCE/modules/juce_au
 # target to generate assembly for a file
 JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.s
 .PHONY : JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.s
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.o: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
@@ -629,6 +654,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.o: JU
 # target to build an object file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.o
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.i: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i
@@ -637,6 +663,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.i: JU
 # target to preprocess a source file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.i
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.s: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.s
@@ -645,6 +672,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.s: JU
 # target to generate assembly for a file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.s
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless.cpp.s
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.o: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
@@ -653,6 +681,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.o
 # target to build an object file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.i: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i
@@ -661,6 +690,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.i
 # target to preprocess a source file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.i
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.s: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.s
@@ -669,6 +699,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.s
 # target to generate assembly for a file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.s
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.s
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.o: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
@@ -677,6 +708,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_l
 # target to build an object file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.i: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i
@@ -685,6 +717,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_l
 # target to preprocess a source file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.i
 
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.s: JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.s
@@ -693,6 +726,7 @@ JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_l
 # target to generate assembly for a file
 JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.s
 .PHONY : JUCE/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.s
 
 JUCE/modules/juce_audio_utils/juce_audio_utils.o: JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o
@@ -701,6 +735,7 @@ JUCE/modules/juce_audio_utils/juce_audio_utils.o: JUCE/modules/juce_audio_utils/
 # target to build an object file
 JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o
 .PHONY : JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o
 
 JUCE/modules/juce_audio_utils/juce_audio_utils.i: JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i
@@ -709,6 +744,7 @@ JUCE/modules/juce_audio_utils/juce_audio_utils.i: JUCE/modules/juce_audio_utils/
 # target to preprocess a source file
 JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i
 .PHONY : JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.i
 
 JUCE/modules/juce_audio_utils/juce_audio_utils.s: JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s
@@ -717,6 +753,7 @@ JUCE/modules/juce_audio_utils/juce_audio_utils.s: JUCE/modules/juce_audio_utils/
 # target to generate assembly for a file
 JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s
 .PHONY : JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.s
 
 JUCE/modules/juce_core/juce_core.o: JUCE/modules/juce_core/juce_core.cpp.o
@@ -725,6 +762,7 @@ JUCE/modules/juce_core/juce_core.o: JUCE/modules/juce_core/juce_core.cpp.o
 # target to build an object file
 JUCE/modules/juce_core/juce_core.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core.cpp.o
 .PHONY : JUCE/modules/juce_core/juce_core.cpp.o
 
 JUCE/modules/juce_core/juce_core.i: JUCE/modules/juce_core/juce_core.cpp.i
@@ -733,6 +771,7 @@ JUCE/modules/juce_core/juce_core.i: JUCE/modules/juce_core/juce_core.cpp.i
 # target to preprocess a source file
 JUCE/modules/juce_core/juce_core.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core.cpp.i
 .PHONY : JUCE/modules/juce_core/juce_core.cpp.i
 
 JUCE/modules/juce_core/juce_core.s: JUCE/modules/juce_core/juce_core.cpp.s
@@ -741,6 +780,7 @@ JUCE/modules/juce_core/juce_core.s: JUCE/modules/juce_core/juce_core.cpp.s
 # target to generate assembly for a file
 JUCE/modules/juce_core/juce_core.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core.cpp.s
 .PHONY : JUCE/modules/juce_core/juce_core.cpp.s
 
 JUCE/modules/juce_core/juce_core_CompilationTime.o: JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o
@@ -749,6 +789,7 @@ JUCE/modules/juce_core/juce_core_CompilationTime.o: JUCE/modules/juce_core/juce_
 # target to build an object file
 JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o
 .PHONY : JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o
 
 JUCE/modules/juce_core/juce_core_CompilationTime.i: JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i
@@ -757,6 +798,7 @@ JUCE/modules/juce_core/juce_core_CompilationTime.i: JUCE/modules/juce_core/juce_
 # target to preprocess a source file
 JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i
 .PHONY : JUCE/modules/juce_core/juce_core_CompilationTime.cpp.i
 
 JUCE/modules/juce_core/juce_core_CompilationTime.s: JUCE/modules/juce_core/juce_core_CompilationTime.cpp.s
@@ -765,6 +807,7 @@ JUCE/modules/juce_core/juce_core_CompilationTime.s: JUCE/modules/juce_core/juce_
 # target to generate assembly for a file
 JUCE/modules/juce_core/juce_core_CompilationTime.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.s
 .PHONY : JUCE/modules/juce_core/juce_core_CompilationTime.cpp.s
 
 JUCE/modules/juce_data_structures/juce_data_structures.o: JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
@@ -773,6 +816,7 @@ JUCE/modules/juce_data_structures/juce_data_structures.o: JUCE/modules/juce_data
 # target to build an object file
 JUCE/modules/juce_data_structures/juce_data_structures.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
 .PHONY : JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
 
 JUCE/modules/juce_data_structures/juce_data_structures.i: JUCE/modules/juce_data_structures/juce_data_structures.cpp.i
@@ -781,6 +825,7 @@ JUCE/modules/juce_data_structures/juce_data_structures.i: JUCE/modules/juce_data
 # target to preprocess a source file
 JUCE/modules/juce_data_structures/juce_data_structures.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.i
 .PHONY : JUCE/modules/juce_data_structures/juce_data_structures.cpp.i
 
 JUCE/modules/juce_data_structures/juce_data_structures.s: JUCE/modules/juce_data_structures/juce_data_structures.cpp.s
@@ -789,6 +834,7 @@ JUCE/modules/juce_data_structures/juce_data_structures.s: JUCE/modules/juce_data
 # target to generate assembly for a file
 JUCE/modules/juce_data_structures/juce_data_structures.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_data_structures/juce_data_structures.cpp.s
 .PHONY : JUCE/modules/juce_data_structures/juce_data_structures.cpp.s
 
 JUCE/modules/juce_dsp/juce_dsp.o: JUCE/modules/juce_dsp/juce_dsp.cpp.o
@@ -797,6 +843,7 @@ JUCE/modules/juce_dsp/juce_dsp.o: JUCE/modules/juce_dsp/juce_dsp.cpp.o
 # target to build an object file
 JUCE/modules/juce_dsp/juce_dsp.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.o
 .PHONY : JUCE/modules/juce_dsp/juce_dsp.cpp.o
 
 JUCE/modules/juce_dsp/juce_dsp.i: JUCE/modules/juce_dsp/juce_dsp.cpp.i
@@ -805,6 +852,7 @@ JUCE/modules/juce_dsp/juce_dsp.i: JUCE/modules/juce_dsp/juce_dsp.cpp.i
 # target to preprocess a source file
 JUCE/modules/juce_dsp/juce_dsp.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.i
 .PHONY : JUCE/modules/juce_dsp/juce_dsp.cpp.i
 
 JUCE/modules/juce_dsp/juce_dsp.s: JUCE/modules/juce_dsp/juce_dsp.cpp.s
@@ -813,6 +861,7 @@ JUCE/modules/juce_dsp/juce_dsp.s: JUCE/modules/juce_dsp/juce_dsp.cpp.s
 # target to generate assembly for a file
 JUCE/modules/juce_dsp/juce_dsp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_dsp/juce_dsp.cpp.s
 .PHONY : JUCE/modules/juce_dsp/juce_dsp.cpp.s
 
 JUCE/modules/juce_events/juce_events.o: JUCE/modules/juce_events/juce_events.cpp.o
@@ -821,6 +870,7 @@ JUCE/modules/juce_events/juce_events.o: JUCE/modules/juce_events/juce_events.cpp
 # target to build an object file
 JUCE/modules/juce_events/juce_events.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_events/juce_events.cpp.o
 .PHONY : JUCE/modules/juce_events/juce_events.cpp.o
 
 JUCE/modules/juce_events/juce_events.i: JUCE/modules/juce_events/juce_events.cpp.i
@@ -829,6 +879,7 @@ JUCE/modules/juce_events/juce_events.i: JUCE/modules/juce_events/juce_events.cpp
 # target to preprocess a source file
 JUCE/modules/juce_events/juce_events.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_events/juce_events.cpp.i
 .PHONY : JUCE/modules/juce_events/juce_events.cpp.i
 
 JUCE/modules/juce_events/juce_events.s: JUCE/modules/juce_events/juce_events.cpp.s
@@ -837,6 +888,7 @@ JUCE/modules/juce_events/juce_events.s: JUCE/modules/juce_events/juce_events.cpp
 # target to generate assembly for a file
 JUCE/modules/juce_events/juce_events.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_events/juce_events.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_events/juce_events.cpp.s
 .PHONY : JUCE/modules/juce_events/juce_events.cpp.s
 
 JUCE/modules/juce_graphics/juce_graphics.o: JUCE/modules/juce_graphics/juce_graphics.cpp.o
@@ -845,6 +897,7 @@ JUCE/modules/juce_graphics/juce_graphics.o: JUCE/modules/juce_graphics/juce_grap
 # target to build an object file
 JUCE/modules/juce_graphics/juce_graphics.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.o
 .PHONY : JUCE/modules/juce_graphics/juce_graphics.cpp.o
 
 JUCE/modules/juce_graphics/juce_graphics.i: JUCE/modules/juce_graphics/juce_graphics.cpp.i
@@ -853,6 +906,7 @@ JUCE/modules/juce_graphics/juce_graphics.i: JUCE/modules/juce_graphics/juce_grap
 # target to preprocess a source file
 JUCE/modules/juce_graphics/juce_graphics.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.i
 .PHONY : JUCE/modules/juce_graphics/juce_graphics.cpp.i
 
 JUCE/modules/juce_graphics/juce_graphics.s: JUCE/modules/juce_graphics/juce_graphics.cpp.s
@@ -861,6 +915,7 @@ JUCE/modules/juce_graphics/juce_graphics.s: JUCE/modules/juce_graphics/juce_grap
 # target to generate assembly for a file
 JUCE/modules/juce_graphics/juce_graphics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics.cpp.s
 .PHONY : JUCE/modules/juce_graphics/juce_graphics.cpp.s
 
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.o: JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
@@ -869,6 +924,7 @@ JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.o: JUCE/modules/juce_graphics/
 # target to build an object file
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
 
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.i: JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i
@@ -877,6 +933,7 @@ JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.i: JUCE/modules/juce_graphics/
 # target to preprocess a source file
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.i
 
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.s: JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.s
@@ -885,6 +942,7 @@ JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.s: JUCE/modules/juce_graphics/
 # target to generate assembly for a file
 JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.s
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.s
 
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.o: JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
@@ -893,6 +951,7 @@ JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.o: JUCE/modules/juce_graphics
 # target to build an object file
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
 
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.i: JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i
@@ -901,6 +960,7 @@ JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.i: JUCE/modules/juce_graphics
 # target to preprocess a source file
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.i
 
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.s: JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.s
@@ -909,6 +969,7 @@ JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.s: JUCE/modules/juce_graphics
 # target to generate assembly for a file
 JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.s
 .PHONY : JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.s
 
 JUCE/modules/juce_gui_basics/juce_gui_basics.o: JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
@@ -917,6 +978,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics.o: JUCE/modules/juce_gui_basics/juc
 # target to build an object file
 JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
 
 JUCE/modules/juce_gui_basics/juce_gui_basics.i: JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i
@@ -925,6 +987,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics.i: JUCE/modules/juce_gui_basics/juc
 # target to preprocess a source file
 JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.i
 
 JUCE/modules/juce_gui_basics/juce_gui_basics.s: JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s
@@ -933,6 +996,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics.s: JUCE/modules/juce_gui_basics/juc
 # target to generate assembly for a file
 JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.s
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.o: JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
@@ -941,6 +1005,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_2.o: JUCE/modules/juce_gui_basics/j
 # target to build an object file
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.i: JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i
@@ -949,6 +1014,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_2.i: JUCE/modules/juce_gui_basics/j
 # target to preprocess a source file
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.i
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.s: JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s
@@ -957,6 +1023,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_2.s: JUCE/modules/juce_gui_basics/j
 # target to generate assembly for a file
 JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_2.cpp.s
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.o: JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
@@ -965,6 +1032,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_3.o: JUCE/modules/juce_gui_basics/j
 # target to build an object file
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.i: JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i
@@ -973,6 +1041,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_3.i: JUCE/modules/juce_gui_basics/j
 # target to preprocess a source file
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.i
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.s: JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s
@@ -981,6 +1050,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_3.s: JUCE/modules/juce_gui_basics/j
 # target to generate assembly for a file
 JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_3.cpp.s
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.o: JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
@@ -989,6 +1059,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_4.o: JUCE/modules/juce_gui_basics/j
 # target to build an object file
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.i: JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i
@@ -997,6 +1068,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_4.i: JUCE/modules/juce_gui_basics/j
 # target to preprocess a source file
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.i
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.s: JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s
@@ -1005,6 +1077,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_4.s: JUCE/modules/juce_gui_basics/j
 # target to generate assembly for a file
 JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_4.cpp.s
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.o: JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
@@ -1013,6 +1086,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_5.o: JUCE/modules/juce_gui_basics/j
 # target to build an object file
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.i: JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i
@@ -1021,6 +1095,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_5.i: JUCE/modules/juce_gui_basics/j
 # target to preprocess a source file
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.i
 
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.s: JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s
@@ -1029,6 +1104,7 @@ JUCE/modules/juce_gui_basics/juce_gui_basics_5.s: JUCE/modules/juce_gui_basics/j
 # target to generate assembly for a file
 JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s
 .PHONY : JUCE/modules/juce_gui_basics/juce_gui_basics_5.cpp.s
 
 JUCE/modules/juce_gui_extra/juce_gui_extra.o: JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
@@ -1037,6 +1113,7 @@ JUCE/modules/juce_gui_extra/juce_gui_extra.o: JUCE/modules/juce_gui_extra/juce_g
 # target to build an object file
 JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
 .PHONY : JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
 
 JUCE/modules/juce_gui_extra/juce_gui_extra.i: JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i
@@ -1045,6 +1122,7 @@ JUCE/modules/juce_gui_extra/juce_gui_extra.i: JUCE/modules/juce_gui_extra/juce_g
 # target to preprocess a source file
 JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i
 .PHONY : JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.i
 
 JUCE/modules/juce_gui_extra/juce_gui_extra.s: JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s
@@ -1053,7 +1131,35 @@ JUCE/modules/juce_gui_extra/juce_gui_extra.s: JUCE/modules/juce_gui_extra/juce_g
 # target to generate assembly for a file
 JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s
 .PHONY : JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.s
+
+Source/DSP/AllpassChain.o: Source/DSP/AllpassChain.cpp.o
+.PHONY : Source/DSP/AllpassChain.o
+
+# target to build an object file
+Source/DSP/AllpassChain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/AllpassChain.cpp.o
+.PHONY : Source/DSP/AllpassChain.cpp.o
+
+Source/DSP/AllpassChain.i: Source/DSP/AllpassChain.cpp.i
+.PHONY : Source/DSP/AllpassChain.i
+
+# target to preprocess a source file
+Source/DSP/AllpassChain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/AllpassChain.cpp.i
+.PHONY : Source/DSP/AllpassChain.cpp.i
+
+Source/DSP/AllpassChain.s: Source/DSP/AllpassChain.cpp.s
+.PHONY : Source/DSP/AllpassChain.s
+
+# target to generate assembly for a file
+Source/DSP/AllpassChain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/AllpassChain.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/AllpassChain.cpp.s
+.PHONY : Source/DSP/AllpassChain.cpp.s
 
 Source/DSP/DelayLineFrac.o: Source/DSP/DelayLineFrac.cpp.o
 .PHONY : Source/DSP/DelayLineFrac.o
@@ -1061,6 +1167,7 @@ Source/DSP/DelayLineFrac.o: Source/DSP/DelayLineFrac.cpp.o
 # target to build an object file
 Source/DSP/DelayLineFrac.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/DelayLineFrac.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/DelayLineFrac.cpp.o
 .PHONY : Source/DSP/DelayLineFrac.cpp.o
 
 Source/DSP/DelayLineFrac.i: Source/DSP/DelayLineFrac.cpp.i
@@ -1069,6 +1176,7 @@ Source/DSP/DelayLineFrac.i: Source/DSP/DelayLineFrac.cpp.i
 # target to preprocess a source file
 Source/DSP/DelayLineFrac.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/DelayLineFrac.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/DelayLineFrac.cpp.i
 .PHONY : Source/DSP/DelayLineFrac.cpp.i
 
 Source/DSP/DelayLineFrac.s: Source/DSP/DelayLineFrac.cpp.s
@@ -1077,6 +1185,7 @@ Source/DSP/DelayLineFrac.s: Source/DSP/DelayLineFrac.cpp.s
 # target to generate assembly for a file
 Source/DSP/DelayLineFrac.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/DelayLineFrac.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/DelayLineFrac.cpp.s
 .PHONY : Source/DSP/DelayLineFrac.cpp.s
 
 Source/DSP/MonoSafetyCrossover.o: Source/DSP/MonoSafetyCrossover.cpp.o
@@ -1109,6 +1218,7 @@ Source/DSP/PitchShifter.o: Source/DSP/PitchShifter.cpp.o
 # target to build an object file
 Source/DSP/PitchShifter.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/PitchShifter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/PitchShifter.cpp.o
 .PHONY : Source/DSP/PitchShifter.cpp.o
 
 Source/DSP/PitchShifter.i: Source/DSP/PitchShifter.cpp.i
@@ -1117,6 +1227,7 @@ Source/DSP/PitchShifter.i: Source/DSP/PitchShifter.cpp.i
 # target to preprocess a source file
 Source/DSP/PitchShifter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/PitchShifter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/PitchShifter.cpp.i
 .PHONY : Source/DSP/PitchShifter.cpp.i
 
 Source/DSP/PitchShifter.s: Source/DSP/PitchShifter.cpp.s
@@ -1125,7 +1236,89 @@ Source/DSP/PitchShifter.s: Source/DSP/PitchShifter.cpp.s
 # target to generate assembly for a file
 Source/DSP/PitchShifter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/PitchShifter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/PitchShifter.cpp.s
 .PHONY : Source/DSP/PitchShifter.cpp.s
+
+Source/DSP/RandomWalk.o: Source/DSP/RandomWalk.cpp.o
+.PHONY : Source/DSP/RandomWalk.o
+
+# target to build an object file
+Source/DSP/RandomWalk.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/RandomWalk.cpp.o
+.PHONY : Source/DSP/RandomWalk.cpp.o
+
+Source/DSP/RandomWalk.i: Source/DSP/RandomWalk.cpp.i
+.PHONY : Source/DSP/RandomWalk.i
+
+# target to preprocess a source file
+Source/DSP/RandomWalk.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/RandomWalk.cpp.i
+.PHONY : Source/DSP/RandomWalk.cpp.i
+
+Source/DSP/RandomWalk.s: Source/DSP/RandomWalk.cpp.s
+.PHONY : Source/DSP/RandomWalk.s
+
+# target to generate assembly for a file
+Source/DSP/RandomWalk.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/RandomWalk.cpp.s
+.PHONY : Source/DSP/RandomWalk.cpp.s
+
+Source/DSP/TiltFilter.o: Source/DSP/TiltFilter.cpp.o
+.PHONY : Source/DSP/TiltFilter.o
+
+# target to build an object file
+Source/DSP/TiltFilter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/TiltFilter.cpp.o
+.PHONY : Source/DSP/TiltFilter.cpp.o
+
+Source/DSP/TiltFilter.i: Source/DSP/TiltFilter.cpp.i
+.PHONY : Source/DSP/TiltFilter.i
+
+# target to preprocess a source file
+Source/DSP/TiltFilter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/TiltFilter.cpp.i
+.PHONY : Source/DSP/TiltFilter.cpp.i
+
+Source/DSP/TiltFilter.s: Source/DSP/TiltFilter.cpp.s
+.PHONY : Source/DSP/TiltFilter.s
+
+# target to generate assembly for a file
+Source/DSP/TiltFilter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/TiltFilter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/TiltFilter.cpp.s
+.PHONY : Source/DSP/TiltFilter.cpp.s
+
+Source/DSP/Voice.o: Source/DSP/Voice.cpp.o
+.PHONY : Source/DSP/Voice.o
+
+# target to build an object file
+Source/DSP/Voice.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/Voice.cpp.o
+.PHONY : Source/DSP/Voice.cpp.o
+
+Source/DSP/Voice.i: Source/DSP/Voice.cpp.i
+.PHONY : Source/DSP/Voice.i
+
+# target to preprocess a source file
+Source/DSP/Voice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/Voice.cpp.i
+.PHONY : Source/DSP/Voice.cpp.i
+
+Source/DSP/Voice.s: Source/DSP/Voice.cpp.s
+.PHONY : Source/DSP/Voice.s
+
+# target to generate assembly for a file
+Source/DSP/Voice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/Voice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/Voice.cpp.s
+.PHONY : Source/DSP/Voice.cpp.s
 
 Source/DSP/WidthProcessor.o: Source/DSP/WidthProcessor.cpp.o
 .PHONY : Source/DSP/WidthProcessor.o
@@ -1319,6 +1512,54 @@ Source/StateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/StateManager.cpp.s
 .PHONY : Source/StateManager.cpp.s
 
+tests/DSPPrimitiveTests.o: tests/DSPPrimitiveTests.cpp.o
+.PHONY : tests/DSPPrimitiveTests.o
+
+# target to build an object file
+tests/DSPPrimitiveTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/DSPPrimitiveTests.cpp.o
+.PHONY : tests/DSPPrimitiveTests.cpp.o
+
+tests/DSPPrimitiveTests.i: tests/DSPPrimitiveTests.cpp.i
+.PHONY : tests/DSPPrimitiveTests.i
+
+# target to preprocess a source file
+tests/DSPPrimitiveTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/DSPPrimitiveTests.cpp.i
+.PHONY : tests/DSPPrimitiveTests.cpp.i
+
+tests/DSPPrimitiveTests.s: tests/DSPPrimitiveTests.cpp.s
+.PHONY : tests/DSPPrimitiveTests.s
+
+# target to generate assembly for a file
+tests/DSPPrimitiveTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/DSPPrimitiveTests.cpp.s
+.PHONY : tests/DSPPrimitiveTests.cpp.s
+
+tests/TestMain.o: tests/TestMain.cpp.o
+.PHONY : tests/TestMain.o
+
+# target to build an object file
+tests/TestMain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/TestMain.cpp.o
+.PHONY : tests/TestMain.cpp.o
+
+tests/TestMain.i: tests/TestMain.cpp.i
+.PHONY : tests/TestMain.i
+
+# target to preprocess a source file
+tests/TestMain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/TestMain.cpp.i
+.PHONY : tests/TestMain.cpp.i
+
+tests/TestMain.s: tests/TestMain.cpp.s
+.PHONY : tests/TestMain.s
+
+# target to generate assembly for a file
+tests/TestMain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/TestMain.cpp.s
+.PHONY : tests/TestMain.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1335,6 +1576,7 @@ help:
 	@echo "... ShredDouble_All"
 	@echo "... ShredDouble_vst3_helper"
 	@echo "... ShredDouble"
+	@echo "... ShredDoubleTests"
 	@echo "... ShredDouble_LV2"
 	@echo "... ShredDouble_Standalone"
 	@echo "... ShredDouble_VST3"
@@ -1432,6 +1674,9 @@ help:
 	@echo "... JUCE/modules/juce_gui_extra/juce_gui_extra.o"
 	@echo "... JUCE/modules/juce_gui_extra/juce_gui_extra.i"
 	@echo "... JUCE/modules/juce_gui_extra/juce_gui_extra.s"
+	@echo "... Source/DSP/AllpassChain.o"
+	@echo "... Source/DSP/AllpassChain.i"
+	@echo "... Source/DSP/AllpassChain.s"
 	@echo "... Source/DSP/DelayLineFrac.o"
 	@echo "... Source/DSP/DelayLineFrac.i"
 	@echo "... Source/DSP/DelayLineFrac.s"
@@ -1441,6 +1686,15 @@ help:
 	@echo "... Source/DSP/PitchShifter.o"
 	@echo "... Source/DSP/PitchShifter.i"
 	@echo "... Source/DSP/PitchShifter.s"
+	@echo "... Source/DSP/RandomWalk.o"
+	@echo "... Source/DSP/RandomWalk.i"
+	@echo "... Source/DSP/RandomWalk.s"
+	@echo "... Source/DSP/TiltFilter.o"
+	@echo "... Source/DSP/TiltFilter.i"
+	@echo "... Source/DSP/TiltFilter.s"
+	@echo "... Source/DSP/Voice.o"
+	@echo "... Source/DSP/Voice.i"
+	@echo "... Source/DSP/Voice.s"
 	@echo "... Source/DSP/WidthProcessor.o"
 	@echo "... Source/DSP/WidthProcessor.i"
 	@echo "... Source/DSP/WidthProcessor.s"
@@ -1465,6 +1719,12 @@ help:
 	@echo "... Source/StateManager.o"
 	@echo "... Source/StateManager.i"
 	@echo "... Source/StateManager.s"
+	@echo "... tests/DSPPrimitiveTests.o"
+	@echo "... tests/DSPPrimitiveTests.i"
+	@echo "... tests/DSPPrimitiveTests.s"
+	@echo "... tests/TestMain.o"
+	@echo "... tests/TestMain.i"
+	@echo "... tests/TestMain.s"
 .PHONY : help
 
 
