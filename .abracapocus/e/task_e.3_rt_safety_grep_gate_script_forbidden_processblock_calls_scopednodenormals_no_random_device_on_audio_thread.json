@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "task_id": "e.3",
+  "phase": "E",
+  "phase_id": "e",
+  "title": "RT-safety grep-gate script (forbidden processBlock calls, ScopedNoDenormals, no random_device on audio thread)",
+  "description": "Add a CI-runnable RT-safety static grep gate per Build Spec \u00a714 item 1 and D2 PRNG constraint. Wave-1 independent task; scripts only.\n\nBefore editing, inspect:\n- Source/PluginProcessor.cpp processBlock region (ScopedNoDenormals, engine call path)\n- Source/DSP/ShredDoubleEngine.cpp, MeterTap.cpp, RandomWalk.cpp (audio-thread process paths; seeded xoshiro \u2014 must never touch std::random_device on audio thread)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a77 (processBlock contract), \u00a74 PRNG/D2, \u00a714 item 1\n- scripts/build_all.sh from phase A (cmake is NOT on PATH \u2014 CLion-bundled via build_all.sh)\n- Sibling gate: ~/dev/mike/music/plugins/shred-width/scripts/check_rt_safety.sh (brace-scoped processBlock extraction pattern)\n\nImplement scripts/check_rt_safety.sh:\n1. Bash script, set -euo pipefail, runnable from repo root: `bash scripts/check_rt_safety.sh`.\n2. Fail (non-zero) if processBlock-related sources reference forbidden APIs in audio-thread code paths. At minimum scope-check Source/PluginProcessor.cpp processBlock body and audio push paths (MeterTap push, engine process hot path) for: `\\bnew\\b`, malloc/free/realloc, juce::String, and lock primitives (std::mutex, scoped_lock, lock_guard, unique_lock, CriticalSection, MessageManager::callAsync). Prefer brace-counted scoped extraction over naive whole-file greps to avoid prepareToPlay false positives; document the strategy in script comments.\n3. Assert `ScopedNoDenormals` is present in Source/PluginProcessor.cpp processBlock path; fail if missing.\n4. Assert no `std::random_device` on audio-thread paths (processBlock, engine process, RandomWalk process/step hot code). Whole-file ban of std::random_device under Source/DSP/ and PluginProcessor process path is acceptable and preferred for D2 \u2014 PRNG must be seeded xoshiro/splitmix only.\n5. Print clear PASS/FAIL lines on stdout; exit 0 only on full pass.\n6. Do not require cmake on PATH; pure source grep (rg or grep -E).\n7. Shebang + executable bit if environment allows.\n\nDo not edit CMakeLists, C++ sources, presets, or docs.",
+  "acceptance_criteria": [
+    "scripts/check_rt_safety.sh exists and is a bash script with a shebang",
+    "scripts/check_rt_safety.sh fails when processBlock/audio-thread sources contain forbidden patterns among new, malloc, juce::String, or lock primitives (as implemented)",
+    "scripts/check_rt_safety.sh asserts ScopedNoDenormals is present in Source/PluginProcessor.cpp",
+    "scripts/check_rt_safety.sh asserts no std::random_device on audio-thread / DSP process paths (D2 PRNG constraint)",
+    "scripts/check_rt_safety.sh exits 0 only on pass and prints PASS/FAIL diagnostics",
+    "Script does not assume cmake is on PATH",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "model": "openrouter/minimax/minimax-m3",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "scripts/check_rt_safety.sh"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt, CMakePresets.json",
+    "modify Source/**, tests/**, Resources/**, docs/**",
+    "modify scripts/build_all.sh or scripts/run_pluginval.sh",
+    "hard-code machine-specific absolute paths unrelated to repo-relative lookup",
+    "require network access"
+  ],
+  "allowed_symbols": [
+    "ScopedNoDenormals",
+    "processBlock",
+    "std::random_device"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "rg or grep -E implementation",
+      "brace-scoped processBlock and MeterTap/engine process extraction modeled on shred-width check_rt_safety.sh",
+      "whole-file ban of std::random_device under Source/DSP and PluginProcessor",
+      "optional allowlist comments for known false positives"
+    ],
+    "forbidden": [
+      "edit C++ to silence the gate",
+      "own pluginval script or CMakeLists wiring",
+      "full dynamic allocator-hook sanitizer harness in this task (static grep only)"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": []
+}

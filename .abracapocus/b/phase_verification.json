@@ -1,0 +1,38 @@
+{
+  "verification": {
+    "checks": [
+      {
+        "name": "phase-b-dsp-sources-exist",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; for f in Source/DSP/RandomWalk.h Source/DSP/RandomWalk.cpp Source/DSP/AllpassChain.h Source/DSP/AllpassChain.cpp Source/DSP/TiltFilter.h Source/DSP/TiltFilter.cpp Source/DSP/Voice.h Source/DSP/Voice.cpp tests/TestMain.cpp tests/DSPPrimitiveTests.cpp; do test -f \"$f\"; done"
+        ]
+      },
+      {
+        "name": "cmake-registers-phase-b-sources",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; for s in RandomWalk.cpp AllpassChain.cpp TiltFilter.cpp Voice.cpp tests/TestMain.cpp tests/DSPPrimitiveTests.cpp; do grep -q \"$s\" CMakeLists.txt; done"
+        ]
+      },
+      {
+        "name": "rt-safety-grep-primitives",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; ! grep -E 'std::random_device|malloc\\(|new |std::mutex|std::lock_guard' Source/DSP/RandomWalk.cpp Source/DSP/AllpassChain.cpp Source/DSP/TiltFilter.cpp Source/DSP/Voice.cpp"
+        ]
+      },
+      {
+        "name": "build-and-ctest-dsp-primitives",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; find_cmake(){ if command -v cmake >/dev/null 2>&1; then command -v cmake; return; fi; shopt -s nullglob; cands=(\"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake \"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/*/bin/cmake/linux/x64/bin/cmake /opt/clion/bin/cmake/linux/x64/bin/cmake /snap/clion/current/bin/cmake/linux/x64/bin/cmake); shopt -u nullglob; for c in \"${cands[@]}\"; do if [[ -x \"$c\" ]]; then printf '%s\\n' \"$c\"; return; fi; done; if [[ -x scripts/build_all.sh ]]; then return 1; fi; return 1; }; if [[ -x scripts/build_all.sh ]]; then bash scripts/build_all.sh; else CMAKE_BIN=\"$(find_cmake)\"; \"$CMAKE_BIN\" -S . -B build/linux-relwithdebinfo -DCMAKE_BUILD_TYPE=RelWithDebInfo; \"$CMAKE_BIN\" --build build/linux-relwithdebinfo --config RelWithDebInfo --parallel; fi; CMAKE_BIN=\"${CMAKE_BIN:-$(find_cmake || true)}\"; if command -v ctest >/dev/null 2>&1; then ctest --test-dir build/linux-relwithdebinfo -C RelWithDebInfo --output-on-failure || ctest --test-dir build -C RelWithDebInfo --output-on-failure; elif [[ -n \"${CMAKE_BIN:-}\" ]]; then \"$CMAKE_BIN\" -E env ctest --test-dir build/linux-relwithdebinfo --output-on-failure; fi"
+        ]
+      }
+    ]
+  }
+}

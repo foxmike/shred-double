@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task_id": "c.1",
+  "phase": "C",
+  "phase_id": "c",
+  "title": "ShredDoubleEngine - V=4 voice array, voice-count switching with masked crossfade, masterSeed/Re-roll seeding, shared-LP assembly, dry-align, latency-mode buffer repoint",
+  "description": "Implement Source/DSP/ShredDoubleEngine.h and Source/DSP/ShredDoubleEngine.cpp \u2014 the DSP orchestrator per ShredDouble_Build_Spec.md \u00a7\u00a73, 4.1, 4.6\u20134.10, 7, 8.\n\nBefore editing, inspect:\n- Source/DSP/Voice.h (b.4 processSample / reseed / mute / getters)\n- Source/DSP/MeterTap.h (c.2 API: process block/samples, setVoiceDrift, seed-independent)\n- Source/DSP/MonoSafetyCrossover.h, WidthProcessor.h, DelayLineFrac.h (reused)\n- Source/ParameterIDs.h, PluginProcessor.h spine members that will host the engine\n- .abracapocus/ShredDouble_Build_Spec.md signal flow \u00a73 and \u00a7\u00a74.1, 4.6\u20134.10, 7, 8\n\nImplement class ShredDoubleEngine:\n1. Owns fixed V=4 Voice voices[4]; one MonoSafetyCrossover; one WidthProcessor; dry-align DelayLineFrac (or equivalent delay for stereo dry PDC alignment, capacity \u2265 Studio L/2 headroom / max block); one MeterTap meter; uint64_t masterSeed; current latencyMode, voiceCount (2 or 4), sampleRate.\n2. prepare(sampleRate, maxBlockSize, latencyMode): prepare all voices (worst-case Studio buffers and 35 ms delay), crossover, width, dry-align (\u2265 max PDC samples), meter; call seed(masterSeed); no process-path allocation afterward.\n3. seed(uint64_t s): store masterSeed; for each voice reseed(s) via Voice API (splitmix64 derivation lives in walks); reset walks/means; do NOT touch std::random_device here (caller/StateManager may generate new seeds off-audio).\n4. setVoiceCount(2|4): when switching to 2, ramp/mute voices 3\u20134 with a short masked crossfade (~10 ms) \u2014 never realloc or destroy Voice objects (D6). When switching to 4, ramp them back in.\n5. setLatencyMode(Studio|Live): repoint/pre-select already-prepared PitchShifter / buffer sizes via Voice::setLatencyMode; resize only abstractions that remain within preallocated capacity; masked ~10 ms crossfade on mode switch; report latency samples as L/2 (Studio L=2048 \u2192 1024; Live L=512 \u2192 256) via getter used by processor setLatencySamples (D9).\n6. process(float* inL, float* inR, float* outL, float* outR, int n, params): per sample or vectorized-safe inner loop:\n   - mono source x = 0.5f*(L+R) if stereo else L (\u00a74.1)\n   - dry stereo advanced through dry-align delay by reported PDC samples\n   - clear wetL/wetR accumulators; for each active voice: processSample(x, &wetL, &wetR) with pans already on Voice\n   - MonoSafetyCrossover shared-LP from dry mono x into both channels; independent HP of wet L and wet R; invert HP polarity as ShredWidth/shared crossover requires; assemble mono-safe wet (\u00a74.7)\n   - WidthProcessor M/S width on assembled wet\n   - equal-gain dry/wet mix against delayed dry; apply outTrim linear gain if provided\n   - MeterTap: push final stereo out; publish per-voice tau_v / deltaC_v atomics at hop rate via Voice getters\n7. Block-rate setters: spreads, pans, humanRate/tightness, monoXover coeffs/Hz, width, mix, outTrim, bypass. If bypass true, pass delayed-or-true input per contractor choice documented as true-bypass sample-exact after latency.\n8. RT contract: process path noexcept-friendly; no locks, String, malloc/new, or random_device.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. MeterTap is owned by c.2 \u2014 include and use it; do not reimplement metering inside the engine file beyond calling MeterTap. Do not edit PluginProcessor or CMakeLists (c.3).",
+  "acceptance_criteria": [
+    "Source/DSP/ShredDoubleEngine.h and Source/DSP/ShredDoubleEngine.cpp exist",
+    "ShredDoubleEngine owns a fixed array of 4 Voice objects, MonoSafetyCrossover, WidthProcessor, dry-align delay, MeterTap, and masterSeed",
+    "seed(uint64) reseeds all voices and resets walks without calling std::random_device",
+    "setVoiceCount ramps/mutes voices 3-4 with masked crossfade and never reallocates Voice storage",
+    "setLatencyMode repoints preallocated latency resources with masked crossfade and exposes latency samples L/2 for Studio/Live",
+    "process path: mono source fan-out to voices, shared-LP mono-safety assembly, WidthProcessor, equal-gain dry/wet vs PDC-aligned dry, MeterTap push",
+    "No allocation, lock, String, or random_device on the process path",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "codex_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "Source/DSP/ShredDoubleEngine.h",
+    "Source/DSP/ShredDoubleEngine.cpp"
+  ],
+  "forbidden_changes": [
+    "modify Source/DSP/MeterTap.* (owned by c.2)",
+    "modify Source/PluginProcessor.* or CMakeLists.txt (owned by c.3)",
+    "modify Voice/RandomWalk/AllpassChain/TiltFilter or the eight reused ShredWidth files",
+    "modify tests/**",
+    "call std::random_device inside seed() or process()",
+    "add third-party dependencies"
+  ],
+  "allowed_symbols": [
+    "ShredDoubleEngine",
+    "prepare",
+    "reset",
+    "seed",
+    "getMasterSeed",
+    "setVoiceCount",
+    "setLatencyMode",
+    "getLatencySamples",
+    "process",
+    "setTimingSpreadMs",
+    "setPitchSpreadCents",
+    "setHumanRate",
+    "setTightness",
+    "setPanPercent",
+    "setMonoXoverHz",
+    "setWidth",
+    "setMix",
+    "setOutTrimDb",
+    "setBypass",
+    "getMeterTap"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "stereo dry-align via one or two DelayLineFrac or ring buffers preallocated in prepare",
+      "params struct or individual setters for block-rate controls",
+      "masked crossfade gain ramps for voiceCount and latencyMode switches"
+    ],
+    "forbidden": [
+      "allocate or free Voice/PitchShifter buffers on the audio thread",
+      "move MonoSafetyCrossover ownership into each Voice",
+      "implement GUI or PluginProcessor processBlock in this task"
+    ]
+  },
+  "dependencies": [
+    "c.2"
+  ],
+  "task_timeout_seconds": 1200,
+  "verification_commands": []
+}

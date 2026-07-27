@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "task_id": "e.5",
+  "phase": "E",
+  "phase_id": "e",
+  "title": "Verification checklist and user manual (seeding/Re-roll workflow, D3 remap, automation caveats, LV2 host notes)",
+  "description": "Author release documentation only: CI verification checklist and end-user manual. Wave-1 independent of e.1\u2013e.4.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.3\u20134.10, 5, 9\u201312, 14, 16 (humanization D3 Rate/Tightness remap, masterSeed/Re-roll D2, formats, presets, verification items, open-decision defaults)\n- Factory preset names/values from phase goal / \u00a712\n- ParameterIDs inventory (voiceCount and latencyMode automatable but load-bearing; masterSeed state-only)\n\nImplement:\n1. docs/verification/shreddouble_verification.md \u2014 checklist mapping \u00a714 CI-runnable items:\n   1 RT-safety (scripts/check_rt_safety.sh + ScopedNoDenormals + no std::random_device on audio thread)\n   2 seed-determinism (same masterSeed bit-identical; different seed differs)\n   3 bypass null\n   4 Mix=0 passthrough\n   5 mono-lows invariant\n   6 walk bounds\n   7 correlation-time sanity\n   8 voice decorrelation\n   9 tightness monotonicity (D3 depth macro)\n   10 latency report (1024 Studio / 256 Live)\n   11 pluginval VST3/CLAP strictness 8+ and LV2/Standalone smoke (scripts/run_pluginval.sh)\n   Honest note: ear-pass (\"sounds like a real double-track\") and full host matrix are manual, not CI-gated.\n   Point operators at ctest/test targets (SeedingTests, EngineTests, CorrectnessTests) and the two scripts; leave cmake resolution to build_all.sh (not on PATH).\n\n2. docs/shreddouble_manual.md \u2014 user-facing manual covering:\n   - What ShredDouble is (algorithmic rhythm doubler / virtual double-track width from one take; stochastic random-walk timing+pitch humanization \u2014 no LFO; decorrelated voices; mono-safe lows)\n   - Seeding / Re-roll workflow: masterSeed stored in plugin state; same seed+params \u21d2 identical render; Re-roll GUI button draws a new seed (not host-automatable momentary param by default)\n   - D3 Rate/Tightness remap: Rate controls walk correlation time; Tightness is the depth macro scaling excursion (not an independent second LFO rate)\n   - voiceCount (2/4) and latencyMode (Studio/Live) automation caveats \u2014 buffer repoint / voice retenancy causes brief masked crossfades; discourage live scrubbing mid-take\n   - LV2 host port-metadata / latency refresh notes\n   - Factory presets: Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking with \u00a712 numeric vignettes\n   - Formats VST3/CLAP/LV2/Standalone (no AU); Output Trim default 0 dB; default Mix 50%\n   - Brief mono-safe design note (shared-LP crossover keeps lows centered under mono fold-down)\n\nDo not edit CMakeLists, sources, presets, or scripts.",
+  "acceptance_criteria": [
+    "docs/verification/shreddouble_verification.md exists and lists \u00a714 checks 1\u201311 including RT-safety, seed-determinism, bypass, Mix=0, mono-lows, walk bounds, correlation-time sanity, voice decorrelation, tightness monotonicity, latency, pluginval",
+    "docs/verification/shreddouble_verification.md states ear-pass and full host matrix are manual",
+    "docs/verification/shreddouble_verification.md references scripts/check_rt_safety.sh and scripts/run_pluginval.sh",
+    "docs/shreddouble_manual.md exists and documents masterSeed/Re-roll seeding workflow and D3 Rate/Tightness remap",
+    "docs/shreddouble_manual.md documents voiceCount and latencyMode automation caveats, LV2 host notes, and the five factory presets",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "docs/verification/shreddouble_verification.md",
+    "docs/shreddouble_manual.md"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt, CMakePresets.json, scripts/**",
+    "modify Source/**, tests/**, Resources/**",
+    "modify .abracapocus/ShredDouble_Build_Spec.md",
+    "claim AU support",
+    "omit the manual ear-pass / host-matrix honesty note",
+    "document non-default open decisions as if selected (AU on, host-momentary Re-roll param, etc.)"
+  ],
+  "allowed_symbols": [
+    "masterSeed",
+    "reRollMasterSeed",
+    "humanRate",
+    "tightness",
+    "voiceCount",
+    "latencyMode",
+    "ScopedNoDenormals"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "markdown structure with headings and checklists",
+      "cross-link relative paths to scripts and Resources/Presets",
+      "short operator vs user voice split across the two docs"
+    ],
+    "forbidden": [
+      "implement code or CMake changes",
+      "rewrite the full Build Spec into the manual",
+      "claim sample-exact LFO doubling or undisclosed stochastic sources"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": [],
+  "model": "openrouter/deepseek/deepseek-v4-flash"
+}

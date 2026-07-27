@@ -1,0 +1,54 @@
+{
+  "verification": {
+    "checks": [
+      {
+        "name": "factory_presets_exist",
+        "command": [
+          "bash",
+          "-lc",
+          "test -f Resources/Presets/TightMetalQuad.xml && test -f Resources/Presets/WideDouble.xml && test -f Resources/Presets/LooseGarageDouble.xml && test -f Resources/Presets/SubtleThickener.xml && test -f Resources/Presets/LiveQuadTracking.xml"
+        ]
+      },
+      {
+        "name": "preset_masterseed_and_params_present",
+        "command": [
+          "bash",
+          "-lc",
+          "rg -q 'masterSeed' Resources/Presets/*.xml && rg -q 'timingSpread' Resources/Presets/*.xml && rg -q 'pitchSpread' Resources/Presets/*.xml && rg -q 'tightness' Resources/Presets/*.xml && rg -qi 'Live' Resources/Presets/LiveQuadTracking.xml"
+        ]
+      },
+      {
+        "name": "correctness_tests_and_cmake",
+        "command": [
+          "bash",
+          "-lc",
+          "test -f tests/CorrectnessTests.cpp && rg -q 'CorrectnessTests\\.cpp' CMakeLists.txt && rg -qi 'binary_data|BinaryData|Presets' CMakeLists.txt && rg -qi 'FFT|fft|pitch|deltaC|2\\^|cents' tests/CorrectnessTests.cpp && rg -qi 'corr|rho|width' tests/CorrectnessTests.cpp"
+        ]
+      },
+      {
+        "name": "rt_safety_script",
+        "command": [
+          "bash",
+          "-lc",
+          "test -f scripts/check_rt_safety.sh && rg -q 'ScopedNoDenormals' scripts/check_rt_safety.sh && rg -q 'malloc|juce::String|processBlock' scripts/check_rt_safety.sh && rg -q 'random_device' scripts/check_rt_safety.sh"
+        ]
+      },
+      {
+        "name": "pluginval_script",
+        "command": [
+          "bash",
+          "-lc",
+          "test -f scripts/run_pluginval.sh && rg -qi 'pluginval' scripts/run_pluginval.sh && rg -q 'strictness|VST3|CLAP' scripts/run_pluginval.sh && rg -qi 'LV2|Standalone' scripts/run_pluginval.sh"
+        ]
+      },
+      {
+        "name": "verification_and_manual_docs",
+        "command": [
+          "bash",
+          "-lc",
+          "test -f docs/verification/shreddouble_verification.md && test -f docs/shreddouble_manual.md && rg -qi 'pluginval|mono-lows|seed|ear-pass|manual|tightness' docs/verification/shreddouble_verification.md && rg -qi 'Re-roll|masterSeed|Rate|Tightness|LV2|Tight Metal|Live Quad' docs/shreddouble_manual.md"
+        ]
+      }
+    ]
+  }
+}

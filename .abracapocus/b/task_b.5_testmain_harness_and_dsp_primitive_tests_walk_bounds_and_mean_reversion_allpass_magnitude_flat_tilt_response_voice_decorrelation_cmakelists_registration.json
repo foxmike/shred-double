@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "task_id": "b.5",
+  "phase": "B",
+  "phase_id": "b",
+  "title": "TestMain harness and DSP primitive tests - walk bounds and mean-reversion, allpass magnitude-flat, tilt response, voice decorrelation, CMakeLists registration",
+  "description": "Sole CMakeLists.txt owner for phase b. Add tests/TestMain.cpp + tests/DSPPrimitiveTests.cpp and register new DSP sources + a console test target.\n\nBefore editing, inspect:\n- CMakeLists.txt from phase a (juce_add_plugin target_sources pattern, SHREDWIDTH_CONFIGURE_ONLY)\n- ~/dev/mike/music/plugins/shred-width tests or CMake test target patterns if present\n- Source/DSP/{RandomWalk,AllpassChain,TiltFilter,Voice}.* public APIs from b.1\u2013b.4\n- .abracapocus/ShredDouble_Build_Spec.md \u00a714 items 6\u20139 (walk bounds, correlation-time sanity, decorrelation, tightness monotonicity)\n\nImplement:\n1. CMakeLists.txt updates ONLY:\n   - Add Source/DSP/RandomWalk.cpp AllpassChain.cpp TiltFilter.cpp Voice.cpp to the ShredDouble plugin target_sources\n   - Add juce_add_console_app or add_executable test target (e.g. ShredDoubleTests) with tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp, link needed juce modules + same include dirs, add_test(NAME ... COMMAND ...)\n   - Do not remove existing plugin sources; do not invent Engine/DriftDisplay files yet\n2. tests/TestMain.cpp: minimal Catch2-free or lightweight main that runs registered tests (prefer simple assert macros / functions returning int failures \u2014 no new package manager deps; if JUCE UnitTest runner is already the project style, match it)\n3. tests/DSPPrimitiveTests.cpp covering:\n   - RandomWalk: long-run samples stay within delay [10,35] ms and pitch \u00b1C_max; mean near nominal; tightness 1.0 yields near-zero excursion vs tightness 0.0; same seed \u21d2 identical sequence; PRNG path does not require random_device\n   - AllpassChain: impulse response energy roughly preserved (magnitude-flat-ish: output RMS within tolerance of input for white/impulse unit energy); different voice indices produce different IRs (decorrelated phase)\n   - TiltFilter: +tilt vs -tilt diverge in high vs low band energy at pivot ~700 Hz for a multi-tone or noise probe\n   - Voice: two voices with distinct indices, same mono impulse/noise input, cross-correlation of outputs below a loose threshold; process path runs without throw for N samples after prepare\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths (CMakeLists.txt + the two test files).",
+  "acceptance_criteria": [
+    "CMakeLists.txt registers Source/DSP/RandomWalk.cpp Source/DSP/AllpassChain.cpp Source/DSP/TiltFilter.cpp Source/DSP/Voice.cpp on the plugin target",
+    "CMakeLists.txt defines a test executable target including tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp and registers it with add_test",
+    "tests/TestMain.cpp exists as the test harness entrypoint",
+    "tests/DSPPrimitiveTests.cpp exists and contains tests for RandomWalk bounds/mean/seed determinism and tightness depth scaling",
+    "tests/DSPPrimitiveTests.cpp contains AllpassChain magnitude/energy and per-voice distinctness checks",
+    "tests/DSPPrimitiveTests.cpp contains TiltFilter response check and Voice dual-voice decorrelation or dual-process smoke check",
+    "No new third-party package manager dependencies are introduced",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "model": "openrouter/minimax/minimax-m3",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "CMakeLists.txt",
+    "tests/TestMain.cpp",
+    "tests/DSPPrimitiveTests.cpp"
+  ],
+  "forbidden_changes": [
+    "modify Source/DSP/** implementation files (owned by b.1\u2013b.4)",
+    "modify Source/PluginProcessor.* Source/PluginEditor.* Source/StateManager.*",
+    "modify the eight reused ShredWidth DSP/GUI files",
+    "add AU format or unrelated plugin targets",
+    "fetch Catch2/GoogleTest via FetchContent unless already present in repo pattern \u2014 prefer header-free asserts"
+  ],
+  "allowed_symbols": [
+    "main",
+    "ShredDoubleTests",
+    "DSPPrimitiveTests",
+    "add_test",
+    "target_sources"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "lightweight assert-based test harness without new deps",
+      "juce_add_console_app or plain add_executable for tests",
+      "loose numeric tolerances for FFTless decorrelation/energy checks"
+    ],
+    "forbidden": [
+      "rewrite entire CMakeLists from scratch unrelated to registration",
+      "implement DSP logic inside test files beyond exercising public APIs",
+      "register ShredDoubleEngine/DriftDisplay sources not yet created"
+    ]
+  },
+  "dependencies": [
+    "b.1",
+    "b.2",
+    "b.3",
+    "b.4"
+  ],
+  "task_timeout_seconds": 1200,
+  "verification_commands": []
+}

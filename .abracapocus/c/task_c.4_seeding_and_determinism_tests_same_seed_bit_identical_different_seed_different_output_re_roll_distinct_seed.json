@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "task_id": "c.4",
+  "phase": "C",
+  "phase_id": "c",
+  "title": "Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
+  "description": "Add tests/SeedingTests.cpp covering ShredDouble_Build_Spec.md \u00a714 item 2 (reproducibility-from-seed / D2).\n\nBefore editing, inspect:\n- tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp harness patterns from phase b\n- Source/DSP/ShredDoubleEngine.h seed/process API\n- Source/StateManager.* reroll/masterSeed if exercising Re-roll at state layer\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.10 and \u00a714.2\n\nImplement tests (assert-style, no new package deps):\n1. Same masterSeed + identical params over two fresh engine instances / reset+seed cycles \u21d2 bit-identical float output buffers (checksum or exact sample equality) for N samples after prepare.\n2. Different seeds with same params \u21d2 outputs differ (not bit-identical; beyond trivial float noise).\n3. Re-roll path: generate/apply a new seed (engine.seed(newSeed) and/or StateManager::reroll if linkable without GUI) yields a masterSeed distinct from the previous value and changes subsequent audio vs pre-reroll seed.\n4. Do not call random_device on a simulated audio thread path; if testing seed generation, call it only in the test harness/message-thread style helper.\n\nSTRICT FILE SCOPE: Create/modify only tests/SeedingTests.cpp. CMake registration is c.3's job.",
+  "acceptance_criteria": [
+    "tests/SeedingTests.cpp exists",
+    "tests/SeedingTests.cpp asserts same masterSeed plus same params produce bit-identical engine output",
+    "tests/SeedingTests.cpp asserts different seeds produce different output under the same params",
+    "tests/SeedingTests.cpp asserts Re-roll or seed(newSeed) produces a distinct seed and changes output versus the prior seed",
+    "Tests exercise ShredDoubleEngine public seed/process APIs without introducing new third-party test frameworks",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "tests/SeedingTests.cpp"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt (owned by c.3)",
+    "modify Source/** production DSP/processor files",
+    "modify tests/EngineTests.cpp (owned by c.5)",
+    "modify tests/TestMain.cpp unless absolutely required \u2014 prefer pure additional translation unit",
+    "add Catch2/GoogleTest via FetchContent"
+  ],
+  "allowed_symbols": [
+    "SeedingTests",
+    "ShredDoubleEngine",
+    "seed",
+    "process",
+    "getMasterSeed"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "lightweight assert helpers consistent with DSPPrimitiveTests",
+      "checksum or per-sample exact compare for bit-identity",
+      "optional StateManager hook if header is already linkable; else pure engine.seed tests"
+    ],
+    "forbidden": [
+      "reimplement PRNG inside the test file",
+      "require GUI/editor to validate seed determinism"
+    ]
+  },
+  "dependencies": [
+    "c.1"
+  ],
+  "task_timeout_seconds": 900,
+  "verification_commands": [],
+  "model": "openrouter/minimax/minimax-m3"
+}

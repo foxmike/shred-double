@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "task_id": "e.4",
+  "phase": "E",
+  "phase_id": "e",
+  "title": "pluginval and format smoke-load script (VST3/CLAP strictness 8+, LV2/Standalone)",
+  "description": "Add a pluginval + format smoke-load runner per Build Spec \u00a714 item 11. Wave-1 independent; scripts only.\n\nBefore editing, inspect:\n- scripts/build_all.sh (CLion-bundled cmake discovery; cmake is not on PATH)\n- CMakeLists.txt / CMakePresets.json for artifact output locations (VST3, CLAP, LV2, Standalone) and product name ShredDouble\n- .abracapocus/ShredDouble_Build_Spec.md \u00a710 (formats; no AU) and \u00a714 item 11\n- Sibling pluginval runner: ~/dev/mike/music/plugins/shred-width/scripts/run_pluginval.sh if present\n\nImplement scripts/run_pluginval.sh:\n1. Bash script, set -euo pipefail, repo-root friendly: `bash scripts/run_pluginval.sh`.\n2. Resolve tools without assuming `cmake` or `pluginval` on PATH:\n   - Prefer sourcing/reusing discovery logic from scripts/build_all.sh or duplicating the CLion cmake locator pattern.\n   - Locate pluginval via common paths, PLUGINVAL env override, or build tree; print a clear error if missing.\n3. Strictness 8+ on VST3 and CLAP artifacts (pluginval --strictness-level 8 or higher). Fail the script if either fails.\n4. LV2 and Standalone: smoke-load only (pluginval light options, or validate-in-process / load-only invocation if strict full suite is unstable for those formats). Document the distinction in script comments.\n5. Accept optional build-dir / config args; default to the repo's usual RelWithDebInfo/CLion binary dir layout from presets/build_all.\n6. Print which binaries were tested and PASS/FAIL per format; exit non-zero on any required failure.\n\nDo not edit CMakeLists, C++ sources, presets, or docs. Do not run an unbounded full host matrix (manual per \u00a714).",
+  "acceptance_criteria": [
+    "scripts/run_pluginval.sh exists and is a bash script with a shebang",
+    "scripts/run_pluginval.sh runs pluginval at strictness 8+ on VST3 and CLAP artifacts",
+    "scripts/run_pluginval.sh smoke-loads LV2 and Standalone (documented as smoke, not full strict suite if applicable)",
+    "scripts/run_pluginval.sh resolves cmake/pluginval via build_all.sh / CLion / env overrides and does not require bare cmake on PATH",
+    "Script exits non-zero when a required VST3/CLAP pluginval run fails and prints per-format diagnostics",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "scripts/run_pluginval.sh"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt, CMakePresets.json",
+    "modify Source/**, tests/**, Resources/**, docs/**",
+    "modify scripts/build_all.sh or scripts/check_rt_safety.sh",
+    "require bare cmake on PATH",
+    "claim full DAW host matrix coverage inside the script"
+  ],
+  "allowed_symbols": [
+    "pluginval",
+    "build_all.sh"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "PLUGINVAL and BUILD_DIR env overrides",
+      "reuse build_all.sh cmake locator by sourcing or copy-paste of the lookup block",
+      "skip gracefully with non-zero and message if artifacts not built yet",
+      "ShredDouble product/artifact name patterns in find paths"
+    ],
+    "forbidden": [
+      "edit plugin sources to pass validation",
+      "own RT-safety gate or CMakeLists",
+      "download pluginval via network as a hard dependency without offline path"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": [],
+  "model": "openrouter/minimax/minimax-m3"
+}

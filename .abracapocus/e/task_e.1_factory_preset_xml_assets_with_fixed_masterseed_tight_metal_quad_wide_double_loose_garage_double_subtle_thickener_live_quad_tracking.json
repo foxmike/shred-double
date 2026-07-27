@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "task_id": "e.1",
+  "phase": "E",
+  "phase_id": "e",
+  "title": "Factory preset XML assets with fixed masterSeed (Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking)",
+  "description": "Create the five factory APVTS XML preset assets under Resources/Presets/ only. These are BinaryData inputs for e.2 and regression fixtures per Build Spec \u00a712. Each preset MUST include a fixed masterSeed so save/recall and regression are bit-identical (D2).\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a712 (factory bank values) and \u00a75 (stable parameter IDs/ranges/defaults)\n- Source/ParameterIDs.h (voiceCount, timingSpread, pitchSpread, humanRate, tightness, monoXover, mix, panV1..panV4, width, latencyMode, outTrim, bypass; masterSeed as non-param state property)\n- Source/StateManager.* and PluginProcessor get/setStateInformation XML/ValueTree shape (parameterLayoutVersion / masterSeed property names)\n- Sibling ShredWidth factory preset XML under ~/dev/mike/music/plugins/shred-width/Resources/Presets/ for APVTS ValueTree XML conventions\n\nImplement five files (exact names for BinaryData/CMake later):\n1. Resources/Presets/TightMetalQuad.xml \u2014 voiceCount=4 (V4), timingSpread=4, pitchSpread=4, humanRate=40, tightness=75, monoXover=200, panV1=100, panV2=-100 (or 100/100 left/right pair per StateManager pan sign convention \u2014 prefer pan defaults style V1 left / V2 right if pans are bipolar \u2212100..+100: panV1=-100, panV2=100, panV3=-60, panV4=60 if the phase goals \"Pan 100/100/60/60\" mean magnitude; fix magnitudes to 100/100/60/60), Mix=60, width=100, latencyMode=Studio, outTrim=0, bypass=0. Fixed masterSeed (document chosen uint64 constant in a comment, e.g. 0x544D5154deadbeef style unique per preset).\n2. Resources/Presets/WideDouble.xml \u2014 V2, timingSpread=6, pitchSpread=5, humanRate=50, tightness=50, monoXover=180, pans hard L/R (100/100 magnitudes), Mix=50, Studio. Distinct fixed masterSeed.\n3. Resources/Presets/LooseGarageDouble.xml \u2014 V2, timingSpread=12, pitchSpread=8, humanRate=70, tightness=20, monoXover=150, Mix=55, Studio. Distinct fixed masterSeed.\n4. Resources/Presets/SubtleThickener.xml \u2014 V2, timingSpread=3, pitchSpread=3, humanRate=30, tightness=80, monoXover=250, Mix=35, Studio. Distinct fixed masterSeed.\n5. Resources/Presets/LiveQuadTracking.xml \u2014 latencyMode=Live, V4, timingSpread=5, pitchSpread=4, humanRate=45, tightness=65, monoXover=200 (or default 180 if unspecified), Mix=50. Distinct fixed masterSeed.\n\nXML requirements:\n- Valid well-formed XML loadable as a juce::ValueTree / APVTS state fragment consistent with StateManager restore.\n- Parameter IDs must match ParameterIDs.h strings exactly.\n- Include layout/schema version property matching parameterLayoutVersion = 1.\n- masterSeed MUST be present as a state/value-tree property (not an APVTS automatable param) with a fixed uint64 per file for regression.\n- Choice params (voiceCount, latencyMode) encoded as index or choice text consistently with existing APVTS.\n- Deterministic content; no host-specific absolute paths.\n- Do not embed BinaryData or edit CMakeLists (e.2 sole owner).\n\nWave 1 independent of e.3\u2013e.5.",
+  "acceptance_criteria": [
+    "Resources/Presets/TightMetalQuad.xml exists with voiceCount V4, timingSpread=4, pitchSpread=4, humanRate=40, tightness=75, monoXover=200, Mix=60, and a fixed masterSeed property",
+    "Resources/Presets/WideDouble.xml exists with V2, timingSpread=6, pitchSpread=5, humanRate=50, tightness=50, monoXover=180, Mix=50, and a fixed masterSeed",
+    "Resources/Presets/LooseGarageDouble.xml exists with V2, timingSpread=12, pitchSpread=8, humanRate=70, tightness=20, monoXover=150, Mix=55, and a fixed masterSeed",
+    "Resources/Presets/SubtleThickener.xml exists with V2, timingSpread=3, pitchSpread=3, humanRate=30, tightness=80, monoXover=250, Mix=35, and a fixed masterSeed",
+    "Resources/Presets/LiveQuadTracking.xml exists with latencyMode=Live, V4, timingSpread=5, pitchSpread=4, humanRate=45, tightness=65, Mix=50, and a fixed masterSeed",
+    "Each preset XML is well-formed, uses ParameterIDs.h string IDs, includes parameterLayoutVersion=1, and embeds a distinct fixed masterSeed",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "model": "openrouter/deepseek/deepseek-v4-flash",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "Resources/Presets/TightMetalQuad.xml",
+    "Resources/Presets/WideDouble.xml",
+    "Resources/Presets/LooseGarageDouble.xml",
+    "Resources/Presets/SubtleThickener.xml",
+    "Resources/Presets/LiveQuadTracking.xml"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt, CMakePresets.json, scripts/**",
+    "modify Source/** or tests/**",
+    "modify docs/**",
+    "add juce_add_binary_data or BinaryData generation here (e.2)",
+    "omit fixed masterSeed values",
+    "renumber or invent ParameterIDs"
+  ],
+  "allowed_symbols": [
+    "voiceCount",
+    "timingSpread",
+    "pitchSpread",
+    "humanRate",
+    "tightness",
+    "monoXover",
+    "mix",
+    "panV1",
+    "panV2",
+    "panV3",
+    "panV4",
+    "width",
+    "latencyMode",
+    "outTrim",
+    "bypass",
+    "masterSeed",
+    "parameterLayoutVersion"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "APVTS/ValueTree XML shape matching StateManager restore",
+      "encode choice params as index or choice text consistent with existing APVTS",
+      "bipolar pan signs matching ParameterIDs defaults while magnitudes match \u00a712",
+      "optional display-name property on the tree",
+      "choose unique documented uint64 masterSeed constants per preset"
+    ],
+    "forbidden": [
+      "own CMakeLists or BinaryData",
+      "change parameter defaults in ParameterIDs/PluginProcessor",
+      "add extra preset files beyond the five named assets",
+      "make masterSeed an automatable APVTS parameter"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": []
+}

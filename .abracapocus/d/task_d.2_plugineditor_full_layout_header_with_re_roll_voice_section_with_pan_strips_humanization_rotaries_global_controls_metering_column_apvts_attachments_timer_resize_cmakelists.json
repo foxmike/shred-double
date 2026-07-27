@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "task_id": "d.2",
+  "phase": "D",
+  "phase_id": "d",
+  "title": "PluginEditor full layout - header with Re-roll, voice section with pan strips, humanization rotaries, global controls, metering column, APVTS attachments, timer, resize, CMakeLists",
+  "description": "Sole PluginEditor and CMakeLists owner for phase d. Expand the a.4 editor skeleton into the full ShredDouble GUI per Build Spec \u00a79.1 and register new GUI sources.\n\nBefore editing, inspect:\n- Source/PluginEditor.h/.cpp skeleton from a.4 (Timer, ResizableCornerComponent, Re-roll stub)\n- Source/StateManager.h (reRollMasterSeed / A/B APIs)\n- Source/ParameterIDs.h and PluginProcessor APVTS accessors\n- Source/GUI/DriftDisplay.h from d.1\n- Source/GUI/RotarySlider, CustomLookAndFeel, GoniometerComponent, CorrelationMeter (reused)\n- Source/DSP/MeterTap.h and how processor/engine expose MeterTap to the UI\n- ~/dev/mike/music/plugins/shred-width/Source/PluginEditor.h/.cpp (attachment, timer, layout, A/B, latency segmented patterns)\n- CMakeLists.txt current source list from phases a\u2013c\n- .abracapocus/ShredDouble_Build_Spec.md \u00a79.1\u20139.6, \u00a713\n\nImplement full ShredDoubleAudioProcessorEditor layout:\n1. Header: plugin name label, preset selector ComboBox (factory list can be stub entries until phase e BinaryData; keep structure), A/B compare buttons (+ copy if StateManager supports), Re-roll TextButton wired to StateManager::reRollMasterSeed() (or processor fa\u00e7ade that reseeds the engine), bypass control/LED via APVTS ButtonAttachment on bypass.\n2. Voice section: voiceCount segmented 2/4 control; per-voice pan strips (panV1..panV4 RotarySliders or small sliders) \u2014 show/enable pans for active voices only (hide or disable V3/V4 when voiceCount==2).\n3. Humanization section rotaries: Timing Spread, Pitch Spread, Humanization Rate, Tightness with SliderAttachments to timingSpread, pitchSpread, humanRate, tightness.\n4. Global section: Low Mono Crossover, Stereo Width, Mix, Output Trim rotaries; Latency Mode segmented Studio/Live bound to latencyMode (mirror shred-width studio/live button pattern).\n5. Metering column: GoniometerComponent (top), CorrelationMeter (middle), DriftDisplay (bottom). Wire MeterTap from processor/engine; timerCallback at 30\u201360 Hz calls goniometer.update(), correlationMeter update/setCorrelation, driftDisplay.update() and setVoiceCount from current voiceCount param.\n6. Apply CustomLookAndFeel via setLookAndFeel in ctor and clear in dtor. Do not rewrite drawPopupMenuItem \u2014 reused CustomLookAndFeel already uses LookAndFeel_V4 individual-parameter signature.\n7. ResizableCornerComponent / setResizable with constrained aspect or min/max sizes; persist window size in value tree state (APVTS state or processor property) like shred-width.\n8. All continuous params use APVTS SliderAttachments; choice/bool via ButtonAttachment or ComboBoxAttachment / manual segmented sync matching existing ParameterIDs.\n9. CMakeLists.txt: register Source/GUI/DriftDisplay.cpp (and ensure PluginEditor.cpp and other GUI sources already listed remain). Sole CMakeLists owner this phase \u2014 only add DriftDisplay / fix GUI source registration needed for this phase, no broad refactors.\n\nSTRICT FILE SCOPE: Modify ONLY PluginEditor.h/.cpp and CMakeLists.txt. DriftDisplay implementation stays in d.1.",
+  "acceptance_criteria": [
+    "Source/PluginEditor.h and Source/PluginEditor.cpp implement full layout regions: header, voice, humanization, global, metering column",
+    "Re-roll button calls StateManager re-roll (reRollMasterSeed or equivalent) that updates masterSeed for engine reseed",
+    "APVTS SliderAttachments (or equivalent) wire timingSpread pitchSpread humanRate tightness monoXover width mix outTrim and panV1..panV4",
+    "voiceCount 2/4 control and latencyMode Studio/Live segmented controls are bound to APVTS parameters",
+    "Pan strips for voices 3 and 4 are hidden or disabled when voiceCount==2",
+    "Metering column hosts GoniometerComponent, CorrelationMeter, and DriftDisplay",
+    "Editor Timer runs at 30-60 Hz and refreshes goniometer, correlation, and DriftDisplay including voiceCount-driven V3/V4 hide",
+    "CustomLookAndFeel is applied on the editor",
+    "Editor is resizable with size constraints and window size stored in value tree / state",
+    "CMakeLists.txt lists Source/GUI/DriftDisplay.cpp among plugin sources",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "antigravity_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "Source/PluginEditor.h",
+    "Source/PluginEditor.cpp",
+    "CMakeLists.txt"
+  ],
+  "forbidden_changes": [
+    "modify Source/GUI/DriftDisplay.h or Source/GUI/DriftDisplay.cpp (d.1 owns them)",
+    "modify Source/PluginProcessor.* or Source/DSP/**",
+    "modify Source/StateManager.* beyond calling existing APIs from the editor",
+    "modify the eight reused ShredWidth files",
+    "rewrite CustomLookAndFeel::drawPopupMenuItem signature",
+    "add host-automatable momentary Re-roll APVTS parameter",
+    "add third-party dependencies",
+    "implement factory preset BinaryData embedding (phase e)"
+  ],
+  "allowed_symbols": [
+    "ShredDoubleAudioProcessorEditor",
+    "timerCallback",
+    "resized",
+    "paint",
+    "DriftDisplay",
+    "GoniometerComponent",
+    "CorrelationMeter",
+    "RotarySlider",
+    "CustomLookAndFeel",
+    "SliderAttachment",
+    "ButtonAttachment",
+    "reRollMasterSeed",
+    "ResizableCornerComponent"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "mirror shred-width editor layout/attachment/timer patterns adapted to ShredDouble sections",
+      "segmented TextButton pairs for voiceCount and latencyMode",
+      "stub preset ComboBox entries until phase e assets exist",
+      "append DriftDisplay.cpp only to existing juce plugin source lists in CMakeLists"
+    ],
+    "forbidden": [
+      "redesign DSP or MeterTap APIs",
+      "own or rewrite DriftDisplay implementation",
+      "broad CMake refactor unrelated to GUI source registration",
+      "change ParameterIDs string inventory"
+    ]
+  },
+  "dependencies": [
+    "d.1"
+  ],
+  "task_timeout_seconds": 900,
+  "verification_commands": []
+}

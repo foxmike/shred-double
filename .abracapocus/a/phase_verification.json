@@ -1,0 +1,38 @@
+{
+  "verification": {
+    "checks": [
+      {
+        "name": "reused-files-byte-identical",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; src=\"$HOME/dev/mike/music/plugins/shred-width/Source\"; for f in DSP/PitchShifter.h DSP/PitchShifter.cpp DSP/DelayLineFrac.h DSP/DelayLineFrac.cpp DSP/MonoSafetyCrossover.h DSP/MonoSafetyCrossover.cpp DSP/WidthProcessor.h DSP/WidthProcessor.cpp GUI/CustomLookAndFeel.h GUI/CustomLookAndFeel.cpp GUI/RotarySlider.h GUI/RotarySlider.cpp GUI/GoniometerComponent.h GUI/GoniometerComponent.cpp GUI/CorrelationMeter.h GUI/CorrelationMeter.cpp; do cmp -s \"$src/$f\" \"Source/$f\"; done"
+        ]
+      },
+      {
+        "name": "parameter-ids-present",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; test -f Source/ParameterIDs.h; for id in voiceCount timingSpread pitchSpread humanRate tightness monoXover mix panV1 panV2 panV3 panV4 width latencyMode outTrim bypass masterSeed parameterLayoutVersion; do grep -q \"$id\" Source/ParameterIDs.h; done"
+        ]
+      },
+      {
+        "name": "scaffold-files-exist",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; for f in CMakeLists.txt CMakePresets.json scripts/build_all.sh .gitignore README.md .gitmodules Source/PluginProcessor.h Source/PluginProcessor.cpp Source/PluginEditor.h Source/PluginEditor.cpp Source/StateManager.h Source/StateManager.cpp; do test -f \"$f\"; done; test -x scripts/build_all.sh"
+        ]
+      },
+      {
+        "name": "cmake-configure-only",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; find_cmake(){ if command -v cmake >/dev/null 2>&1; then command -v cmake; return; fi; shopt -s nullglob; cands=(\"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake \"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/*/bin/cmake/linux/x64/bin/cmake /opt/clion/bin/cmake/linux/x64/bin/cmake /snap/clion/current/bin/cmake/linux/x64/bin/cmake); shopt -u nullglob; for c in \"${cands[@]}\"; do if [[ -x \"$c\" ]]; then printf '%s\\n' \"$c\"; return; fi; done; return 1; }; CMAKE_BIN=\"$(find_cmake)\"; \"$CMAKE_BIN\" -S . -B build/phase-a-configure -DSHREDWIDTH_CONFIGURE_ONLY=ON"
+        ]
+      }
+    ]
+  }
+}

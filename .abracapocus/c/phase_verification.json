@@ -1,0 +1,38 @@
+{
+  "verification": {
+    "checks": [
+      {
+        "name": "phase-c-sources-exist",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; for f in Source/DSP/MeterTap.h Source/DSP/MeterTap.cpp Source/DSP/ShredDoubleEngine.h Source/DSP/ShredDoubleEngine.cpp Source/PluginProcessor.h Source/PluginProcessor.cpp tests/SeedingTests.cpp tests/EngineTests.cpp; do test -f \"$f\"; done"
+        ]
+      },
+      {
+        "name": "cmake-registers-phase-c-sources",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; for s in MeterTap.cpp ShredDoubleEngine.cpp tests/SeedingTests.cpp tests/EngineTests.cpp; do grep -q \"$s\" CMakeLists.txt; done"
+        ]
+      },
+      {
+        "name": "rt-safety-grep-engine",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; ! grep -E 'std::random_device|malloc\\(|std::mutex|std::lock_guard' Source/DSP/MeterTap.cpp Source/DSP/ShredDoubleEngine.cpp Source/PluginProcessor.cpp; grep -q 'ScopedNoDenormals' Source/PluginProcessor.cpp"
+        ]
+      },
+      {
+        "name": "build-and-ctest-phase-c",
+        "command": [
+          "bash",
+          "-lc",
+          "set -euo pipefail; find_cmake(){ if command -v cmake >/dev/null 2>&1; then command -v cmake; return; fi; shopt -s nullglob; cands=(\"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake \"$HOME\"/.local/share/JetBrains/Toolbox/apps/clion/*/bin/cmake/linux/x64/bin/cmake /opt/clion/bin/cmake/linux/x64/bin/cmake /snap/clion/current/bin/cmake/linux/x64/bin/cmake); shopt -u nullglob; for c in \"${cands[@]}\"; do if [[ -x \"$c\" ]]; then printf '%s\\n' \"$c\"; return; fi; done; return 1; }; if [[ -x scripts/build_all.sh ]]; then bash scripts/build_all.sh; else CMAKE_BIN=\"$(find_cmake)\"; \"$CMAKE_BIN\" -S . -B build/linux-relwithdebinfo -DCMAKE_BUILD_TYPE=RelWithDebInfo; \"$CMAKE_BIN\" --build build/linux-relwithdebinfo --config RelWithDebInfo --parallel; fi; if command -v ctest >/dev/null 2>&1; then ctest --test-dir build/linux-relwithdebinfo -C RelWithDebInfo --output-on-failure || ctest --test-dir build -C RelWithDebInfo --output-on-failure; fi"
+        ]
+      }
+    ]
+  }
+}

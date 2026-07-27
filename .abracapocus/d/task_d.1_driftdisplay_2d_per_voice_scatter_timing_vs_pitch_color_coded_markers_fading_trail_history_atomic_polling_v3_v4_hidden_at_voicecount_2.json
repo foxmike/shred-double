@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "d.1",
+  "phase": "D",
+  "phase_id": "d",
+  "title": "DriftDisplay - 2D per-voice scatter (timing vs pitch), color-coded markers, fading trail history, atomic polling, V3/V4 hidden at voiceCount==2",
+  "description": "Implement Source/GUI/DriftDisplay.h and Source/GUI/DriftDisplay.cpp \u2014 the signature ShredDouble diagnostic (ShredDouble_Build_Spec.md \u00a79.4).\n\nBefore editing, inspect:\n- Source/DSP/MeterTap.h (getVoiceDelayMs / getVoiceDetuneCents or equivalent 2*V atomic load APIs set in c.2)\n- Source/GUI/GoniometerComponent.h/.cpp and CorrelationMeter.h/.cpp (Component paint/update patterns, MeterTap pointer style)\n- Source/GUI/CustomLookAndFeel.h (colors/palette if reusable)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a79.4 and \u00a79.5\n\nImplement class DriftDisplay : public juce::Component:\n1. 2-D scatter field: X-axis = each voice's current timing offset relative to nominal (ms); Y-axis = current pitch offset (cents). Draw labelled axes, grid/crosshair at (0,0), and clip markers to plot bounds.\n2. One color-coded marker per active voice (distinct hues for V1..V4). Each marker trails a short fading history ring buffer (preallocated, fixed capacity, e.g. 32\u201364 samples) so trails show independent breathing.\n3. Poll MeterTap atomics only on the UI thread via update()/setMeterValues \u2014 load 2*V std::atomic<float> (tau_v_ms, deltaC_v) with relaxed loads. Do not block, lock, or allocate on update hot path after construct (preallocate trail buffers).\n4. setVoiceCount(int) or setActiveVoices(int): when voiceCount==2, hide (do not draw or advance) voices 3 and 4 markers/trails; when 4, show all. Default assume 2 until told otherwise.\n5. setMeterTap(MeterTap*) optional pointer like GoniometerComponent; update() pulls latest drifts then repaint(). Also allow external push of 8 floats if editor prefers pull from processor fa\u00e7ade.\n6. Axis ranges: scale X from timing spread domain (at least \u00b1~15\u201320 ms usable) and Y from pitch domain (\u00b1~10\u201312 cents); keep ranges stable or lightly autoscaled with hysteresis so markers stay readable.\n7. paint/resized only \u2014 no Timer inside DriftDisplay (editor owns 30\u201360 Hz Timer).\n\nSTRICT FILE SCOPE: Create or modify ONLY DriftDisplay.h/.cpp. Do not edit PluginEditor or CMakeLists (d.2 owns those).",
+  "acceptance_criteria": [
+    "Source/GUI/DriftDisplay.h and Source/GUI/DriftDisplay.cpp exist",
+    "DriftDisplay is a juce::Component drawing a 2-D scatter with X=timing offset ms and Y=pitch offset cents",
+    "DriftDisplay draws up to four color-coded voice markers each with a short fading trail history from preallocated buffers",
+    "DriftDisplay polls or accepts per-voice tau_v and deltaC_v values sourced from MeterTap atomics (2*V floats)",
+    "When voiceCount==2 (or active voice count 2), voices 3 and 4 markers and trails are not drawn",
+    "DriftDisplay update path performs no locks and no steady-state heap allocation after construction",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "antigravity_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "Source/GUI/DriftDisplay.h",
+    "Source/GUI/DriftDisplay.cpp"
+  ],
+  "forbidden_changes": [
+    "modify Source/PluginEditor.h or Source/PluginEditor.cpp",
+    "modify CMakeLists.txt",
+    "modify Source/DSP/MeterTap.*",
+    "modify the eight reused ShredWidth GUI/DSP files (CustomLookAndFeel, RotarySlider, GoniometerComponent, CorrelationMeter, PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor)",
+    "run a juce::Timer inside DriftDisplay (editor owns the timer)",
+    "add third-party dependencies"
+  ],
+  "allowed_symbols": [
+    "DriftDisplay",
+    "setMeterTap",
+    "setVoiceCount",
+    "setActiveVoices",
+    "update",
+    "paint",
+    "resized",
+    "MeterTap"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "fixed-capacity ring buffer trail per voice",
+      "distinct hard-coded marker colors for four voices",
+      "pull API via MeterTap* and/or explicit setVoiceDriftValues",
+      "stable axis ranges covering timingSpread/pitchSpread domains"
+    ],
+    "forbidden": [
+      "embed PluginEditor or APVTS dependencies inside DriftDisplay",
+      "allocate per-frame std::vector growth on update/paint",
+      "implement strip-chart companion as default-required UI (optional later only)",
+      "register sources in CMakeLists"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": []
+}

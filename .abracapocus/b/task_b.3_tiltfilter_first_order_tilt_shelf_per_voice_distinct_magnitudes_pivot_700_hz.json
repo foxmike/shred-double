@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "task_id": "b.3",
+  "phase": "B",
+  "phase_id": "b",
+  "title": "TiltFilter - first-order tilt shelf, per-voice distinct magnitudes, pivot ~700 Hz",
+  "description": "Implement Source/DSP/TiltFilter.h and Source/DSP/TiltFilter.cpp \u2014 per-voice first-order spectral tilt per ShredDouble_Build_Spec.md \u00a74.5B.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.5B (pivot ~700 Hz, per-voice dB magnitudes)\n- Source/DSP/WidthProcessor.h or MonoSafetyCrossover.h for small filter prepare/process style if present\n\nImplement class TiltFilter:\n1. First-order tilt shelf: low-shelf boost / high-shelf cut of equal small magnitude (or equivalent first-order tilt transfer) pivoting near 700 Hz so DC and Nyquist move oppositely by ~\u00b1tiltDb/2 with flat-ish overall loudness.\n2. Per-voice default magnitudes (setVoiceIndex 0..3):\n   - V1 +1.5 dB bright\n   - V2 -1.5 dB dark\n   - V3 +0.8 dB\n   - V4 -0.8 dB\n3. prepare(sampleRate) recomputes coefficients from pivotHz (default 700) and tiltDb; setTiltDb / setPivotHz allowed; coefficient update only in prepare or explicit setter (not per-sample alloc).\n4. processSample(float) noexcept; reset() clears filter state. No heap in process. Subtle by design \u2014 default magnitudes stay small.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+  "acceptance_criteria": [
+    "Source/DSP/TiltFilter.h and Source/DSP/TiltFilter.cpp exist",
+    "TiltFilter is a first-order tilt shelf with default pivot approximately 700 Hz",
+    "setVoiceIndex or defaults provide V1=+1.5 V2=-1.5 V3=+0.8 V4=-0.8 dB tilt magnitudes",
+    "prepare/reset/processSample exist; no allocation outside prepare",
+    "No file outside the task's allowed_write_paths is created or modified"
+  ],
+  "selected_backend": "pi_cli",
+  "verification_profile": "focused",
+  "allowed_write_paths": [
+    "Source/DSP/TiltFilter.h",
+    "Source/DSP/TiltFilter.cpp"
+  ],
+  "forbidden_changes": [
+    "modify CMakeLists.txt",
+    "modify tests/**",
+    "modify Source/DSP/RandomWalk.* Source/DSP/AllpassChain.* Source/DSP/Voice.*",
+    "modify reused ShredWidth DSP files",
+    "implement multi-band graphic EQ or FFT processing",
+    "add third-party dependencies"
+  ],
+  "allowed_symbols": [
+    "TiltFilter",
+    "prepare",
+    "reset",
+    "processSample",
+    "setVoiceIndex",
+    "setTiltDb",
+    "setPivotHz"
+  ],
+  "decision_budget": {
+    "allowed": [
+      "biquad or one-pole/one-zero first-order tilt topology",
+      "coefficient recompute on prepare and tilt/pivot setters"
+    ],
+    "forbidden": [
+      "high-order EQ",
+      "per-sample coefficient allocation",
+      "implement AllpassChain or Voice here"
+    ]
+  },
+  "dependencies": [],
+  "task_timeout_seconds": 900,
+  "verification_commands": [],
+  "model": "openrouter/minimax/minimax-m3"
+}
