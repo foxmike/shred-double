@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-e.1",
+  "plan_version": "task-e.2",
   "active_phase": "E",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "e.1",
-      "title": "Factory preset XML assets with fixed masterSeed (Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking)",
+      "task_id": "e.2",
+      "title": "Pitch-accuracy FFT and correlation-sanity tests, preset BinaryData embedding, CMakeLists",
       "phase": "E",
-      "status": "completed",
+      "status": "planned",
       "backend": "pi_cli",
-      "last_run": "2026-07-27T22:05:39.823704",
+      "last_run": null,
       "notes": ""
     }
   ],

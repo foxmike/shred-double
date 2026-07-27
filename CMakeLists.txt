@@ -93,6 +93,15 @@ target_sources(ShredDouble
         Source/GUI/DriftDisplay.cpp
 )
 
+juce_add_binary_data(ShredDoublePresets
+    SOURCES
+        Resources/Presets/TightMetalQuad.xml
+        Resources/Presets/WideDouble.xml
+        Resources/Presets/LooseGarageDouble.xml
+        Resources/Presets/SubtleThickener.xml
+        Resources/Presets/LiveQuadTracking.xml
+)
+
 target_compile_definitions(ShredDouble
     PRIVATE
         JUCE_WEB_BROWSER=0
@@ -105,6 +114,7 @@ target_link_libraries(ShredDouble
     PRIVATE
         juce::juce_audio_utils
         juce::juce_dsp
+        ShredDoublePresets
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
@@ -126,6 +136,7 @@ enable_testing()
 set(SHREDDOUBLE_TEST_SOURCES
     tests/TestMain.cpp
     tests/DSPPrimitiveTests.cpp
+    tests/CorrectnessTests.cpp
 )
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/SeedingTests.cpp")
@@ -166,6 +177,7 @@ target_link_libraries(ShredDoubleTests
     PRIVATE
         juce::juce_audio_utils
         juce::juce_dsp
+        ShredDoublePresets
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
