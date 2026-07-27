@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShredDouble 1.0 – Wide Double (factory preset, default-ish)
+
+  Two voices, hard-panned L/R. Moderate timing/pitch spreads,
+  medium rate and tightness. 180 Hz crossover keeps lows centered.
+  Studio latency. Fixed masterSeed for bit-identical recall (D2).
+
+  APVTS state fragment loadable via StateManager::restoreComparisonState
+  (direct APVTS state tree path). parameterLayoutVersion must match
+  ShredDouble::ParameterIDs::parameterLayoutVersion (== 1).
+
+  masterSeed = 0x5749444500000002  ("WIDE" + 2)
+-->
+<ShredDoubleState parameterLayoutVersion="1" masterSeed="6289633417743040514">
+    <voiceCount value="0"/>
+    <timingSpread value="6.0"/>
+    <pitchSpread value="5.0"/>
+    <humanRate value="50.0"/>
+    <tightness value="50.0"/>
+    <monoXover value="180.0"/>
+    <mix value="50.0"/>
+    <panV1 value="-100.0"/>
+    <panV2 value="100.0"/>
+    <width value="100.0"/>
+    <latencyMode value="0"/>
+    <outTrim value="0.0"/>
+    <bypass value="0"/>
+</ShredDoubleState>

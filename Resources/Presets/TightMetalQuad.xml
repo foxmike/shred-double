@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShredDouble 1.0 – Tight Metal Quad (factory preset)
+
+  Four voices, hard-panned L/R with inner 60% pair for density.
+  Tight timing/pitch spreads with high tightness = nearly locked.
+  Studio latency. Fixed masterSeed for bit-identical recall (D2).
+
+  APVTS state fragment loadable via StateManager::restoreComparisonState
+  (direct APVTS state tree path). parameterLayoutVersion must match
+  ShredDouble::ParameterIDs::parameterLayoutVersion (== 1).
+
+  masterSeed = 0x544D515400000001  ("TMQT" + 1)
+-->
+<ShredDoubleState parameterLayoutVersion="1" masterSeed="6074600893611769857">
+    <voiceCount value="1"/>
+    <timingSpread value="4.0"/>
+    <pitchSpread value="4.0"/>
+    <humanRate value="40.0"/>
+    <tightness value="75.0"/>
+    <monoXover value="200.0"/>
+    <mix value="60.0"/>
+    <panV1 value="-100.0"/>
+    <panV2 value="100.0"/>
+    <panV3 value="-60.0"/>
+    <panV4 value="60.0"/>
+    <width value="100.0"/>
+    <latencyMode value="0"/>
+    <outTrim value="0.0"/>
+    <bypass value="0"/>
+</ShredDoubleState>

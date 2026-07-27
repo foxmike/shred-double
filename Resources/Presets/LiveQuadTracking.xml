@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShredDouble 1.0 – Live Quad Tracking (factory preset)
+
+  Four voices with Live latency mode for low-latency tracking.
+  Moderate timing/pitch spreads with medium rate and tightness.
+  Hard-panned L/R with 60% inner pair.
+  Fixed masterSeed for bit-identical recall (D2).
+
+  APVTS state fragment loadable via StateManager::restoreComparisonState
+  (direct APVTS state tree path). parameterLayoutVersion must match
+  ShredDouble::ParameterIDs::parameterLayoutVersion (== 1).
+
+  latencyMode=1 == Live (choice index 1 in the ShredDouble APVTS layout:
+  choices = { "Studio", "Live" }).
+
+  masterSeed = 0x4C49564500000005  ("LIVE" + 5)
+-->
+<ShredDoubleState parameterLayoutVersion="1" masterSeed="5497019674535133189">
+    <voiceCount value="1"/>
+    <timingSpread value="5.0"/>
+    <pitchSpread value="4.0"/>
+    <humanRate value="45.0"/>
+    <tightness value="65.0"/>
+    <monoXover value="200.0"/>
+    <mix value="50.0"/>
+    <panV1 value="-100.0"/>
+    <panV2 value="100.0"/>
+    <panV3 value="-60.0"/>
+    <panV4 value="60.0"/>
+    <width value="100.0"/>
+    <latencyMode value="1"/>
+    <outTrim value="0.0"/>
+    <bypass value="0"/>
+</ShredDoubleState>

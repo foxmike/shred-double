@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShredDouble 1.0 – Subtle Thickener (factory preset)
+
+  Two voices with tight timing/pitch spreads and high tightness,
+  preserving high correlation for mono-safe thickening.
+  High crossover keeps only the very top spreading.
+  Low wet mix. Studio latency.
+  Fixed masterSeed for bit-identical recall (D2).
+
+  APVTS state fragment loadable via StateManager::restoreComparisonState
+  (direct APVTS state tree path). parameterLayoutVersion must match
+  ShredDouble::ParameterIDs::parameterLayoutVersion (== 1).
+
+  masterSeed = 0x5355425400000004  ("SUBT" + 4)
+-->
+<ShredDoubleState parameterLayoutVersion="1" masterSeed="6004778606713110532">
+    <voiceCount value="0"/>
+    <timingSpread value="3.0"/>
+    <pitchSpread value="3.0"/>
+    <humanRate value="30.0"/>
+    <tightness value="80.0"/>
+    <monoXover value="250.0"/>
+    <mix value="35.0"/>
+    <panV1 value="-100.0"/>
+    <panV2 value="100.0"/>
+    <width value="100.0"/>
+    <latencyMode value="0"/>
+    <outTrim value="0.0"/>
+    <bypass value="0"/>
+</ShredDoubleState>

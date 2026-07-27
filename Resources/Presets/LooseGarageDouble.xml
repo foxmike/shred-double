@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ShredDouble 1.0 – Loose Garage Double (factory preset)
+
+  Two voices, wide timing/pitch spreads with low tightness = maximal
+  wander, giving a sloppy "garage" double-track feel. Low crossover
+  for a thicker low end. Studio latency.
+  Fixed masterSeed for bit-identical recall (D2).
+
+  APVTS state fragment loadable via StateManager::restoreComparisonState
+  (direct APVTS state tree path). parameterLayoutVersion must match
+  ShredDouble::ParameterIDs::parameterLayoutVersion (== 1).
+
+  masterSeed = 0x4C4F4F5300000003  ("LOOS" + 3)
+-->
+<ShredDoubleState parameterLayoutVersion="1" masterSeed="5498700887943544835">
+    <voiceCount value="0"/>
+    <timingSpread value="12.0"/>
+    <pitchSpread value="8.0"/>
+    <humanRate value="70.0"/>
+    <tightness value="20.0"/>
+    <monoXover value="150.0"/>
+    <mix value="55.0"/>
+    <panV1 value="-100.0"/>
+    <panV2 value="100.0"/>
+    <width value="100.0"/>
+    <latencyMode value="0"/>
+    <outTrim value="0.0"/>
+    <bypass value="0"/>
+</ShredDoubleState>
