@@ -9,9 +9,9 @@
       "task_id": "b.3",
       "title": "TiltFilter - first-order tilt shelf, per-voice distinct magnitudes, pivot ~700 Hz",
       "phase": "B",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:06:08.800780",
       "notes": ""
     }
   ],
@@ -78,6 +78,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:00:55.953764"
+    },
+    {
+      "run_id": "aed376e5-41ea-450f-b75d-f71ab660fce9",
+      "task_id": "b.3",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:06:08.800893"
     }
   ],
   "operator_overrides": {},
