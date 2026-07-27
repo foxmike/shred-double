@@ -9,9 +9,9 @@
       "task_id": "b.2",
       "title": "AllpassChain - 4-stage coprime Schroeder allpasses, per-voice distinct coprime delays, g=0.6, sample-rate-scaled stage times",
       "phase": "B",
-      "status": "planned",
+      "status": "completed",
       "backend": "codex_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:00:55.953664",
       "notes": ""
     }
   ],
@@ -69,6 +69,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T20:58:07.863077"
+    },
+    {
+      "run_id": "abb962cb-24cf-4dd5-bdb7-e1199b786a0b",
+      "task_id": "b.2",
+      "backend": "codex_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:00:55.953764"
     }
   ],
   "operator_overrides": {},
