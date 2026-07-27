@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-c.4",
+  "plan_version": "task-c.5",
   "active_phase": "C",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "c.4",
-      "title": "Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
+      "task_id": "c.5",
+      "title": "Engine integration tests - bypass null, Mix=0 passthrough, mono-lows invariant, walk bounds, tightness monotonicity, voice decorrelation, latency",
       "phase": "C",
-      "status": "completed",
+      "status": "planned",
       "backend": "pi_cli",
-      "last_run": "2026-07-27T21:43:37.510563",
+      "last_run": null,
       "notes": ""
     }
   ],

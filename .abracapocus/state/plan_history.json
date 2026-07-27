@@ -785,5 +785,62 @@
       "version": "task-c.3",
       "created_at": "2026-07-27T21:30:04.200929"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:43:37.581467",
+    "project_name": "shred-double",
+    "goal": "Add tests/SeedingTests.cpp covering ShredDouble_Build_Spec.md \u00a714 item 2 (reproducibility-from-seed / D2).\n\nBefore editing, inspect:\n- tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp harness patterns from phase b\n- Source/DSP/ShredDoubleEngine.h seed/process API\n- Source/StateManager.* reroll/masterSeed if exercising Re-roll at state layer\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.10 and \u00a714.2\n\nImplement tests (assert-style, no new package deps):\n1. Same masterSeed + identical params over two fresh engine instances / reset+seed cycles \u21d2 bit-identical float output buffers (checksum or exact sample equality) for N samples after prepare.\n2. Different seeds with same params \u21d2 outputs differ (not bit-identical; beyond trivial float noise).\n3. Re-roll path: generate/apply a new seed (engine.seed(newSeed) and/or StateManager::reroll if linkable without GUI) yields a masterSeed distinct from the previous value and changes subsequent audio vs pre-reroll seed.\n4. Do not call random_device on a simulated audio thread path; if testing seed generation, call it only in the test harness/message-thread style helper.\n\nSTRICT FILE SCOPE: Create/modify only tests/SeedingTests.cpp. CMake registration is c.3's job.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
+      "phases": [
+        {
+          "name": "C",
+          "objective": "Add tests/SeedingTests.cpp covering ShredDouble_Build_Spec.md \u00a714 item 2 (reproducibility-from-seed / D2).\n\nBefore editing, inspect:\n- tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp harness patterns from phase b\n- Source/DSP/ShredDoubleEngine.h seed/process API\n- Source/StateManager.* reroll/masterSeed if exercising Re-roll at state layer\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.10 and \u00a714.2\n\nImplement tests (assert-style, no new package deps):\n1. Same masterSeed + identical params over two fresh engine instances / reset+seed cycles \u21d2 bit-identical float output buffers (checksum or exact sample equality) for N samples after prepare.\n2. Different seeds with same params \u21d2 outputs differ (not bit-identical; beyond trivial float noise).\n3. Re-roll path: generate/apply a new seed (engine.seed(newSeed) and/or StateManager::reroll if linkable without GUI) yields a masterSeed distinct from the previous value and changes subsequent audio vs pre-reroll seed.\n4. Do not call random_device on a simulated audio thread path; if testing seed generation, call it only in the test harness/message-thread style helper.\n\nSTRICT FILE SCOPE: Create/modify only tests/SeedingTests.cpp. CMake registration is c.3's job.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "c.4",
+                "title": "Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
+                "description": "Add tests/SeedingTests.cpp covering ShredDouble_Build_Spec.md \u00a714 item 2 (reproducibility-from-seed / D2).\n\nBefore editing, inspect:\n- tests/TestMain.cpp and tests/DSPPrimitiveTests.cpp harness patterns from phase b\n- Source/DSP/ShredDoubleEngine.h seed/process API\n- Source/StateManager.* reroll/masterSeed if exercising Re-roll at state layer\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.10 and \u00a714.2\n\nImplement tests (assert-style, no new package deps):\n1. Same masterSeed + identical params over two fresh engine instances / reset+seed cycles \u21d2 bit-identical float output buffers (checksum or exact sample equality) for N samples after prepare.\n2. Different seeds with same params \u21d2 outputs differ (not bit-identical; beyond trivial float noise).\n3. Re-roll path: generate/apply a new seed (engine.seed(newSeed) and/or StateManager::reroll if linkable without GUI) yields a masterSeed distinct from the previous value and changes subsequent audio vs pre-reroll seed.\n4. Do not call random_device on a simulated audio thread path; if testing seed generation, call it only in the test harness/message-thread style helper.\n\nSTRICT FILE SCOPE: Create/modify only tests/SeedingTests.cpp. CMake registration is c.3's job.",
+                "phase": "C",
+                "dependencies": [
+                  "c.1"
+                ],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "tests/SeedingTests.cpp exists",
+                  "tests/SeedingTests.cpp asserts same masterSeed plus same params produce bit-identical engine output",
+                  "tests/SeedingTests.cpp asserts different seeds produce different output under the same params",
+                  "tests/SeedingTests.cpp asserts Re-roll or seed(newSeed) produces a distinct seed and changes output versus the prior seed",
+                  "Tests exercise ShredDoubleEngine public seed/process APIs without introducing new third-party test frameworks",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T21:38:39.160712",
+                "selected_backend": "pi_cli",
+                "model": "openrouter/minimax/minimax-m3",
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "tests/SeedingTests.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:43:37.485919",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-c.4",
+      "created_at": "2026-07-27T21:38:39.235944"
+    }
   }
 ]
