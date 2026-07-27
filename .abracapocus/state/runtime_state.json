@@ -9,9 +9,9 @@
       "task_id": "e.4",
       "title": "pluginval and format smoke-load script (VST3/CLAP strictness 8+, LV2/Standalone)",
       "phase": "E",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T22:33:28.330261",
       "notes": ""
     }
   ],
@@ -195,6 +195,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T22:32:48.011741"
+    },
+    {
+      "run_id": "3417a7a3-511f-4693-91d0-8285cf44ae9f",
+      "task_id": "e.4",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T22:33:28.330378"
     }
   ],
   "operator_overrides": {},
