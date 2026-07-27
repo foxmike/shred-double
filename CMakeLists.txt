@@ -84,6 +84,8 @@ target_sources(ShredDouble
         Source/DSP/AllpassChain.cpp
         Source/DSP/TiltFilter.cpp
         Source/DSP/Voice.cpp
+        Source/DSP/MeterTap.cpp
+        Source/DSP/ShredDoubleEngine.cpp
         Source/GUI/CustomLookAndFeel.cpp
         Source/GUI/RotarySlider.cpp
         Source/GUI/GoniometerComponent.cpp
@@ -120,16 +122,33 @@ enable_testing()
 # pattern) — no Catch2 / FetchContent is pulled in over the network so the
 # build remains hermetic.
 # -----------------------------------------------------------------------------
-add_executable(ShredDoubleTests
+set(SHREDDOUBLE_TEST_SOURCES
     tests/TestMain.cpp
     tests/DSPPrimitiveTests.cpp
+)
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/SeedingTests.cpp")
+    list(APPEND SHREDDOUBLE_TEST_SOURCES tests/SeedingTests.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/EngineTests.cpp")
+    list(APPEND SHREDDOUBLE_TEST_SOURCES tests/EngineTests.cpp)
+endif()
+
+add_executable(ShredDoubleTests
+    ${SHREDDOUBLE_TEST_SOURCES}
     Source/DSP/PitchShifter.cpp
     Source/DSP/DelayLineFrac.cpp
     Source/DSP/RandomWalk.cpp
     Source/DSP/AllpassChain.cpp
     Source/DSP/TiltFilter.cpp
     Source/DSP/Voice.cpp
+    Source/DSP/MonoSafetyCrossover.cpp
+    Source/DSP/WidthProcessor.cpp
+    Source/DSP/MeterTap.cpp
+    Source/DSP/ShredDoubleEngine.cpp
 )
+
 
 target_compile_definitions(ShredDoubleTests PRIVATE
     JUCE_WEB_BROWSER=0

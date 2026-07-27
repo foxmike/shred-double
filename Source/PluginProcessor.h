@@ -5,13 +5,15 @@
 #include <vector>
 
 #include <juce_audio_processors/juce_audio_processors.h>
+#include "DSP/ShredDoubleEngine.h"
 
 class ShredDoubleAudioProcessorEditor;
 
-class ShredDoubleAudioProcessor final : public juce::AudioProcessor {
+class ShredDoubleAudioProcessor final : public juce::AudioProcessor,
+                                        private juce::ValueTree::Listener {
 public:
   ShredDoubleAudioProcessor();
-  ~ShredDoubleAudioProcessor() override = default;
+  ~ShredDoubleAudioProcessor() override;
 
   void prepareToPlay(double sampleRate, int samplesPerBlock) override;
   void releaseResources() override;
@@ -42,36 +44,27 @@ public:
     return apvts;
   }
 
+  ShredDoubleEngine& getEngine() noexcept { return engine; }
+  const ShredDoubleEngine& getEngine() const noexcept { return engine; }
+
 private:
   static juce::AudioProcessorValueTreeState::ParameterLayout
   createParameterLayout();
   void updateReportedLatencyFromParameter();
 
+  // ValueTree::Listener override
+  void valueTreePropertyChanged (juce::ValueTree& treeWhosePropertyHasChanged, const juce::Identifier& property) override;
+
   juce::AudioProcessorValueTreeState apvts;
 
-  // Phase-A allocation spine. The later ShredDoubleEngine replaces these
-  // raw reservations with its fixed four Voice objects without changing
-  // the processor's worst-case, prepare-only allocation policy.
-  static constexpr int maximumVoices = 4;
-  static constexpr int studioPitchBufferSamples = 2048 + 4;
-  static constexpr int studioLatencySamples = 1024;
-  static constexpr int liveLatencySamples = 256;
-  static constexpr int delayLagrangeGuard = 4;
-  static constexpr int allpassStagesPerVoice = 4;
-  static constexpr int meteringFifoFrames = 4096;
+  ShredDoubleEngine engine;
 
-  std::array<std::vector<float>, maximumVoices> pitchBufferStorage;
-  std::array<std::vector<float>, maximumVoices> driftingDelayStorage;
-  std::array<std::array<std::uint32_t, allpassStagesPerVoice>, maximumVoices>
-      allpassChainSlots{};
-  std::array<std::vector<float>, 2> dryAlignmentStorage;
-  std::vector<float> meteringFifoStorage;
-  std::array<std::uint64_t, maximumVoices * 2> prngStreamStates{};
+  juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> timingSpreadSmoother;
+  juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> pitchSpreadSmoother;
+  std::array<juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear>, 4> panSmoothers;
 
   double preparedSampleRate = 0.0;
   int preparedMaxBlockSize = 0;
-  int preparedDelayBufferSamples = 0;
-  bool lastLiveMode = false;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ShredDoubleAudioProcessor)
 };

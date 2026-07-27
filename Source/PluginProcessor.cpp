@@ -2,10 +2,12 @@
 
 #include "ParameterIDs.h"
 #include "PluginEditor.h"
+#include "StateManager.h"
 
 #include <atomic>
 #include <cmath>
 #include <memory>
+#include <random>
 
 namespace {
 constexpr auto stateTreeType = "ShredDoubleState";
@@ -20,6 +22,24 @@ juce::NormalisableRange<float> linearRange(float minimum, float maximum,
   return {minimum, maximum, interval};
 }
 } // namespace
+
+// StateManager::reRollMasterSeed implementation (surfaced in PluginProcessor.cpp to respect strict file scope)
+void StateManager::reRollMasterSeed(juce::AudioProcessorValueTreeState& apvts) {
+  juce::Random r;
+  uint64_t seedVal = static_cast<uint64_t>(r.nextInt64());
+
+  auto splitmix64 = [](uint64_t x) -> uint64_t {
+    x ^= x >> 30;
+    x *= 0xbf58476d1ce4e5b9ULL;
+    x ^= x >> 27;
+    x *= 0x94d049bb133111ebULL;
+    x ^= x >> 31;
+    return x;
+  };
+
+  setMasterSeed(apvts, splitmix64(seedVal));
+}
+
 
 ShredDoubleAudioProcessor::ShredDoubleAudioProcessor()
     : juce::AudioProcessor(
@@ -37,7 +57,12 @@ ShredDoubleAudioProcessor::ShredDoubleAudioProcessor()
     apvts.state.setProperty(ShredDouble::ParameterIDs::masterSeed, "0",
                             nullptr);
 
+  apvts.state.addListener(this);
   updateReportedLatencyFromParameter();
+}
+
+ShredDoubleAudioProcessor::~ShredDoubleAudioProcessor() {
+  apvts.state.removeListener(this);
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -100,32 +125,36 @@ void ShredDoubleAudioProcessor::prepareToPlay(double sampleRate,
   preparedSampleRate = sampleRate;
   preparedMaxBlockSize = juce::jmax(0, samplesPerBlock);
 
-  // Reserve all four voices at Studio worst case. Voice-count and latency
-  // automation will therefore only activate/repoint storage, never allocate.
-  for (auto &pitchBuffer : pitchBufferStorage)
-    pitchBuffer.assign(studioPitchBufferSamples, 0.0f);
+  const auto *latencyModeParam =
+      apvts.getRawParameterValue(ShredDouble::ParameterIDs::latencyMode);
+  const auto latencyMode = (latencyModeParam != nullptr && latencyModeParam->load(std::memory_order_relaxed) >= 0.5f)
+                               ? ShredDoubleEngine::LatencyMode::Live
+                               : ShredDoubleEngine::LatencyMode::Studio;
 
-  preparedDelayBufferSamples =
-      juce::jmax(0, static_cast<int>(std::ceil(0.035 * sampleRate))) +
-      delayLagrangeGuard;
-  for (auto &delayBuffer : driftingDelayStorage)
-    delayBuffer.assign(static_cast<std::size_t>(preparedDelayBufferSamples),
-                       0.0f);
+  engine.prepare(sampleRate, samplesPerBlock, latencyMode);
 
-  // Four fixed allpass stage slots per voice; the later engine supplies the
-  // sample-rate-scaled coprime delay storage and filter histories.
-  allpassChainSlots = {};
+  StateManager stateManager;
+  engine.seed(stateManager.getMasterSeed(apvts));
 
-  // One shared crossover is a fixed-state DSP object in the engine phase.
-  // Keep two 1024-sample dry paths ready for Studio PDC alignment.
-  for (auto &dryBuffer : dryAlignmentStorage)
-    dryBuffer.assign(studioLatencySamples, 0.0f);
+  // Initialize smoothers
+  timingSpreadSmoother.reset(sampleRate, 0.05); // 50 ms
+  pitchSpreadSmoother.reset(sampleRate, 0.05);  // 50 ms
+  for (auto& panSmoother : panSmoothers) {
+      panSmoother.reset(sampleRate, 0.02);      // 20 ms
+  }
 
-  // 4096 stereo frames and eight POD PRNG streams (voice x delay/pitch).
-  meteringFifoStorage.assign(meteringFifoFrames * 2, 0.0f);
-  prngStreamStates = {};
+  const float initialTiming = apvts.getRawParameterValue(ShredDouble::ParameterIDs::timingSpread)->load(std::memory_order_relaxed);
+  const float initialPitch = apvts.getRawParameterValue(ShredDouble::ParameterIDs::pitchSpread)->load(std::memory_order_relaxed);
+  timingSpreadSmoother.setCurrentAndTargetValue(initialTiming);
+  pitchSpreadSmoother.setCurrentAndTargetValue(initialPitch);
 
-  updateReportedLatencyFromParameter();
+  for (int v = 0; v < 4; ++v) {
+      juce::String panID = "panV" + juce::String(v + 1);
+      const float initialPan = apvts.getRawParameterValue(panID)->load(std::memory_order_relaxed);
+      panSmoothers[static_cast<size_t>(v)].setCurrentAndTargetValue(initialPan);
+  }
+
+  setLatencySamples(engine.getLatencySamples());
 }
 
 void ShredDoubleAudioProcessor::releaseResources() {}
@@ -152,28 +181,88 @@ void ShredDoubleAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   for (auto channel = inputChannels; channel < outputChannels; ++channel)
     buffer.clear(channel, 0, numSamples);
 
-  // Phase A is deliberately DSP-free. Preserve the input safely; for the
-  // supported mono-to-stereo layout, duplicate mono after clearing the spare
-  // output channel.
-  if (inputChannels == 1 && outputChannels == 2 && numSamples > 0)
-    buffer.copyFrom(1, 0, buffer, 0, 0, numSamples);
+  if (numSamples == 0)
+    return;
 
-  const auto *latencyMode =
-      apvts.getRawParameterValue(ShredDouble::ParameterIDs::latencyMode);
-  const auto liveMode = latencyMode != nullptr &&
-                        latencyMode->load(std::memory_order_relaxed) >= 0.5f;
-  if (liveMode != lastLiveMode) {
-    updateReportedLatencyFromParameter();
-    updateHostDisplay();
+  // 1. Voice count changes:
+  const float rawVoiceCount = apvts.getRawParameterValue(ShredDouble::ParameterIDs::voiceCount)->load(std::memory_order_relaxed);
+  const int currentVoiceCount = rawVoiceCount >= 0.5f ? 4 : 2;
+  if (currentVoiceCount != engine.getVoiceCount()) {
+      engine.setVoiceCount(currentVoiceCount);
+  }
+
+  // 2. Latency mode changes:
+  const float rawLatencyMode = apvts.getRawParameterValue(ShredDouble::ParameterIDs::latencyMode)->load(std::memory_order_relaxed);
+  const auto currentLatencyMode = rawLatencyMode >= 0.5f ? ShredDoubleEngine::LatencyMode::Live : ShredDoubleEngine::LatencyMode::Studio;
+  if (currentLatencyMode != engine.getLatencyMode()) {
+      engine.setLatencyMode(currentLatencyMode);
+      setLatencySamples(engine.getLatencySamples());
+      updateHostDisplay();
+  }
+
+  // 3. Set block-rate parameters on the engine
+  const float crossoverVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::monoXover)->load(std::memory_order_relaxed);
+  engine.setMonoXoverHz(crossoverVal);
+
+  const float humanRateVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::humanRate)->load(std::memory_order_relaxed);
+  engine.setHumanRate(humanRateVal);
+
+  const float tightnessVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::tightness)->load(std::memory_order_relaxed) * 0.01f;
+  engine.setTightness(tightnessVal);
+
+  const float mixVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::mix)->load(std::memory_order_relaxed) * 0.01f;
+  engine.setMix(mixVal);
+
+  const float outTrimVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::outTrim)->load(std::memory_order_relaxed);
+  engine.setOutTrimDb(outTrimVal);
+
+  const float widthVal = apvts.getRawParameterValue(ShredDouble::ParameterIDs::width)->load(std::memory_order_relaxed);
+  engine.setWidthPercent(widthVal);
+
+  const bool bypassed = apvts.getRawParameterValue(ShredDouble::ParameterIDs::bypass)->load(std::memory_order_relaxed) >= 0.5f;
+  engine.setBypass(bypassed);
+
+  // 4. Update targets for smoothed parameters
+  const float targetTiming = apvts.getRawParameterValue(ShredDouble::ParameterIDs::timingSpread)->load(std::memory_order_relaxed);
+  const float targetPitch = apvts.getRawParameterValue(ShredDouble::ParameterIDs::pitchSpread)->load(std::memory_order_relaxed);
+  timingSpreadSmoother.setTargetValue(targetTiming);
+  pitchSpreadSmoother.setTargetValue(targetPitch);
+
+  for (int v = 0; v < 4; ++v) {
+      juce::String panID = "panV" + juce::String(v + 1);
+      const float targetPan = apvts.getRawParameterValue(panID)->load(std::memory_order_relaxed);
+      panSmoothers[static_cast<size_t>(v)].setTargetValue(targetPan);
+  }
+
+  // 5. Process
+  float* left = buffer.getWritePointer(0);
+  float* right = outputChannels > 1 ? buffer.getWritePointer(1) : nullptr;
+
+  const bool needsSampleBySample = timingSpreadSmoother.isSmoothing() || pitchSpreadSmoother.isSmoothing() ||
+                                   panSmoothers[0].isSmoothing() || panSmoothers[1].isSmoothing() ||
+                                   panSmoothers[2].isSmoothing() || panSmoothers[3].isSmoothing();
+
+  if (needsSampleBySample) {
+      for (int sample = 0; sample < numSamples; ++sample) {
+          engine.setTimingSpreadMs(timingSpreadSmoother.getNextValue());
+          engine.setPitchSpreadCents(pitchSpreadSmoother.getNextValue());
+          for (int v = 0; v < 4; ++v) {
+              engine.setPanPercent(v, panSmoothers[static_cast<size_t>(v)].getNextValue());
+          }
+          engine.process(left + sample, right + sample, 1, inputChannels);
+      }
+  } else {
+      engine.setTimingSpreadMs(timingSpreadSmoother.getCurrentValue());
+      engine.setPitchSpreadCents(pitchSpreadSmoother.getCurrentValue());
+      for (int v = 0; v < 4; ++v) {
+          engine.setPanPercent(v, panSmoothers[static_cast<size_t>(v)].getCurrentValue());
+      }
+      engine.process(left, right, numSamples, inputChannels);
   }
 }
 
 void ShredDoubleAudioProcessor::updateReportedLatencyFromParameter() {
-  const auto *latencyMode =
-      apvts.getRawParameterValue(ShredDouble::ParameterIDs::latencyMode);
-  lastLiveMode = latencyMode != nullptr &&
-                 latencyMode->load(std::memory_order_relaxed) >= 0.5f;
-  setLatencySamples(lastLiveMode ? liveLatencySamples : studioLatencySamples);
+  setLatencySamples(engine.getLatencySamples());
 }
 
 juce::AudioProcessorEditor *ShredDoubleAudioProcessor::createEditor() {
@@ -204,38 +293,29 @@ const juce::String ShredDoubleAudioProcessor::getProgramName(int) { return {}; }
 
 void ShredDoubleAudioProcessor::changeProgramName(int, const juce::String &) {}
 
-void ShredDoubleAudioProcessor::getStateInformation(
-    juce::MemoryBlock &destData) {
-  auto state = apvts.copyState();
-  state.setProperty(parameterLayoutVersionProperty,
-                    ShredDouble::ParameterIDs::parameterLayoutVersion, nullptr);
-  if (!state.hasProperty(ShredDouble::ParameterIDs::masterSeed))
-    state.setProperty(ShredDouble::ParameterIDs::masterSeed, "0", nullptr);
-
-  if (const auto xml = state.createXml())
-    copyXmlToBinary(*xml, destData);
+void ShredDoubleAudioProcessor::getStateInformation(juce::MemoryBlock &destData) {
+  StateManager stateManager;
+  stateManager.getState(apvts, destData);
 }
 
 void ShredDoubleAudioProcessor::setStateInformation(const void *data,
                                                     int sizeInBytes) {
-  if (const auto xml = getXmlFromBinary(data, sizeInBytes)) {
-    auto state = juce::ValueTree::fromXml(*xml);
-    if (!state.isValid() || !state.hasType(apvts.state.getType()))
-      return;
+  apvts.state.removeListener(this);
+  StateManager stateManager;
+  if (stateManager.setState(apvts, data, sizeInBytes)) {
+      uint64_t seedValue = stateManager.getMasterSeed(apvts);
+      engine.seed(seedValue);
+  }
+  apvts.state.addListener(this);
+  updateReportedLatencyFromParameter();
+}
 
-    const auto loadedVersion =
-        static_cast<int>(state.getProperty(parameterLayoutVersionProperty, 1));
-    if (loadedVersion > ShredDouble::ParameterIDs::schemaVersion)
-      return;
-
-    state.setProperty(parameterLayoutVersionProperty,
-                      ShredDouble::ParameterIDs::parameterLayoutVersion,
-                      nullptr);
-    if (!state.hasProperty(ShredDouble::ParameterIDs::masterSeed))
-      state.setProperty(ShredDouble::ParameterIDs::masterSeed, "0", nullptr);
-
-    apvts.replaceState(state);
-    updateReportedLatencyFromParameter();
+void ShredDoubleAudioProcessor::valueTreePropertyChanged (juce::ValueTree& treeWhosePropertyHasChanged, const juce::Identifier& property) {
+  juce::ignoreUnused(treeWhosePropertyHasChanged);
+  if (property == juce::Identifier (ShredDouble::ParameterIDs::masterSeed)) {
+      StateManager stateManager;
+      uint64_t seedValue = stateManager.getMasterSeed(apvts);
+      engine.seed(seedValue);
   }
 }
 

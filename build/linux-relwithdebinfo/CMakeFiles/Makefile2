@@ -224,7 +224,7 @@ CMakeFiles/ShredDouble_All.dir/all: CMakeFiles/ShredDouble_VST3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ShredDouble_All.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 68
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 67
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ShredDouble_All.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 0
 .PHONY : CMakeFiles/ShredDouble_All.dir/rule
@@ -253,12 +253,12 @@ CMakeFiles/ShredDouble_All.dir/clean:
 CMakeFiles/ShredDouble_Standalone.dir/all: CMakeFiles/ShredDouble.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_Standalone.dir/build.make CMakeFiles/ShredDouble_Standalone.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_Standalone.dir/build.make CMakeFiles/ShredDouble_Standalone.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=79,80,81,82,83,84,85,86,87 "Built target ShredDouble_Standalone"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=81,82,83,84,85,86,87,88 "Built target ShredDouble_Standalone"
 .PHONY : CMakeFiles/ShredDouble_Standalone.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ShredDouble_Standalone.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 46
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ShredDouble_Standalone.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 0
 .PHONY : CMakeFiles/ShredDouble_Standalone.dir/rule
@@ -270,7 +270,7 @@ ShredDouble_Standalone: CMakeFiles/ShredDouble_Standalone.dir/rule
 # codegen rule for target.
 CMakeFiles/ShredDouble_Standalone.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_Standalone.dir/build.make CMakeFiles/ShredDouble_Standalone.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=79,80,81,82,83,84,85,86,87 "Finished codegen for target ShredDouble_Standalone"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=81,82,83,84,85,86,87,88 "Finished codegen for target ShredDouble_Standalone"
 .PHONY : CMakeFiles/ShredDouble_Standalone.dir/codegen
 
 # clean rule for target.
@@ -286,7 +286,7 @@ CMakeFiles/ShredDouble_LV2.dir/all: CMakeFiles/ShredDouble.dir/all
 CMakeFiles/ShredDouble_LV2.dir/all: CMakeFiles/juce_lv2_helper.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_LV2.dir/build.make CMakeFiles/ShredDouble_LV2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_LV2.dir/build.make CMakeFiles/ShredDouble_LV2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=70,71,72,73,74,75,76,77,78 "Built target ShredDouble_LV2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=72,73,74,75,76,77,78,79,80 "Built target ShredDouble_LV2"
 .PHONY : CMakeFiles/ShredDouble_LV2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -303,7 +303,7 @@ ShredDouble_LV2: CMakeFiles/ShredDouble_LV2.dir/rule
 # codegen rule for target.
 CMakeFiles/ShredDouble_LV2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_LV2.dir/build.make CMakeFiles/ShredDouble_LV2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=70,71,72,73,74,75,76,77,78 "Finished codegen for target ShredDouble_LV2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=72,73,74,75,76,77,78,79,80 "Finished codegen for target ShredDouble_LV2"
 .PHONY : CMakeFiles/ShredDouble_LV2.dir/codegen
 
 # clean rule for target.
@@ -318,7 +318,7 @@ CMakeFiles/ShredDouble_LV2.dir/clean:
 CMakeFiles/juce_lv2_helper.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_lv2_helper.dir/build.make CMakeFiles/juce_lv2_helper.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_lv2_helper.dir/build.make CMakeFiles/juce_lv2_helper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=98,99 "Built target juce_lv2_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=99,100 "Built target juce_lv2_helper"
 .PHONY : CMakeFiles/juce_lv2_helper.dir/all
 
 # Build rule for subdir invocation for target.
@@ -335,7 +335,7 @@ juce_lv2_helper: CMakeFiles/juce_lv2_helper.dir/rule
 # codegen rule for target.
 CMakeFiles/juce_lv2_helper.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_lv2_helper.dir/build.make CMakeFiles/juce_lv2_helper.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=98,99 "Finished codegen for target juce_lv2_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=99,100 "Finished codegen for target juce_lv2_helper"
 .PHONY : CMakeFiles/juce_lv2_helper.dir/codegen
 
 # clean rule for target.
@@ -351,7 +351,7 @@ CMakeFiles/ShredDouble_VST3.dir/all: CMakeFiles/ShredDouble.dir/all
 CMakeFiles/ShredDouble_VST3.dir/all: CMakeFiles/ShredDouble_vst3_helper.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_VST3.dir/build.make CMakeFiles/ShredDouble_VST3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_VST3.dir/build.make CMakeFiles/ShredDouble_VST3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=88,89,90,91,92,93,94,95,96 "Built target ShredDouble_VST3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=89,90,91,92,93,94,95,96,97 "Built target ShredDouble_VST3"
 .PHONY : CMakeFiles/ShredDouble_VST3.dir/all
 
 # Build rule for subdir invocation for target.
@@ -368,7 +368,7 @@ ShredDouble_VST3: CMakeFiles/ShredDouble_VST3.dir/rule
 # codegen rule for target.
 CMakeFiles/ShredDouble_VST3.dir/codegen: CMakeFiles/ShredDouble_vst3_helper.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_VST3.dir/build.make CMakeFiles/ShredDouble_VST3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=88,89,90,91,92,93,94,95,96 "Finished codegen for target ShredDouble_VST3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=89,90,91,92,93,94,95,96,97 "Finished codegen for target ShredDouble_VST3"
 .PHONY : CMakeFiles/ShredDouble_VST3.dir/codegen
 
 # clean rule for target.
@@ -383,7 +383,7 @@ CMakeFiles/ShredDouble_VST3.dir/clean:
 CMakeFiles/ShredDouble_vst3_helper.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_vst3_helper.dir/build.make CMakeFiles/ShredDouble_vst3_helper.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_vst3_helper.dir/build.make CMakeFiles/ShredDouble_vst3_helper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=97 "Built target ShredDouble_vst3_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=98 "Built target ShredDouble_vst3_helper"
 .PHONY : CMakeFiles/ShredDouble_vst3_helper.dir/all
 
 # Build rule for subdir invocation for target.
@@ -400,7 +400,7 @@ ShredDouble_vst3_helper: CMakeFiles/ShredDouble_vst3_helper.dir/rule
 # codegen rule for target.
 CMakeFiles/ShredDouble_vst3_helper.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble_vst3_helper.dir/build.make CMakeFiles/ShredDouble_vst3_helper.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=97 "Finished codegen for target ShredDouble_vst3_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=98 "Finished codegen for target ShredDouble_vst3_helper"
 .PHONY : CMakeFiles/ShredDouble_vst3_helper.dir/codegen
 
 # clean rule for target.
@@ -415,12 +415,12 @@ CMakeFiles/ShredDouble_vst3_helper.dir/clean:
 CMakeFiles/ShredDoubleTests.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69 "Built target ShredDoubleTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71 "Built target ShredDoubleTests"
 .PHONY : CMakeFiles/ShredDoubleTests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ShredDoubleTests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ShredDoubleTests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles 0
 .PHONY : CMakeFiles/ShredDoubleTests.dir/rule
@@ -432,7 +432,7 @@ ShredDoubleTests: CMakeFiles/ShredDoubleTests.dir/rule
 # codegen rule for target.
 CMakeFiles/ShredDoubleTests.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69 "Finished codegen for target ShredDoubleTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/CMakeFiles --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71 "Finished codegen for target ShredDoubleTests"
 .PHONY : CMakeFiles/ShredDoubleTests.dir/codegen
 
 # clean rule for target.

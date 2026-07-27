@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-c.2",
+  "plan_version": "task-c.3",
   "active_phase": "C",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "c.2",
-      "title": "MeterTap - Pearson correlation one-pole, AbstractFifo goniometer pairs, per-voice tau/deltaC atomics for DriftDisplay",
+      "task_id": "c.3",
+      "title": "PluginProcessor processBlock wiring - ScopedNoDenormals, smoothed reads, engine.process, meter push, latency reporting, CMakeLists",
       "phase": "C",
-      "status": "completed",
-      "backend": "codex_cli",
-      "last_run": "2026-07-27T21:30:03.962458",
+      "status": "planned",
+      "backend": "antigravity_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

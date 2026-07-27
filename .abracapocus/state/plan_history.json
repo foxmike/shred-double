@@ -667,5 +667,62 @@
       "version": "task-c.1",
       "created_at": "2026-07-27T21:16:39.887571"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:30:04.061617",
+    "project_name": "shred-double",
+    "goal": "Implement Source/DSP/MeterTap.h and Source/DSP/MeterTap.cpp \u2014 lock-free audio\u2192UI metering transport per ShredDouble_Build_Spec.md \u00a7\u00a77, 9.2\u20139.5.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width metering / CorrelationMeter / Goniometer push patterns if present\n- Source/GUI/GoniometerComponent.h and CorrelationMeter.h (consumer side expectations)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a79.2, 9.3, 9.4, 9.5 and RT contract \u00a77\n\nImplement class MeterTap:\n1. Audio-thread Pearson correlation rho of final output L/R with one-pole smoothing ~300 ms; publish via std::atomic<float> (memory_order_relaxed or release OK).\n2. Decimated output L/R pairs pushed into juce::AbstractFifo backed storage (~4096 stereo frames) for the goniometer; UI will drain \u2014 provide pop/drain API or raw fifo+buffer accessors matching reused GoniometerComponent style.\n3. Per-voice drift: 2*V=8 std::atomic<float> slots (tau_v_ms and deltaC_v for V=0..3) written at hop rate; setVoiceDrift(v, tauMs, deltaC) noexcept for engine use; load APIs for DriftDisplay.\n4. prepare(sampleRate): set one-pole alpha from ~300 ms; reset accumulators/fifo; no heap growth in process.\n5. processSample(l,r) or process(const float* l, const float* r, int n) on the push path only: update correlation, conditionally push decimated pairs, never allocate, lock, or touch juce::String.\n6. getCorrelation() const atomic load for UI.\n\nSTRICT FILE SCOPE: Create or modify ONLY MeterTap.h/.cpp. Do not wire PluginProcessor or Engine here.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: MeterTap - Pearson correlation one-pole, AbstractFifo goniometer pairs, per-voice tau/deltaC atomics for DriftDisplay",
+      "phases": [
+        {
+          "name": "C",
+          "objective": "Implement Source/DSP/MeterTap.h and Source/DSP/MeterTap.cpp \u2014 lock-free audio\u2192UI metering transport per ShredDouble_Build_Spec.md \u00a7\u00a77, 9.2\u20139.5.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width metering / CorrelationMeter / Goniometer push patterns if present\n- Source/GUI/GoniometerComponent.h and CorrelationMeter.h (consumer side expectations)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a79.2, 9.3, 9.4, 9.5 and RT contract \u00a77\n\nImplement class MeterTap:\n1. Audio-thread Pearson correlation rho of final output L/R with one-pole smoothing ~300 ms; publish via std::atomic<float> (memory_order_relaxed or release OK).\n2. Decimated output L/R pairs pushed into juce::AbstractFifo backed storage (~4096 stereo frames) for the goniometer; UI will drain \u2014 provide pop/drain API or raw fifo+buffer accessors matching reused GoniometerComponent style.\n3. Per-voice drift: 2*V=8 std::atomic<float> slots (tau_v_ms and deltaC_v for V=0..3) written at hop rate; setVoiceDrift(v, tauMs, deltaC) noexcept for engine use; load APIs for DriftDisplay.\n4. prepare(sampleRate): set one-pole alpha from ~300 ms; reset accumulators/fifo; no heap growth in process.\n5. processSample(l,r) or process(const float* l, const float* r, int n) on the push path only: update correlation, conditionally push decimated pairs, never allocate, lock, or touch juce::String.\n6. getCorrelation() const atomic load for UI.\n\nSTRICT FILE SCOPE: Create or modify ONLY MeterTap.h/.cpp. Do not wire PluginProcessor or Engine here.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "c.2",
+                "title": "MeterTap - Pearson correlation one-pole, AbstractFifo goniometer pairs, per-voice tau/deltaC atomics for DriftDisplay",
+                "description": "Implement Source/DSP/MeterTap.h and Source/DSP/MeterTap.cpp \u2014 lock-free audio\u2192UI metering transport per ShredDouble_Build_Spec.md \u00a7\u00a77, 9.2\u20139.5.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width metering / CorrelationMeter / Goniometer push patterns if present\n- Source/GUI/GoniometerComponent.h and CorrelationMeter.h (consumer side expectations)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a79.2, 9.3, 9.4, 9.5 and RT contract \u00a77\n\nImplement class MeterTap:\n1. Audio-thread Pearson correlation rho of final output L/R with one-pole smoothing ~300 ms; publish via std::atomic<float> (memory_order_relaxed or release OK).\n2. Decimated output L/R pairs pushed into juce::AbstractFifo backed storage (~4096 stereo frames) for the goniometer; UI will drain \u2014 provide pop/drain API or raw fifo+buffer accessors matching reused GoniometerComponent style.\n3. Per-voice drift: 2*V=8 std::atomic<float> slots (tau_v_ms and deltaC_v for V=0..3) written at hop rate; setVoiceDrift(v, tauMs, deltaC) noexcept for engine use; load APIs for DriftDisplay.\n4. prepare(sampleRate): set one-pole alpha from ~300 ms; reset accumulators/fifo; no heap growth in process.\n5. processSample(l,r) or process(const float* l, const float* r, int n) on the push path only: update correlation, conditionally push decimated pairs, never allocate, lock, or touch juce::String.\n6. getCorrelation() const atomic load for UI.\n\nSTRICT FILE SCOPE: Create or modify ONLY MeterTap.h/.cpp. Do not wire PluginProcessor or Engine here.",
+                "phase": "C",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/DSP/MeterTap.h and Source/DSP/MeterTap.cpp exist",
+                  "MeterTap publishes smoothed Pearson correlation rho via std::atomic<float> with ~300 ms one-pole smoothing",
+                  "MeterTap pushes decimated stereo L/R pairs into juce::AbstractFifo storage sized about 4096 frames",
+                  "MeterTap exposes 8 std::atomic<float> (or equivalent 2*V) for per-voice tau_v and deltaC_v writable at hop rate",
+                  "Push/process path performs no lock, heap allocation, or juce::String use",
+                  "prepare configures sample-rate-dependent smoothing and resets fifo/correlation state",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T21:26:33.330536",
+                "selected_backend": "codex_cli",
+                "model": null,
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/DSP/MeterTap.h",
+                  "Source/DSP/MeterTap.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:30:03.930244",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-c.2",
+      "created_at": "2026-07-27T21:26:33.401399"
+    }
   }
 ]

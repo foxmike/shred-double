@@ -1188,12 +1188,40 @@ Source/DSP/DelayLineFrac.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/DelayLineFrac.cpp.s
 .PHONY : Source/DSP/DelayLineFrac.cpp.s
 
+Source/DSP/MeterTap.o: Source/DSP/MeterTap.cpp.o
+.PHONY : Source/DSP/MeterTap.o
+
+# target to build an object file
+Source/DSP/MeterTap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MeterTap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MeterTap.cpp.o
+.PHONY : Source/DSP/MeterTap.cpp.o
+
+Source/DSP/MeterTap.i: Source/DSP/MeterTap.cpp.i
+.PHONY : Source/DSP/MeterTap.i
+
+# target to preprocess a source file
+Source/DSP/MeterTap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MeterTap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MeterTap.cpp.i
+.PHONY : Source/DSP/MeterTap.cpp.i
+
+Source/DSP/MeterTap.s: Source/DSP/MeterTap.cpp.s
+.PHONY : Source/DSP/MeterTap.s
+
+# target to generate assembly for a file
+Source/DSP/MeterTap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MeterTap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MeterTap.cpp.s
+.PHONY : Source/DSP/MeterTap.cpp.s
+
 Source/DSP/MonoSafetyCrossover.o: Source/DSP/MonoSafetyCrossover.cpp.o
 .PHONY : Source/DSP/MonoSafetyCrossover.o
 
 # target to build an object file
 Source/DSP/MonoSafetyCrossover.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MonoSafetyCrossover.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MonoSafetyCrossover.cpp.o
 .PHONY : Source/DSP/MonoSafetyCrossover.cpp.o
 
 Source/DSP/MonoSafetyCrossover.i: Source/DSP/MonoSafetyCrossover.cpp.i
@@ -1202,6 +1230,7 @@ Source/DSP/MonoSafetyCrossover.i: Source/DSP/MonoSafetyCrossover.cpp.i
 # target to preprocess a source file
 Source/DSP/MonoSafetyCrossover.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MonoSafetyCrossover.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MonoSafetyCrossover.cpp.i
 .PHONY : Source/DSP/MonoSafetyCrossover.cpp.i
 
 Source/DSP/MonoSafetyCrossover.s: Source/DSP/MonoSafetyCrossover.cpp.s
@@ -1210,6 +1239,7 @@ Source/DSP/MonoSafetyCrossover.s: Source/DSP/MonoSafetyCrossover.cpp.s
 # target to generate assembly for a file
 Source/DSP/MonoSafetyCrossover.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/MonoSafetyCrossover.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/MonoSafetyCrossover.cpp.s
 .PHONY : Source/DSP/MonoSafetyCrossover.cpp.s
 
 Source/DSP/PitchShifter.o: Source/DSP/PitchShifter.cpp.o
@@ -1265,6 +1295,33 @@ Source/DSP/RandomWalk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/RandomWalk.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/RandomWalk.cpp.s
 .PHONY : Source/DSP/RandomWalk.cpp.s
+
+Source/DSP/ShredDoubleEngine.o: Source/DSP/ShredDoubleEngine.cpp.o
+.PHONY : Source/DSP/ShredDoubleEngine.o
+
+# target to build an object file
+Source/DSP/ShredDoubleEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/ShredDoubleEngine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/ShredDoubleEngine.cpp.o
+.PHONY : Source/DSP/ShredDoubleEngine.cpp.o
+
+Source/DSP/ShredDoubleEngine.i: Source/DSP/ShredDoubleEngine.cpp.i
+.PHONY : Source/DSP/ShredDoubleEngine.i
+
+# target to preprocess a source file
+Source/DSP/ShredDoubleEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/ShredDoubleEngine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/ShredDoubleEngine.cpp.i
+.PHONY : Source/DSP/ShredDoubleEngine.cpp.i
+
+Source/DSP/ShredDoubleEngine.s: Source/DSP/ShredDoubleEngine.cpp.s
+.PHONY : Source/DSP/ShredDoubleEngine.s
+
+# target to generate assembly for a file
+Source/DSP/ShredDoubleEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/ShredDoubleEngine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/ShredDoubleEngine.cpp.s
+.PHONY : Source/DSP/ShredDoubleEngine.cpp.s
 
 Source/DSP/TiltFilter.o: Source/DSP/TiltFilter.cpp.o
 .PHONY : Source/DSP/TiltFilter.o
@@ -1326,6 +1383,7 @@ Source/DSP/WidthProcessor.o: Source/DSP/WidthProcessor.cpp.o
 # target to build an object file
 Source/DSP/WidthProcessor.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/WidthProcessor.cpp.o
 .PHONY : Source/DSP/WidthProcessor.cpp.o
 
 Source/DSP/WidthProcessor.i: Source/DSP/WidthProcessor.cpp.i
@@ -1334,6 +1392,7 @@ Source/DSP/WidthProcessor.i: Source/DSP/WidthProcessor.cpp.i
 # target to preprocess a source file
 Source/DSP/WidthProcessor.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/WidthProcessor.cpp.i
 .PHONY : Source/DSP/WidthProcessor.cpp.i
 
 Source/DSP/WidthProcessor.s: Source/DSP/WidthProcessor.cpp.s
@@ -1342,6 +1401,7 @@ Source/DSP/WidthProcessor.s: Source/DSP/WidthProcessor.cpp.s
 # target to generate assembly for a file
 Source/DSP/WidthProcessor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/Source/DSP/WidthProcessor.cpp.s
 .PHONY : Source/DSP/WidthProcessor.cpp.s
 
 Source/GUI/CorrelationMeter.o: Source/GUI/CorrelationMeter.cpp.o
@@ -1680,6 +1740,9 @@ help:
 	@echo "... Source/DSP/DelayLineFrac.o"
 	@echo "... Source/DSP/DelayLineFrac.i"
 	@echo "... Source/DSP/DelayLineFrac.s"
+	@echo "... Source/DSP/MeterTap.o"
+	@echo "... Source/DSP/MeterTap.i"
+	@echo "... Source/DSP/MeterTap.s"
 	@echo "... Source/DSP/MonoSafetyCrossover.o"
 	@echo "... Source/DSP/MonoSafetyCrossover.i"
 	@echo "... Source/DSP/MonoSafetyCrossover.s"
@@ -1689,6 +1752,9 @@ help:
 	@echo "... Source/DSP/RandomWalk.o"
 	@echo "... Source/DSP/RandomWalk.i"
 	@echo "... Source/DSP/RandomWalk.s"
+	@echo "... Source/DSP/ShredDoubleEngine.o"
+	@echo "... Source/DSP/ShredDoubleEngine.i"
+	@echo "... Source/DSP/ShredDoubleEngine.s"
 	@echo "... Source/DSP/TiltFilter.o"
 	@echo "... Source/DSP/TiltFilter.i"
 	@echo "... Source/DSP/TiltFilter.s"
