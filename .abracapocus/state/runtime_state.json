@@ -9,9 +9,9 @@
       "task_id": "b.4",
       "title": "Voice - container owning 2 RandomWalks + PitchShifter + DelayLineFrac + AllpassChain + TiltFilter + constant-power pan, per-sample process with interpolated walk values",
       "phase": "B",
-      "status": "planned",
+      "status": "completed",
       "backend": "antigravity_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:08:25.747789",
       "notes": ""
     }
   ],
@@ -87,6 +87,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:06:08.800893"
+    },
+    {
+      "run_id": "cd9ac5eb-d999-46ff-b00a-4997ba393af2",
+      "task_id": "b.4",
+      "backend": "antigravity_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:08:25.747913"
     }
   ],
   "operator_overrides": {},
