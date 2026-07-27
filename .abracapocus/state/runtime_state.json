@@ -9,9 +9,9 @@
       "task_id": "c.2",
       "title": "MeterTap - Pearson correlation one-pole, AbstractFifo goniometer pairs, per-voice tau/deltaC atomics for DriftDisplay",
       "phase": "C",
-      "status": "planned",
+      "status": "completed",
       "backend": "codex_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:30:03.962458",
       "notes": ""
     }
   ],
@@ -114,6 +114,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:26:32.468873"
+    },
+    {
+      "run_id": "56f8c9d2-70ec-493d-8322-98aecead37ba",
+      "task_id": "c.2",
+      "backend": "codex_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:30:03.962579"
     }
   ],
   "operator_overrides": {},
