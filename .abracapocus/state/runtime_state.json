@@ -9,9 +9,9 @@
       "task_id": "e.5",
       "title": "Verification checklist and user manual (seeding/Re-roll workflow, D3 remap, automation caveats, LV2 host notes)",
       "phase": "E",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T22:35:47.404076",
       "notes": ""
     }
   ],
@@ -204,6 +204,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T22:33:28.330378"
+    },
+    {
+      "run_id": "afea70a3-34d2-49e1-8052-0e38274f4573",
+      "task_id": "e.5",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T22:35:47.404195"
     }
   ],
   "operator_overrides": {},
