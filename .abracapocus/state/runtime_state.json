@@ -9,9 +9,9 @@
       "task_id": "a.5",
       "title": ".gitignore, README",
       "phase": "A",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T20:54:22.206305",
       "notes": ""
     }
   ],
@@ -51,6 +51,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T20:52:43.316258"
+    },
+    {
+      "run_id": "98d2c532-4282-41ed-8109-d8513d1c8434",
+      "task_id": "a.5",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T20:54:22.206432"
     }
   ],
   "operator_overrides": {},
