@@ -9,9 +9,9 @@
       "task_id": "d.1",
       "title": "DriftDisplay - 2D per-voice scatter (timing vs pitch), color-coded markers, fading trail history, atomic polling, V3/V4 hidden at voiceCount==2",
       "phase": "D",
-      "status": "planned",
+      "status": "completed",
       "backend": "antigravity_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:59:58.770960",
       "notes": ""
     }
   ],
@@ -150,6 +150,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:58:09.922586"
+    },
+    {
+      "run_id": "41794096-1dd5-485d-af6b-541684c45638",
+      "task_id": "d.1",
+      "backend": "antigravity_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:59:58.771132"
     }
   ],
   "operator_overrides": {},
