@@ -724,5 +724,66 @@
       "version": "task-c.2",
       "created_at": "2026-07-27T21:26:33.401399"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:38:39.131073",
+    "project_name": "shred-double",
+    "goal": "Sole PluginProcessor and CMakeLists.txt owner for phase c. Wire ShredDoubleEngine into the live process path and register new sources/tests.\n\nBefore editing, inspect:\n- Source/PluginProcessor.h/.cpp phase-a spine (APVTS, prepareToPlay, processBlock stub, bus layout, latency stubs)\n- Source/DSP/ShredDoubleEngine.h public API from c.1\n- Source/StateManager.* masterSeed / reroll()\n- CMakeLists.txt current target_sources and test target from phases a/b\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.8\u20134.10, 5\u20137, 11\n\nImplement:\n1. PluginProcessor members: ShredDoubleEngine engine (or unique_ptr constructed in ctor without audio-thread alloc later).\n2. prepareToPlay: engine.prepare(sampleRate, samplesPerBlock, latencyMode from APVTS); engine.seed(state masterSeed); setLatencySamples(engine.getLatencySamples()); updateHostDisplay if needed.\n3. processBlock:\n   - juce::ScopedNoDenormals at top\n   - clear spare output channels\n   - read smoothed parameters: crossover/monoXover coeffs per block; humanRate/tightness \u2192 engine block setters; spreads, pans, width, mix, outTrim smoothed and applied (per-sample where spec \u00a76 requires)\n   - if latencyMode or voiceCount changed vs previous: engine.setLatencyMode / setVoiceCount; setLatencySamples; updateHostDisplay on mode switch\n   - engine.process on channel pointers (mono\u2192stereo and stereo\u2192stereo layouts already constrained)\n   - final meter path is inside engine; ensure bypass uses true-bypass/delayed path consistent with tests\n4. Expose engine/meter accessors needed by editor later (getCorrelation, drift atomics) without blocking.\n5. Propagate StateManager Re-roll / setState masterSeed into engine.seed(newSeed) on message thread \u2014 never std::random_device inside processBlock.\n6. CMakeLists.txt ONLY additive registration:\n   - plugin target_sources: Source/DSP/MeterTap.cpp Source/DSP/ShredDoubleEngine.cpp\n   - test target sources: tests/SeedingTests.cpp tests/EngineTests.cpp (files created by c.4/c.5)\n   - do not delete phase b DSP/test entries; do not add AU\n\nSTRICT FILE SCOPE: Modify only PluginProcessor.h/.cpp and CMakeLists.txt.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: PluginProcessor processBlock wiring - ScopedNoDenormals, smoothed reads, engine.process, meter push, latency reporting, CMakeLists",
+      "phases": [
+        {
+          "name": "C",
+          "objective": "Sole PluginProcessor and CMakeLists.txt owner for phase c. Wire ShredDoubleEngine into the live process path and register new sources/tests.\n\nBefore editing, inspect:\n- Source/PluginProcessor.h/.cpp phase-a spine (APVTS, prepareToPlay, processBlock stub, bus layout, latency stubs)\n- Source/DSP/ShredDoubleEngine.h public API from c.1\n- Source/StateManager.* masterSeed / reroll()\n- CMakeLists.txt current target_sources and test target from phases a/b\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.8\u20134.10, 5\u20137, 11\n\nImplement:\n1. PluginProcessor members: ShredDoubleEngine engine (or unique_ptr constructed in ctor without audio-thread alloc later).\n2. prepareToPlay: engine.prepare(sampleRate, samplesPerBlock, latencyMode from APVTS); engine.seed(state masterSeed); setLatencySamples(engine.getLatencySamples()); updateHostDisplay if needed.\n3. processBlock:\n   - juce::ScopedNoDenormals at top\n   - clear spare output channels\n   - read smoothed parameters: crossover/monoXover coeffs per block; humanRate/tightness \u2192 engine block setters; spreads, pans, width, mix, outTrim smoothed and applied (per-sample where spec \u00a76 requires)\n   - if latencyMode or voiceCount changed vs previous: engine.setLatencyMode / setVoiceCount; setLatencySamples; updateHostDisplay on mode switch\n   - engine.process on channel pointers (mono\u2192stereo and stereo\u2192stereo layouts already constrained)\n   - final meter path is inside engine; ensure bypass uses true-bypass/delayed path consistent with tests\n4. Expose engine/meter accessors needed by editor later (getCorrelation, drift atomics) without blocking.\n5. Propagate StateManager Re-roll / setState masterSeed into engine.seed(newSeed) on message thread \u2014 never std::random_device inside processBlock.\n6. CMakeLists.txt ONLY additive registration:\n   - plugin target_sources: Source/DSP/MeterTap.cpp Source/DSP/ShredDoubleEngine.cpp\n   - test target sources: tests/SeedingTests.cpp tests/EngineTests.cpp (files created by c.4/c.5)\n   - do not delete phase b DSP/test entries; do not add AU\n\nSTRICT FILE SCOPE: Modify only PluginProcessor.h/.cpp and CMakeLists.txt.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "c.3",
+                "title": "PluginProcessor processBlock wiring - ScopedNoDenormals, smoothed reads, engine.process, meter push, latency reporting, CMakeLists",
+                "description": "Sole PluginProcessor and CMakeLists.txt owner for phase c. Wire ShredDoubleEngine into the live process path and register new sources/tests.\n\nBefore editing, inspect:\n- Source/PluginProcessor.h/.cpp phase-a spine (APVTS, prepareToPlay, processBlock stub, bus layout, latency stubs)\n- Source/DSP/ShredDoubleEngine.h public API from c.1\n- Source/StateManager.* masterSeed / reroll()\n- CMakeLists.txt current target_sources and test target from phases a/b\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.8\u20134.10, 5\u20137, 11\n\nImplement:\n1. PluginProcessor members: ShredDoubleEngine engine (or unique_ptr constructed in ctor without audio-thread alloc later).\n2. prepareToPlay: engine.prepare(sampleRate, samplesPerBlock, latencyMode from APVTS); engine.seed(state masterSeed); setLatencySamples(engine.getLatencySamples()); updateHostDisplay if needed.\n3. processBlock:\n   - juce::ScopedNoDenormals at top\n   - clear spare output channels\n   - read smoothed parameters: crossover/monoXover coeffs per block; humanRate/tightness \u2192 engine block setters; spreads, pans, width, mix, outTrim smoothed and applied (per-sample where spec \u00a76 requires)\n   - if latencyMode or voiceCount changed vs previous: engine.setLatencyMode / setVoiceCount; setLatencySamples; updateHostDisplay on mode switch\n   - engine.process on channel pointers (mono\u2192stereo and stereo\u2192stereo layouts already constrained)\n   - final meter path is inside engine; ensure bypass uses true-bypass/delayed path consistent with tests\n4. Expose engine/meter accessors needed by editor later (getCorrelation, drift atomics) without blocking.\n5. Propagate StateManager Re-roll / setState masterSeed into engine.seed(newSeed) on message thread \u2014 never std::random_device inside processBlock.\n6. CMakeLists.txt ONLY additive registration:\n   - plugin target_sources: Source/DSP/MeterTap.cpp Source/DSP/ShredDoubleEngine.cpp\n   - test target sources: tests/SeedingTests.cpp tests/EngineTests.cpp (files created by c.4/c.5)\n   - do not delete phase b DSP/test entries; do not add AU\n\nSTRICT FILE SCOPE: Modify only PluginProcessor.h/.cpp and CMakeLists.txt.",
+                "phase": "C",
+                "dependencies": [
+                  "c.1"
+                ],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "failed",
+                "acceptance_criteria": [
+                  "Source/PluginProcessor.cpp processBlock begins with juce::ScopedNoDenormals",
+                  "PluginProcessor owns/uses ShredDoubleEngine and calls engine.prepare in prepareToPlay and engine.process in processBlock",
+                  "Smoothed APVTS parameters drive engine setters (voiceCount, spreads, humanRate, tightness, monoXover, pans, width, mix, outTrim, latencyMode, bypass)",
+                  "setLatencySamples is called with engine.getLatencySamples() and updateHostDisplay runs on latency mode switch",
+                  "masterSeed is applied via engine.seed from prepareToPlay/state/Re-roll paths without random_device in processBlock",
+                  "CMakeLists.txt registers Source/DSP/MeterTap.cpp and Source/DSP/ShredDoubleEngine.cpp on the plugin target",
+                  "CMakeLists.txt registers tests/SeedingTests.cpp and tests/EngineTests.cpp on the existing test target",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T21:30:04.126638",
+                "selected_backend": "antigravity_cli",
+                "model": null,
+                "task_timeout_seconds": 1200.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/PluginProcessor.h",
+                  "Source/PluginProcessor.cpp",
+                  "CMakeLists.txt"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "failed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:38:39.025913",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-c.3",
+      "created_at": "2026-07-27T21:30:04.200929"
+    }
   }
 ]

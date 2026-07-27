@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-c.3",
+  "plan_version": "task-c.4",
   "active_phase": "C",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "c.3",
-      "title": "PluginProcessor processBlock wiring - ScopedNoDenormals, smoothed reads, engine.process, meter push, latency reporting, CMakeLists",
+      "task_id": "c.4",
+      "title": "Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
       "phase": "C",
-      "status": "completed",
-      "backend": "antigravity_cli",
-      "last_run": "2026-07-27T21:38:39.058467",
+      "status": "planned",
+      "backend": "pi_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

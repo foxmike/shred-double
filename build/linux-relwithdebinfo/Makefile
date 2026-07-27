@@ -1596,6 +1596,30 @@ tests/DSPPrimitiveTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/DSPPrimitiveTests.cpp.s
 .PHONY : tests/DSPPrimitiveTests.cpp.s
 
+tests/SeedingTests.o: tests/SeedingTests.cpp.o
+.PHONY : tests/SeedingTests.o
+
+# target to build an object file
+tests/SeedingTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/SeedingTests.cpp.o
+.PHONY : tests/SeedingTests.cpp.o
+
+tests/SeedingTests.i: tests/SeedingTests.cpp.i
+.PHONY : tests/SeedingTests.i
+
+# target to preprocess a source file
+tests/SeedingTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/SeedingTests.cpp.i
+.PHONY : tests/SeedingTests.cpp.i
+
+tests/SeedingTests.s: tests/SeedingTests.cpp.s
+.PHONY : tests/SeedingTests.s
+
+# target to generate assembly for a file
+tests/SeedingTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDoubleTests.dir/build.make CMakeFiles/ShredDoubleTests.dir/tests/SeedingTests.cpp.s
+.PHONY : tests/SeedingTests.cpp.s
+
 tests/TestMain.o: tests/TestMain.cpp.o
 .PHONY : tests/TestMain.o
 
@@ -1788,6 +1812,9 @@ help:
 	@echo "... tests/DSPPrimitiveTests.o"
 	@echo "... tests/DSPPrimitiveTests.i"
 	@echo "... tests/DSPPrimitiveTests.s"
+	@echo "... tests/SeedingTests.o"
+	@echo "... tests/SeedingTests.i"
+	@echo "... tests/SeedingTests.s"
 	@echo "... tests/TestMain.o"
 	@echo "... tests/TestMain.i"
 	@echo "... tests/TestMain.s"
