@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-a.4",
+  "plan_version": "task-a.5",
   "active_phase": "A",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "a.4",
-      "title": "StateManager (masterSeed uint64 round-trip, Re-roll seed generation, A/B slots) and PluginEditor skeleton with Re-roll button stub",
+      "task_id": "a.5",
+      "title": ".gitignore, README",
       "phase": "A",
-      "status": "completed",
-      "backend": "antigravity_cli",
-      "last_run": "2026-07-27T20:52:43.316162",
+      "status": "planned",
+      "backend": "pi_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

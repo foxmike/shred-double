@@ -1,0 +1,62 @@
+# --- Build output ---
+build/
+build-*/
+cmake-build-*/
+Builds/
+out/
+
+# --- Runtime state ---
+state/
+
+# --- Abracapocus agent runtime ---
+/.abracapocus/state/
+/.abracapocus/logs/
+/.abracapocus/reports/
+/.abracapocus/cache/
+/.abracapocus/tmp/
+/.abracapocus/runs/
+/.abracapocus/**/*.db
+/.abracapocus/**/*.sqlite
+/.abracapocus/**/*.sqlite3
+
+# --- IDE ---
+/.idea/
+/.vscode/
+*.user
+*.user.*
+*.suo
+*.opensdf
+*.sdf
+
+# --- Compiled objects / binaries ---
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.vst3
+*.component
+*.app
+
+# --- Generated CMake artifacts ---
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+Makefile
+.ninja_deps
+.ninja_log
+build.ninja
+rules.ninja
+
+# --- OS detritus ---
+.DS_Store
+Thumbs.db
+*~
+
+# --- SQLite runtime ---
+*.db-shm
+*.db-wal
