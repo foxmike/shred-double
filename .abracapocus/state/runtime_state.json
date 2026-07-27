@@ -9,9 +9,9 @@
       "task_id": "a.2",
       "title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
       "phase": "A",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T20:44:27.216854",
       "notes": ""
     }
   ],
@@ -24,6 +24,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T20:43:28.003170"
+    },
+    {
+      "run_id": "7f7452a9-aa9e-4269-8072-35ae963a738d",
+      "task_id": "a.2",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T20:44:27.216929"
     }
   ],
   "operator_overrides": {},
