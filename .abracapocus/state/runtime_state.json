@@ -9,9 +9,9 @@
       "task_id": "e.1",
       "title": "Factory preset XML assets with fixed masterSeed (Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking)",
       "phase": "E",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T22:05:39.823704",
       "notes": ""
     }
   ],
@@ -168,6 +168,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T22:03:07.915410"
+    },
+    {
+      "run_id": "c688c041-41c1-4278-87fd-c9e59e4dae3d",
+      "task_id": "e.1",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T22:05:39.823901"
     }
   ],
   "operator_overrides": {},
