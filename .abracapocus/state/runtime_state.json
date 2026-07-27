@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-c.5",
-  "active_phase": "C",
+  "plan_version": "task-d.1",
+  "active_phase": "D",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "c.5",
-      "title": "Engine integration tests - bypass null, Mix=0 passthrough, mono-lows invariant, walk bounds, tightness monotonicity, voice decorrelation, latency",
-      "phase": "C",
-      "status": "completed",
-      "backend": "pi_cli",
-      "last_run": "2026-07-27T21:58:09.922448",
+      "task_id": "d.1",
+      "title": "DriftDisplay - 2D per-voice scatter (timing vs pitch), color-coded markers, fading trail history, atomic polling, V3/V4 hidden at voiceCount==2",
+      "phase": "D",
+      "status": "planned",
+      "backend": "antigravity_cli",
+      "last_run": null,
       "notes": ""
     }
   ],
@@ -155,6 +155,6 @@
   "operator_overrides": {},
   "completed_phases": [],
   "remaining_phases": [
-    "C"
+    "D"
   ]
 }

@@ -842,5 +842,64 @@
       "version": "task-c.4",
       "created_at": "2026-07-27T21:38:39.235944"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:58:09.990121",
+    "project_name": "shred-double",
+    "goal": "Add tests/EngineTests.cpp covering ShredDouble_Build_Spec.md \u00a714 integration checks (items 3\u20135, 6\u20139, latency).\n\nBefore editing, inspect:\n- tests/DSPPrimitiveTests.cpp style and helpers\n- Source/DSP/ShredDoubleEngine.h and Voice getters\n- .abracapocus/ShredDouble_Build_Spec.md \u00a714 items 3\u20139 and \u00a74.7\u20134.9\n\nImplement assert-style tests:\n1. Bypass null: with bypass engaged, output matches input sample-exact after accounting for reported latency (align by engine.getLatencySamples()).\n2. Mix=0 passthrough: wet contribution silenced; dry path matches delayed original within tight tolerance.\n3. Mono-lows invariant: below monoXover, output L\u2248R (shared-LP); use sine or noise LP-probed under crossover.\n4. Walk bounds: after long process, Voice/engine-published tau_v stay in [10,35] ms and deltaC within configured \u00b1pitch spread envelope (via MeterTap atomics or Voice getters exposed through engine).\n5. Tightness monotonicity: RMS of tau/deltaC excursion decreases as tightness goes 0\u2192100% with fixed spreads/rate.\n6. Voice decorrelation: cross-correlation between isolated or pan-separated voice contributions stays below a loose threshold vs identical undiffused copies (or dual-engine/single-voice captures if engine exposes a test hook \u2014 prefer public APIs only; if needed, use extreme opposing pans V1/V2).\n7. Latency: Studio reports 1024 samples and Live reports 256 (L/2 for L=2048/512), and setLatencyMode updates the getter.\n\nSTRICT FILE SCOPE: only tests/EngineTests.cpp. CMake registration is c.3.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: Engine integration tests - bypass null, Mix=0 passthrough, mono-lows invariant, walk bounds, tightness monotonicity, voice decorrelation, latency",
+      "phases": [
+        {
+          "name": "C",
+          "objective": "Add tests/EngineTests.cpp covering ShredDouble_Build_Spec.md \u00a714 integration checks (items 3\u20135, 6\u20139, latency).\n\nBefore editing, inspect:\n- tests/DSPPrimitiveTests.cpp style and helpers\n- Source/DSP/ShredDoubleEngine.h and Voice getters\n- .abracapocus/ShredDouble_Build_Spec.md \u00a714 items 3\u20139 and \u00a74.7\u20134.9\n\nImplement assert-style tests:\n1. Bypass null: with bypass engaged, output matches input sample-exact after accounting for reported latency (align by engine.getLatencySamples()).\n2. Mix=0 passthrough: wet contribution silenced; dry path matches delayed original within tight tolerance.\n3. Mono-lows invariant: below monoXover, output L\u2248R (shared-LP); use sine or noise LP-probed under crossover.\n4. Walk bounds: after long process, Voice/engine-published tau_v stay in [10,35] ms and deltaC within configured \u00b1pitch spread envelope (via MeterTap atomics or Voice getters exposed through engine).\n5. Tightness monotonicity: RMS of tau/deltaC excursion decreases as tightness goes 0\u2192100% with fixed spreads/rate.\n6. Voice decorrelation: cross-correlation between isolated or pan-separated voice contributions stays below a loose threshold vs identical undiffused copies (or dual-engine/single-voice captures if engine exposes a test hook \u2014 prefer public APIs only; if needed, use extreme opposing pans V1/V2).\n7. Latency: Studio reports 1024 samples and Live reports 256 (L/2 for L=2048/512), and setLatencyMode updates the getter.\n\nSTRICT FILE SCOPE: only tests/EngineTests.cpp. CMake registration is c.3.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "c.5",
+                "title": "Engine integration tests - bypass null, Mix=0 passthrough, mono-lows invariant, walk bounds, tightness monotonicity, voice decorrelation, latency",
+                "description": "Add tests/EngineTests.cpp covering ShredDouble_Build_Spec.md \u00a714 integration checks (items 3\u20135, 6\u20139, latency).\n\nBefore editing, inspect:\n- tests/DSPPrimitiveTests.cpp style and helpers\n- Source/DSP/ShredDoubleEngine.h and Voice getters\n- .abracapocus/ShredDouble_Build_Spec.md \u00a714 items 3\u20139 and \u00a74.7\u20134.9\n\nImplement assert-style tests:\n1. Bypass null: with bypass engaged, output matches input sample-exact after accounting for reported latency (align by engine.getLatencySamples()).\n2. Mix=0 passthrough: wet contribution silenced; dry path matches delayed original within tight tolerance.\n3. Mono-lows invariant: below monoXover, output L\u2248R (shared-LP); use sine or noise LP-probed under crossover.\n4. Walk bounds: after long process, Voice/engine-published tau_v stay in [10,35] ms and deltaC within configured \u00b1pitch spread envelope (via MeterTap atomics or Voice getters exposed through engine).\n5. Tightness monotonicity: RMS of tau/deltaC excursion decreases as tightness goes 0\u2192100% with fixed spreads/rate.\n6. Voice decorrelation: cross-correlation between isolated or pan-separated voice contributions stays below a loose threshold vs identical undiffused copies (or dual-engine/single-voice captures if engine exposes a test hook \u2014 prefer public APIs only; if needed, use extreme opposing pans V1/V2).\n7. Latency: Studio reports 1024 samples and Live reports 256 (L/2 for L=2048/512), and setLatencyMode updates the getter.\n\nSTRICT FILE SCOPE: only tests/EngineTests.cpp. CMake registration is c.3.",
+                "phase": "C",
+                "dependencies": [
+                  "c.1"
+                ],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "tests/EngineTests.cpp exists",
+                  "tests/EngineTests.cpp covers bypass null behavior aligned by reported latency",
+                  "tests/EngineTests.cpp covers Mix=0 dry passthrough",
+                  "tests/EngineTests.cpp covers mono-lows L approximately equal R below crossover",
+                  "tests/EngineTests.cpp covers walk bounds for timing and pitch excursions",
+                  "tests/EngineTests.cpp covers tightness monotonicity of walk excursion RMS",
+                  "tests/EngineTests.cpp covers voice decorrelation and Studio/Live latency sample reporting (1024 and 256)",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T21:43:37.608428",
+                "selected_backend": "pi_cli",
+                "model": "openrouter/minimax/minimax-m3",
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "tests/EngineTests.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:58:09.890788",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-c.5",
+      "created_at": "2026-07-27T21:43:37.684129"
+    }
   }
 ]
