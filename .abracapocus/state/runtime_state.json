@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-a.1",
+  "plan_version": "task-a.2",
   "active_phase": "A",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "a.1",
-      "title": "CMakeLists.txt, CMakePresets.json, build_all.sh (CLion-bundled cmake), JUCE submodule pinned to shred-width tag",
+      "task_id": "a.2",
+      "title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
       "phase": "A",
-      "status": "completed",
-      "backend": "codex_cli",
-      "last_run": "2026-07-27T20:43:28.003079",
+      "status": "planned",
+      "backend": "pi_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

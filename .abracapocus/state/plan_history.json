@@ -1,0 +1,61 @@
+[
+  {
+    "created_at": "2026-07-27T20:43:28.071625",
+    "project_name": "shred-double",
+    "goal": "Create the ShredDouble CMake scaffold and build entrypoints, sole owner of CMakeLists.txt in this phase.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/CMakeLists.txt (nSpace juce_add_plugin structure, SHREDWIDTH_XOVER_ORDER, clap-juce-extensions optional path, target_sources pattern)\n- ~/dev/mike/music/plugins/shred-width/CMakePresets.json\n- ~/dev/mike/music/plugins/shred-width/scripts/build_all.sh (find_cmake CLion candidates; cmake not on PATH)\n- ~/dev/mike/music/plugins/shred-width/.gitmodules (JUCE tag 8.0.13 / commit 7c9d3783)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a710, 13, 15\n\nImplement:\n1. CMakeLists.txt for project ShredDouble VERSION 1.0.0, C++20, mirroring shred-width:\n   - option SHREDWIDTH_CONFIGURE_ONLY and SHREDWIDTH_XOVER_ORDER cache (default 2, strings 2|4)\n   - require JUCE submodule at JUCE/; add_subdirectory(JUCE)\n   - optional clap-juce-extensions EXCLUDE_FROM_ALL when present\n   - juce_add_plugin(ShredDouble) FORMATS VST3 CLAP LV2 Standalone; COMPANY_NAME \"nSpace Systems\"; PLUGIN_MANUFACTURER_CODE NSPC; unique PLUGIN_CODE (e.g. ShDb); BUNDLE_ID com.nspacesystems.shreddouble; LV2URI urn:nspacesystems:plugin:shreddouble; IS_SYNTH FALSE; NEEDS_MIDI_INPUT FALSE\n   - clap_juce_extensions_plugin when available (CLAP_ID com.nspacesystems.shreddouble)\n   - target_sources PRIVATE listing Source/PluginProcessor.cpp, PluginEditor.cpp, StateManager.cpp and all Source/DSP/*.cpp and Source/GUI/*.cpp for the eight reused components (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, GoniometerComponent, CorrelationMeter). Do not invent Engine/Velocity files not yet created in later phases\u2014if a source is phase-later, either omit it until that phase's sole CMake owner adds it, or register only files this phase expects to exist after waves complete. Prefer registering the reused + spine files this phase owns.\n   - target_compile_definitions / juce recommended flags parity with shred-width; link juce::juce_audio_utils etc. as shred-width does\n   - expose SHREDWIDTH_XOVER_ORDER to the target compile definitions if shred-width does\n2. CMakePresets.json: linux-relwithdebinfo configure/build/test presets, binaryDir build/linux-relwithdebinfo, Unix Makefiles, cmake 3.22+\n3. scripts/build_all.sh: executable bash; find_cmake() PATH then CLion Toolbox/snap/flatpak candidates (copy pattern from shred-width); cmake --preset linux-relwithdebinfo; build ShredDouble_VST3 ShredDouble_LV2 ShredDouble_Standalone and ShredDouble_CLAP if clap-juce-extensions present\n4. .gitmodules + git submodule add/pin JUCE to the same URL/tag/commit as shred-width (8.0.13 / 7c9d3783b127263d72bb65fe0a7e2dc8a02a7ac2). Do not vendor full JUCE trees into the commit beyond submodule metadata unless the repo already has JUCE populated.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: CMakeLists.txt, CMakePresets.json, build_all.sh (CLion-bundled cmake), JUCE submodule pinned to shred-width tag",
+      "phases": [
+        {
+          "name": "A",
+          "objective": "Create the ShredDouble CMake scaffold and build entrypoints, sole owner of CMakeLists.txt in this phase.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/CMakeLists.txt (nSpace juce_add_plugin structure, SHREDWIDTH_XOVER_ORDER, clap-juce-extensions optional path, target_sources pattern)\n- ~/dev/mike/music/plugins/shred-width/CMakePresets.json\n- ~/dev/mike/music/plugins/shred-width/scripts/build_all.sh (find_cmake CLion candidates; cmake not on PATH)\n- ~/dev/mike/music/plugins/shred-width/.gitmodules (JUCE tag 8.0.13 / commit 7c9d3783)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a710, 13, 15\n\nImplement:\n1. CMakeLists.txt for project ShredDouble VERSION 1.0.0, C++20, mirroring shred-width:\n   - option SHREDWIDTH_CONFIGURE_ONLY and SHREDWIDTH_XOVER_ORDER cache (default 2, strings 2|4)\n   - require JUCE submodule at JUCE/; add_subdirectory(JUCE)\n   - optional clap-juce-extensions EXCLUDE_FROM_ALL when present\n   - juce_add_plugin(ShredDouble) FORMATS VST3 CLAP LV2 Standalone; COMPANY_NAME \"nSpace Systems\"; PLUGIN_MANUFACTURER_CODE NSPC; unique PLUGIN_CODE (e.g. ShDb); BUNDLE_ID com.nspacesystems.shreddouble; LV2URI urn:nspacesystems:plugin:shreddouble; IS_SYNTH FALSE; NEEDS_MIDI_INPUT FALSE\n   - clap_juce_extensions_plugin when available (CLAP_ID com.nspacesystems.shreddouble)\n   - target_sources PRIVATE listing Source/PluginProcessor.cpp, PluginEditor.cpp, StateManager.cpp and all Source/DSP/*.cpp and Source/GUI/*.cpp for the eight reused components (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, GoniometerComponent, CorrelationMeter). Do not invent Engine/Velocity files not yet created in later phases\u2014if a source is phase-later, either omit it until that phase's sole CMake owner adds it, or register only files this phase expects to exist after waves complete. Prefer registering the reused + spine files this phase owns.\n   - target_compile_definitions / juce recommended flags parity with shred-width; link juce::juce_audio_utils etc. as shred-width does\n   - expose SHREDWIDTH_XOVER_ORDER to the target compile definitions if shred-width does\n2. CMakePresets.json: linux-relwithdebinfo configure/build/test presets, binaryDir build/linux-relwithdebinfo, Unix Makefiles, cmake 3.22+\n3. scripts/build_all.sh: executable bash; find_cmake() PATH then CLion Toolbox/snap/flatpak candidates (copy pattern from shred-width); cmake --preset linux-relwithdebinfo; build ShredDouble_VST3 ShredDouble_LV2 ShredDouble_Standalone and ShredDouble_CLAP if clap-juce-extensions present\n4. .gitmodules + git submodule add/pin JUCE to the same URL/tag/commit as shred-width (8.0.13 / 7c9d3783b127263d72bb65fe0a7e2dc8a02a7ac2). Do not vendor full JUCE trees into the commit beyond submodule metadata unless the repo already has JUCE populated.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "a.1",
+                "title": "CMakeLists.txt, CMakePresets.json, build_all.sh (CLion-bundled cmake), JUCE submodule pinned to shred-width tag",
+                "description": "Create the ShredDouble CMake scaffold and build entrypoints, sole owner of CMakeLists.txt in this phase.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/CMakeLists.txt (nSpace juce_add_plugin structure, SHREDWIDTH_XOVER_ORDER, clap-juce-extensions optional path, target_sources pattern)\n- ~/dev/mike/music/plugins/shred-width/CMakePresets.json\n- ~/dev/mike/music/plugins/shred-width/scripts/build_all.sh (find_cmake CLion candidates; cmake not on PATH)\n- ~/dev/mike/music/plugins/shred-width/.gitmodules (JUCE tag 8.0.13 / commit 7c9d3783)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a710, 13, 15\n\nImplement:\n1. CMakeLists.txt for project ShredDouble VERSION 1.0.0, C++20, mirroring shred-width:\n   - option SHREDWIDTH_CONFIGURE_ONLY and SHREDWIDTH_XOVER_ORDER cache (default 2, strings 2|4)\n   - require JUCE submodule at JUCE/; add_subdirectory(JUCE)\n   - optional clap-juce-extensions EXCLUDE_FROM_ALL when present\n   - juce_add_plugin(ShredDouble) FORMATS VST3 CLAP LV2 Standalone; COMPANY_NAME \"nSpace Systems\"; PLUGIN_MANUFACTURER_CODE NSPC; unique PLUGIN_CODE (e.g. ShDb); BUNDLE_ID com.nspacesystems.shreddouble; LV2URI urn:nspacesystems:plugin:shreddouble; IS_SYNTH FALSE; NEEDS_MIDI_INPUT FALSE\n   - clap_juce_extensions_plugin when available (CLAP_ID com.nspacesystems.shreddouble)\n   - target_sources PRIVATE listing Source/PluginProcessor.cpp, PluginEditor.cpp, StateManager.cpp and all Source/DSP/*.cpp and Source/GUI/*.cpp for the eight reused components (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, GoniometerComponent, CorrelationMeter). Do not invent Engine/Velocity files not yet created in later phases\u2014if a source is phase-later, either omit it until that phase's sole CMake owner adds it, or register only files this phase expects to exist after waves complete. Prefer registering the reused + spine files this phase owns.\n   - target_compile_definitions / juce recommended flags parity with shred-width; link juce::juce_audio_utils etc. as shred-width does\n   - expose SHREDWIDTH_XOVER_ORDER to the target compile definitions if shred-width does\n2. CMakePresets.json: linux-relwithdebinfo configure/build/test presets, binaryDir build/linux-relwithdebinfo, Unix Makefiles, cmake 3.22+\n3. scripts/build_all.sh: executable bash; find_cmake() PATH then CLion Toolbox/snap/flatpak candidates (copy pattern from shred-width); cmake --preset linux-relwithdebinfo; build ShredDouble_VST3 ShredDouble_LV2 ShredDouble_Standalone and ShredDouble_CLAP if clap-juce-extensions present\n4. .gitmodules + git submodule add/pin JUCE to the same URL/tag/commit as shred-width (8.0.13 / 7c9d3783b127263d72bb65fe0a7e2dc8a02a7ac2). Do not vendor full JUCE trees into the commit beyond submodule metadata unless the repo already has JUCE populated.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+                "phase": "A",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "CMakeLists.txt exists and defines project(ShredDouble ...) with C++20 and juce_add_plugin formats VST3 CLAP LV2 Standalone",
+                  "CMakeLists.txt exposes SHREDWIDTH_XOVER_ORDER cache option defaulting to 2",
+                  "CMakeLists.txt registers Source/PluginProcessor.cpp Source/PluginEditor.cpp Source/StateManager.cpp and the eight reused DSP/GUI .cpp files under target_sources",
+                  "CMakePresets.json defines linux-relwithdebinfo configure and build presets with binaryDir build/linux-relwithdebinfo",
+                  "scripts/build_all.sh exists, is executable, contains find_cmake with CLion-bundled cmake candidates, and builds ShredDouble_* format targets",
+                  ".gitmodules pins submodule JUCE to tag 8.0.13 (same pin as shred-width)",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:41:28.429914",
+                "selected_backend": "codex_cli",
+                "model": null,
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "CMakeLists.txt",
+                  "CMakePresets.json",
+                  "scripts/build_all.sh",
+                  ".gitmodules"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T20:43:27.977748",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-a.1",
+      "created_at": "2026-07-27T20:41:28.558298"
+    }
+  }
+]
