@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-c.1",
+  "plan_version": "task-c.2",
   "active_phase": "C",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "c.1",
-      "title": "ShredDoubleEngine - V=4 voice array, voice-count switching with masked crossfade, masterSeed/Re-roll seeding, shared-LP assembly, dry-align, latency-mode buffer repoint",
+      "task_id": "c.2",
+      "title": "MeterTap - Pearson correlation one-pole, AbstractFifo goniometer pairs, per-voice tau/deltaC atomics for DriftDisplay",
       "phase": "C",
-      "status": "completed",
+      "status": "planned",
       "backend": "codex_cli",
-      "last_run": "2026-07-27T21:26:32.468654",
+      "last_run": null,
       "notes": ""
     }
   ],
