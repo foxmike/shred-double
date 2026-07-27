@@ -9,9 +9,9 @@
       "task_id": "c.4",
       "title": "Seeding and determinism tests - same seed bit-identical, different seed different output, Re-roll distinct seed",
       "phase": "C",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:43:37.510563",
       "notes": ""
     }
   ],
@@ -132,6 +132,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:38:39.058601"
+    },
+    {
+      "run_id": "3c328093-8940-4014-9874-f27de39cdf96",
+      "task_id": "c.4",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:43:37.510677"
     }
   ],
   "operator_overrides": {},
