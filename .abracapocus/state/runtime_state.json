@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-b.5",
-  "active_phase": "B",
+  "plan_version": "task-c.1",
+  "active_phase": "C",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "b.5",
-      "title": "TestMain harness and DSP primitive tests - walk bounds and mean-reversion, allpass magnitude-flat, tilt response, voice decorrelation, CMakeLists registration",
-      "phase": "B",
-      "status": "completed",
-      "backend": "pi_cli",
-      "last_run": "2026-07-27T21:16:39.063941",
+      "task_id": "c.1",
+      "title": "ShredDoubleEngine - V=4 voice array, voice-count switching with masked crossfade, masterSeed/Re-roll seeding, shared-LP assembly, dry-align, latency-mode buffer repoint",
+      "phase": "C",
+      "status": "planned",
+      "backend": "codex_cli",
+      "last_run": null,
       "notes": ""
     }
   ],
@@ -110,6 +110,6 @@
   "operator_overrides": {},
   "completed_phases": [],
   "remaining_phases": [
-    "B"
+    "C"
   ]
 }
