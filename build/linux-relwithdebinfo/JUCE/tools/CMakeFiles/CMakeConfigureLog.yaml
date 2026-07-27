@@ -3073,3 +3073,39 @@ events:
       CMAKE_SYSTEM_LIBRARY_PATH:
         - "/usr/lib/X11"
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "extras/Build/CMake/JUCECheckAtomic.cmake:73 (try_compile)"
+      - "extras/Build/CMake/JUCECheckAtomic.cmake:128 (_juce_create_atomic_target)"
+      - "extras/Build/CMake/JUCEModuleSupport.cmake:57 (include)"
+      - "CMakeLists.txt:50 (include)"
+    directories:
+      source: "/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_dir_XK91mNwj6TfDj5Ub/CMakeFiles/CMakeTmp"
+      binary: "/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_dir_XK91mNwj6TfDj5Ub/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "compile_result"
+      cached: true
+      stdout: |
+        Change Dir: '/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_dir_XK91mNwj6TfDj5Ub/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /home/mike/dev/mike/abracapocus/python/abracapocus_2/.venv/lib/python3.11/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_46911/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_46911.dir/build.make CMakeFiles/cmTC_46911.dir/build
+        gmake[1]: Entering directory '/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_dir_XK91mNwj6TfDj5Ub/CMakeFiles/CMakeTmp'
+        Building CXX object CMakeFiles/cmTC_46911.dir/check_atomic_ulYkjED47Jdknwoj.cpp.o
+        /usr/bin/c++   -std=c++17 -o CMakeFiles/cmTC_46911.dir/check_atomic_ulYkjED47Jdknwoj.cpp.o -c /home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_ulYkjED47Jdknwoj.cpp
+        Linking CXX executable cmTC_46911
+        /home/mike/dev/mike/abracapocus/python/abracapocus_2/.venv/lib/python3.11/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46911.dir/link.txt --verbose=1
+        /usr/bin/c++ CMakeFiles/cmTC_46911.dir/check_atomic_ulYkjED47Jdknwoj.cpp.o -o cmTC_46911
+        gmake[1]: Leaving directory '/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/tools/check_atomic_dir_XK91mNwj6TfDj5Ub/CMakeFiles/CMakeTmp'
+        
+      exitCode: 0
+...

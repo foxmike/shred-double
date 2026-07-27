@@ -55,7 +55,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/CMake/JUCEModuleSupport.cmake"
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/CMake/JUCEUtils.cmake"
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/CMake/JuceLV2Defines.h.in"
-  "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/CMake/juce_runtime_arch_detection.cpp"
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/CMakeLists.txt"
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/extras/Build/juceaide/CMakeLists.txt"
   "/home/mike/dev/mike/music/plugins/shred-double/JUCE/modules/CMakeLists.txt"

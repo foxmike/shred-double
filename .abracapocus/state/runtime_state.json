@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-b.3",
+  "plan_version": "task-b.4",
   "active_phase": "B",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "b.3",
-      "title": "TiltFilter - first-order tilt shelf, per-voice distinct magnitudes, pivot ~700 Hz",
+      "task_id": "b.4",
+      "title": "Voice - container owning 2 RandomWalks + PitchShifter + DelayLineFrac + AllpassChain + TiltFilter + constant-power pan, per-sample process with interpolated walk values",
       "phase": "B",
-      "status": "completed",
-      "backend": "pi_cli",
-      "last_run": "2026-07-27T21:06:08.800780",
+      "status": "planned",
+      "backend": "antigravity_cli",
+      "last_run": null,
       "notes": ""
     }
   ],
