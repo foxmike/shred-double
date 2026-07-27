@@ -9,9 +9,9 @@
       "task_id": "c.5",
       "title": "Engine integration tests - bypass null, Mix=0 passthrough, mono-lows invariant, walk bounds, tightness monotonicity, voice decorrelation, latency",
       "phase": "C",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:58:09.922448",
       "notes": ""
     }
   ],
@@ -141,6 +141,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:43:37.510677"
+    },
+    {
+      "run_id": "8487fa97-ac58-4016-a664-052a714492df",
+      "task_id": "c.5",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:58:09.922586"
     }
   ],
   "operator_overrides": {},
