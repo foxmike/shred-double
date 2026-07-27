@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/cmake_install.cmake",
+		"/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/cmake_install.cmake",
+		"/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/modules/cmake_install.cmake",
+		"/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/extras/Build/cmake_install.cmake",
+		"/home/mike/dev/mike/music/plugins/shred-double/build/linux-relwithdebinfo/JUCE/extras/Build/juceaide/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

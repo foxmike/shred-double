@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-a.3",
+  "plan_version": "task-a.4",
   "active_phase": "A",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "a.3",
-      "title": "ParameterIDs.h v1 inventory (voiceCount, spreads, humanRate, tightness, pans, masterSeed non-param), APVTS with skews, bus layout, PluginProcessor spine with V=4 worst-case allocation and PDC hooks",
+      "task_id": "a.4",
+      "title": "StateManager (masterSeed uint64 round-trip, Re-roll seed generation, A/B slots) and PluginEditor skeleton with Re-roll button stub",
       "phase": "A",
-      "status": "completed",
-      "backend": "codex_cli",
-      "last_run": "2026-07-27T20:47:42.099351",
+      "status": "planned",
+      "backend": "antigravity_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

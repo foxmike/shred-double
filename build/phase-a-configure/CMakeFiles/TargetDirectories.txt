@@ -1,0 +1,2 @@
+/home/mike/dev/mike/music/plugins/shred-double/build/phase-a-configure/CMakeFiles/edit_cache.dir
+/home/mike/dev/mike/music/plugins/shred-double/build/phase-a-configure/CMakeFiles/rebuild_cache.dir

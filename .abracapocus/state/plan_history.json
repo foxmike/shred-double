@@ -131,5 +131,68 @@
       "version": "task-a.2",
       "created_at": "2026-07-27T20:43:28.183679"
     }
+  },
+  {
+    "created_at": "2026-07-27T20:47:42.196929",
+    "project_name": "shred-double",
+    "goal": "Sole PluginProcessor owner for phase a. Define stable parameter IDs and the processor spine (APVTS, buses, prepare allocations stubs, PDC hooks). Do not implement the full ShredDoubleEngine DSP yet.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/ParameterIDs.h\n- ~/dev/mike/music/plugins/shred-width/Source/PluginProcessor.h/.cpp (APVTS layout, bus checks, get/setStateInformation hooks, setLatencySamples)\n- Source/DSP/* headers copied in a.2 (include paths only)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.9\u20134.10, 5, 8, 11\n\nImplement:\n1. Source/ParameterIDs.h under namespace ShredDouble::ParameterIDs:\n   - parameterLayoutVersion = 1 (and schemaVersion alias if matching shred-width style)\n   - string IDs never-renumber: voiceCount, timingSpread, pitchSpread, humanRate, tightness, monoXover, mix, panV1, panV2, panV3, panV4, width, latencyMode, outTrim, bypass\n   - non-parameter property name constant for masterSeed (e.g. masterSeed) documented as value-tree only, not APVTS param\n2. PluginProcessor.h/.cpp class ShredDoubleAudioProcessor:\n   - APVTS created via createParameterLayout() with ranges/defaults from spec \u00a75: voiceCount choice {2,4} default 2; timingSpread 0\u201315 default 6.0; pitchSpread 0\u201310 default 5.0; humanRate 0\u2013100 default 50; tightness 0\u2013100 default 50; monoXover 80\u2013300 default 180 with NormalisableRange log/skew \u2248 0.35; mix 0\u2013100 default 50; panV1..V4 defaults -100,+100,-60,+60; width 0\u2013200 default 100; latencyMode {Studio,Live} default Studio; outTrim -12..+12 default 0; bypass bool default false\n   - isBusesLayoutSupported: mono\u2192stereo and stereo\u2192stereo only\n   - processBlock stub: ScopedNoDenormals, clear spare channels, no DSP yet (passthrough or silence-safe stub)\n   - prepareToPlay: record sampleRate/blockSize; allocate for V=4 worst case sizing comments/members ready for later engine (4\u00d7 pitch buffers L=2048+4 intent, 4\u00d7 delay ceil(35ms*maxSR)+guard, 4\u00d7 allpass chain slots, 1\u00d7 crossover, 1\u00d7 dry-align 1024, metering FIFO capacity placeholder, 8\u00d7 PRNG POD states). Prefer lightweight member placeholders/reserves rather than inventing full Engine class here if Engine is phase later\u2014still call setLatencySamples via updateReportedLatencyFromParameter stub matching Studio/Live PDC hooks from \u00a74.9\n   - createEditor forward-declared; hasEditor true\n   - standard AudioProcessor program/name/MIDI boilerplate\n   - getStateInformation/setStateInformation may defer body details to StateManager (a.4) but must compile: either minimal APVTS XML round-trip plus masterSeed property placeholder, or call StateManager if header can be included with a thin stub\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: ParameterIDs.h v1 inventory (voiceCount, spreads, humanRate, tightness, pans, masterSeed non-param), APVTS with skews, bus layout, PluginProcessor spine with V=4 worst-case allocation and PDC hooks",
+      "phases": [
+        {
+          "name": "A",
+          "objective": "Sole PluginProcessor owner for phase a. Define stable parameter IDs and the processor spine (APVTS, buses, prepare allocations stubs, PDC hooks). Do not implement the full ShredDoubleEngine DSP yet.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/ParameterIDs.h\n- ~/dev/mike/music/plugins/shred-width/Source/PluginProcessor.h/.cpp (APVTS layout, bus checks, get/setStateInformation hooks, setLatencySamples)\n- Source/DSP/* headers copied in a.2 (include paths only)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.9\u20134.10, 5, 8, 11\n\nImplement:\n1. Source/ParameterIDs.h under namespace ShredDouble::ParameterIDs:\n   - parameterLayoutVersion = 1 (and schemaVersion alias if matching shred-width style)\n   - string IDs never-renumber: voiceCount, timingSpread, pitchSpread, humanRate, tightness, monoXover, mix, panV1, panV2, panV3, panV4, width, latencyMode, outTrim, bypass\n   - non-parameter property name constant for masterSeed (e.g. masterSeed) documented as value-tree only, not APVTS param\n2. PluginProcessor.h/.cpp class ShredDoubleAudioProcessor:\n   - APVTS created via createParameterLayout() with ranges/defaults from spec \u00a75: voiceCount choice {2,4} default 2; timingSpread 0\u201315 default 6.0; pitchSpread 0\u201310 default 5.0; humanRate 0\u2013100 default 50; tightness 0\u2013100 default 50; monoXover 80\u2013300 default 180 with NormalisableRange log/skew \u2248 0.35; mix 0\u2013100 default 50; panV1..V4 defaults -100,+100,-60,+60; width 0\u2013200 default 100; latencyMode {Studio,Live} default Studio; outTrim -12..+12 default 0; bypass bool default false\n   - isBusesLayoutSupported: mono\u2192stereo and stereo\u2192stereo only\n   - processBlock stub: ScopedNoDenormals, clear spare channels, no DSP yet (passthrough or silence-safe stub)\n   - prepareToPlay: record sampleRate/blockSize; allocate for V=4 worst case sizing comments/members ready for later engine (4\u00d7 pitch buffers L=2048+4 intent, 4\u00d7 delay ceil(35ms*maxSR)+guard, 4\u00d7 allpass chain slots, 1\u00d7 crossover, 1\u00d7 dry-align 1024, metering FIFO capacity placeholder, 8\u00d7 PRNG POD states). Prefer lightweight member placeholders/reserves rather than inventing full Engine class here if Engine is phase later\u2014still call setLatencySamples via updateReportedLatencyFromParameter stub matching Studio/Live PDC hooks from \u00a74.9\n   - createEditor forward-declared; hasEditor true\n   - standard AudioProcessor program/name/MIDI boilerplate\n   - getStateInformation/setStateInformation may defer body details to StateManager (a.4) but must compile: either minimal APVTS XML round-trip plus masterSeed property placeholder, or call StateManager if header can be included with a thin stub\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "a.3",
+                "title": "ParameterIDs.h v1 inventory (voiceCount, spreads, humanRate, tightness, pans, masterSeed non-param), APVTS with skews, bus layout, PluginProcessor spine with V=4 worst-case allocation and PDC hooks",
+                "description": "Sole PluginProcessor owner for phase a. Define stable parameter IDs and the processor spine (APVTS, buses, prepare allocations stubs, PDC hooks). Do not implement the full ShredDoubleEngine DSP yet.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/ParameterIDs.h\n- ~/dev/mike/music/plugins/shred-width/Source/PluginProcessor.h/.cpp (APVTS layout, bus checks, get/setStateInformation hooks, setLatencySamples)\n- Source/DSP/* headers copied in a.2 (include paths only)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.9\u20134.10, 5, 8, 11\n\nImplement:\n1. Source/ParameterIDs.h under namespace ShredDouble::ParameterIDs:\n   - parameterLayoutVersion = 1 (and schemaVersion alias if matching shred-width style)\n   - string IDs never-renumber: voiceCount, timingSpread, pitchSpread, humanRate, tightness, monoXover, mix, panV1, panV2, panV3, panV4, width, latencyMode, outTrim, bypass\n   - non-parameter property name constant for masterSeed (e.g. masterSeed) documented as value-tree only, not APVTS param\n2. PluginProcessor.h/.cpp class ShredDoubleAudioProcessor:\n   - APVTS created via createParameterLayout() with ranges/defaults from spec \u00a75: voiceCount choice {2,4} default 2; timingSpread 0\u201315 default 6.0; pitchSpread 0\u201310 default 5.0; humanRate 0\u2013100 default 50; tightness 0\u2013100 default 50; monoXover 80\u2013300 default 180 with NormalisableRange log/skew \u2248 0.35; mix 0\u2013100 default 50; panV1..V4 defaults -100,+100,-60,+60; width 0\u2013200 default 100; latencyMode {Studio,Live} default Studio; outTrim -12..+12 default 0; bypass bool default false\n   - isBusesLayoutSupported: mono\u2192stereo and stereo\u2192stereo only\n   - processBlock stub: ScopedNoDenormals, clear spare channels, no DSP yet (passthrough or silence-safe stub)\n   - prepareToPlay: record sampleRate/blockSize; allocate for V=4 worst case sizing comments/members ready for later engine (4\u00d7 pitch buffers L=2048+4 intent, 4\u00d7 delay ceil(35ms*maxSR)+guard, 4\u00d7 allpass chain slots, 1\u00d7 crossover, 1\u00d7 dry-align 1024, metering FIFO capacity placeholder, 8\u00d7 PRNG POD states). Prefer lightweight member placeholders/reserves rather than inventing full Engine class here if Engine is phase later\u2014still call setLatencySamples via updateReportedLatencyFromParameter stub matching Studio/Live PDC hooks from \u00a74.9\n   - createEditor forward-declared; hasEditor true\n   - standard AudioProcessor program/name/MIDI boilerplate\n   - getStateInformation/setStateInformation may defer body details to StateManager (a.4) but must compile: either minimal APVTS XML round-trip plus masterSeed property placeholder, or call StateManager if header can be included with a thin stub\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+                "phase": "A",
+                "dependencies": [
+                  "a.1",
+                  "a.2"
+                ],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/ParameterIDs.h exists with ShredDouble::ParameterIDs string IDs for voiceCount timingSpread pitchSpread humanRate tightness monoXover mix panV1 panV2 panV3 panV4 width latencyMode outTrim bypass and parameterLayoutVersion == 1",
+                  "Source/ParameterIDs.h documents or defines masterSeed as non-host-automatable state property name",
+                  "Source/PluginProcessor.h and Source/PluginProcessor.cpp define ShredDoubleAudioProcessor with juce::AudioProcessorValueTreeState apvts",
+                  "createParameterLayout encodes defaults voiceCount=2 timingSpread=6.0 pitchSpread=5.0 humanRate=50 tightness=50 monoXover=180 mix=50 panV1=-100 panV2=100 panV3=-60 panV4=60 width=100 latencyMode=Studio outTrim=0 bypass=false",
+                  "monoXover NormalisableRange uses log/skew approximately 0.35",
+                  "isBusesLayoutSupported accepts mono-to-stereo and stereo-to-stereo only",
+                  "processBlock uses juce::ScopedNoDenormals",
+                  "prepareToPlay establishes V=4 worst-case allocation hooks or reserves and setLatencySamples PDC path for latencyMode",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:44:27.314372",
+                "selected_backend": "codex_cli",
+                "model": null,
+                "task_timeout_seconds": 1200.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/ParameterIDs.h",
+                  "Source/PluginProcessor.h",
+                  "Source/PluginProcessor.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T20:47:42.073214",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-a.3",
+      "created_at": "2026-07-27T20:44:27.386540"
+    }
   }
 ]
