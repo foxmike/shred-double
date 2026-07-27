@@ -9,9 +9,9 @@
       "task_id": "a.3",
       "title": "ParameterIDs.h v1 inventory (voiceCount, spreads, humanRate, tightness, pans, masterSeed non-param), APVTS with skews, bus layout, PluginProcessor spine with V=4 worst-case allocation and PDC hooks",
       "phase": "A",
-      "status": "planned",
+      "status": "completed",
       "backend": "codex_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T20:47:42.099351",
       "notes": ""
     }
   ],
@@ -33,6 +33,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T20:44:27.216929"
+    },
+    {
+      "run_id": "c6448f4b-ac25-4bb4-97e2-771aca3effd6",
+      "task_id": "a.3",
+      "backend": "codex_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T20:47:42.099486"
     }
   ],
   "operator_overrides": {},
