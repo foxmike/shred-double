@@ -9,9 +9,9 @@
       "task_id": "e.3",
       "title": "RT-safety grep-gate script (forbidden processBlock calls, ScopedNoDenormals, no random_device on audio thread)",
       "phase": "E",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T22:32:48.011627",
       "notes": ""
     }
   ],
@@ -186,6 +186,15 @@
       "reviewer_status": "changes_requested",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T22:20:41.452808"
+    },
+    {
+      "run_id": "359160ec-c2f8-4852-a84b-33d19d468193",
+      "task_id": "e.3",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T22:32:48.011741"
     }
   ],
   "operator_overrides": {},
