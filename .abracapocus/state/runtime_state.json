@@ -9,9 +9,9 @@
       "task_id": "b.5",
       "title": "TestMain harness and DSP primitive tests - walk bounds and mean-reversion, allpass magnitude-flat, tilt response, voice decorrelation, CMakeLists registration",
       "phase": "B",
-      "status": "planned",
+      "status": "completed",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T21:16:39.063941",
       "notes": ""
     }
   ],
@@ -96,6 +96,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T21:08:25.747913"
+    },
+    {
+      "run_id": "7ce5b274-9696-4313-a211-8fd91fa58300",
+      "task_id": "b.5",
+      "backend": "pi_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T21:16:39.064036"
     }
   ],
   "operator_overrides": {},
