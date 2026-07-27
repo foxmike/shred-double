@@ -9,9 +9,9 @@
       "task_id": "e.2",
       "title": "Pitch-accuracy FFT and correlation-sanity tests, preset BinaryData embedding, CMakeLists",
       "phase": "E",
-      "status": "planned",
+      "status": "blocked",
       "backend": "pi_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T22:20:41.452667",
       "notes": ""
     }
   ],
@@ -177,6 +177,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T22:05:39.823901"
+    },
+    {
+      "run_id": "1457c30e-578c-4f4c-8bfa-a42320166932",
+      "task_id": "e.2",
+      "backend": "pi_cli",
+      "status": "failed",
+      "reviewer_status": "changes_requested",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T22:20:41.452808"
     }
   ],
   "operator_overrides": {},
