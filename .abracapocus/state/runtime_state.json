@@ -1,0 +1,24 @@
+{
+  "project_name": "shred-double",
+  "plan_version": "task-a.1",
+  "active_phase": "A",
+  "default_backend": "codex_cli",
+  "routing_mode": "manual",
+  "tasks": [
+    {
+      "task_id": "a.1",
+      "title": "CMakeLists.txt, CMakePresets.json, build_all.sh (CLion-bundled cmake), JUCE submodule pinned to shred-width tag",
+      "phase": "A",
+      "status": "planned",
+      "backend": "codex_cli",
+      "last_run": null,
+      "notes": ""
+    }
+  ],
+  "history": [],
+  "operator_overrides": {},
+  "completed_phases": [],
+  "remaining_phases": [
+    "A"
+  ]
+}

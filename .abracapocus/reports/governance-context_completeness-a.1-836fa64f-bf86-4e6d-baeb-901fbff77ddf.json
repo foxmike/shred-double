@@ -1,0 +1,13 @@
+{
+  "run_id": "836fa64f-bf86-4e6d-baeb-901fbff77ddf",
+  "task_id": "a.1",
+  "phase": "A",
+  "subtype": "context_completeness",
+  "mode": "advisory",
+  "reason_codes": [
+    "empty_context_package"
+  ],
+  "detail": "ContextPackage.files or ContextPackage.summaries must be non-empty.",
+  "blocking": false,
+  "created_at": "2026-07-27T20:41:28.628178"
+}
