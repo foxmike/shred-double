@@ -255,5 +255,60 @@
       "version": "task-a.4",
       "created_at": "2026-07-27T20:47:42.310161"
     }
+  },
+  {
+    "created_at": "2026-07-27T20:54:22.273719",
+    "project_name": "shred-double",
+    "goal": "Add project root .gitignore and README for ShredDouble.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/.gitignore\n- ~/dev/mike/music/plugins/shred-width/README.md\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a71, 10, 15\n\nImplement:\n1. .gitignore covering build/, build-*/, cmake-build-*/, Builds/, out/, state/, IDE junk, binary artifacts (*.o*.so*.vst3 etc.), and abracapocus runtime dirs under .abracapocus/state|logs|reports|cache|tmp|runs and sqlite DBs\u2014mirror shred-width patterns\n2. README.md describing ShredDouble (algorithmic rhythm doubler / double-tracked width from one take), nSpace Systems, formats VST3 CLAP LV2 Standalone (no AU), C++20 + JUCE 8.0.13 submodule, build via ./scripts/build_all.sh with CLion-bundled cmake note, git submodule update --init --recursive, link to .abracapocus/ShredDouble_Build_Spec.md\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: .gitignore, README",
+      "phases": [
+        {
+          "name": "A",
+          "objective": "Add project root .gitignore and README for ShredDouble.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/.gitignore\n- ~/dev/mike/music/plugins/shred-width/README.md\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a71, 10, 15\n\nImplement:\n1. .gitignore covering build/, build-*/, cmake-build-*/, Builds/, out/, state/, IDE junk, binary artifacts (*.o*.so*.vst3 etc.), and abracapocus runtime dirs under .abracapocus/state|logs|reports|cache|tmp|runs and sqlite DBs\u2014mirror shred-width patterns\n2. README.md describing ShredDouble (algorithmic rhythm doubler / double-tracked width from one take), nSpace Systems, formats VST3 CLAP LV2 Standalone (no AU), C++20 + JUCE 8.0.13 submodule, build via ./scripts/build_all.sh with CLion-bundled cmake note, git submodule update --init --recursive, link to .abracapocus/ShredDouble_Build_Spec.md\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "a.5",
+                "title": ".gitignore, README",
+                "description": "Add project root .gitignore and README for ShredDouble.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/.gitignore\n- ~/dev/mike/music/plugins/shred-width/README.md\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a71, 10, 15\n\nImplement:\n1. .gitignore covering build/, build-*/, cmake-build-*/, Builds/, out/, state/, IDE junk, binary artifacts (*.o*.so*.vst3 etc.), and abracapocus runtime dirs under .abracapocus/state|logs|reports|cache|tmp|runs and sqlite DBs\u2014mirror shred-width patterns\n2. README.md describing ShredDouble (algorithmic rhythm doubler / double-tracked width from one take), nSpace Systems, formats VST3 CLAP LV2 Standalone (no AU), C++20 + JUCE 8.0.13 submodule, build via ./scripts/build_all.sh with CLion-bundled cmake note, git submodule update --init --recursive, link to .abracapocus/ShredDouble_Build_Spec.md\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+                "phase": "A",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  ".gitignore exists and ignores build/ state/ IDE directories and common binary/plugin artifacts",
+                  "README.md exists and names ShredDouble with supported formats VST3 CLAP LV2 Standalone",
+                  "README.md documents JUCE submodule init and ./scripts/build_all.sh including CLion-bundled cmake prerequisite",
+                  "README.md references .abracapocus/ShredDouble_Build_Spec.md",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:52:43.440520",
+                "selected_backend": "pi_cli",
+                "model": "openrouter/deepseek/deepseek-v4-flash",
+                "task_timeout_seconds": 600.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  ".gitignore",
+                  "README.md"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T20:54:22.183655",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-a.5",
+      "created_at": "2026-07-27T20:52:43.511266"
+    }
   }
 ]
