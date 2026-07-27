@@ -369,5 +369,62 @@
       "version": "task-b.1",
       "created_at": "2026-07-27T20:54:23.033835"
     }
+  },
+  {
+    "created_at": "2026-07-27T21:00:56.041979",
+    "project_name": "shred-double",
+    "goal": "Implement Source/DSP/AllpassChain.h and Source/DSP/AllpassChain.cpp \u2014 per-voice 4-stage first-order Schroeder allpass diffusion per ShredDouble_Build_Spec.md \u00a74.5A.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.5A (equation, g\u22480.6, coprime M tables), \u00a77\u20138\n- Source/DSP/DelayLineFrac.h (prepare/reset/processSample patterns)\n\nImplement class AllpassChain:\n1. N_ap = 4 cascaded stages: y = -g*x + x_delayed + g*y_delayed with g default 0.6f.\n2. Per-voice table of mutually coprime stage delays at 48 kHz reference (spec example):\n   - V1: {13, 29, 47, 71}\n   - V2: {17, 37, 53, 79}\n   - V3: {19, 41, 59, 83}\n   - V4: {23, 43, 61, 89}\n   Scale M by sampleRate/48000 so absolute stage times stay consistent; round to >=1 integers; keep stages mutually coprime-ish after scaling when practical (at minimum distinct per voice and non-zero).\n3. setVoiceIndex(0..3) selects the table; prepare(sampleRate [, maxBlock]) allocates fixed per-stage circular buffers sized for worst-case SR scaling (no alloc in process).\n4. processSample(float x) noexcept runs all 4 stages in series; optional block process().\n5. reset() clears delay memory to 0. Magnitude-flat design \u2014 do not add shelf/gain EQ here.\n6. Total group delay remains small (few ms); no slapback intentionally.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: AllpassChain - 4-stage coprime Schroeder allpasses, per-voice distinct coprime delays, g=0.6, sample-rate-scaled stage times",
+      "phases": [
+        {
+          "name": "B",
+          "objective": "Implement Source/DSP/AllpassChain.h and Source/DSP/AllpassChain.cpp \u2014 per-voice 4-stage first-order Schroeder allpass diffusion per ShredDouble_Build_Spec.md \u00a74.5A.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.5A (equation, g\u22480.6, coprime M tables), \u00a77\u20138\n- Source/DSP/DelayLineFrac.h (prepare/reset/processSample patterns)\n\nImplement class AllpassChain:\n1. N_ap = 4 cascaded stages: y = -g*x + x_delayed + g*y_delayed with g default 0.6f.\n2. Per-voice table of mutually coprime stage delays at 48 kHz reference (spec example):\n   - V1: {13, 29, 47, 71}\n   - V2: {17, 37, 53, 79}\n   - V3: {19, 41, 59, 83}\n   - V4: {23, 43, 61, 89}\n   Scale M by sampleRate/48000 so absolute stage times stay consistent; round to >=1 integers; keep stages mutually coprime-ish after scaling when practical (at minimum distinct per voice and non-zero).\n3. setVoiceIndex(0..3) selects the table; prepare(sampleRate [, maxBlock]) allocates fixed per-stage circular buffers sized for worst-case SR scaling (no alloc in process).\n4. processSample(float x) noexcept runs all 4 stages in series; optional block process().\n5. reset() clears delay memory to 0. Magnitude-flat design \u2014 do not add shelf/gain EQ here.\n6. Total group delay remains small (few ms); no slapback intentionally.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "b.2",
+                "title": "AllpassChain - 4-stage coprime Schroeder allpasses, per-voice distinct coprime delays, g=0.6, sample-rate-scaled stage times",
+                "description": "Implement Source/DSP/AllpassChain.h and Source/DSP/AllpassChain.cpp \u2014 per-voice 4-stage first-order Schroeder allpass diffusion per ShredDouble_Build_Spec.md \u00a74.5A.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.5A (equation, g\u22480.6, coprime M tables), \u00a77\u20138\n- Source/DSP/DelayLineFrac.h (prepare/reset/processSample patterns)\n\nImplement class AllpassChain:\n1. N_ap = 4 cascaded stages: y = -g*x + x_delayed + g*y_delayed with g default 0.6f.\n2. Per-voice table of mutually coprime stage delays at 48 kHz reference (spec example):\n   - V1: {13, 29, 47, 71}\n   - V2: {17, 37, 53, 79}\n   - V3: {19, 41, 59, 83}\n   - V4: {23, 43, 61, 89}\n   Scale M by sampleRate/48000 so absolute stage times stay consistent; round to >=1 integers; keep stages mutually coprime-ish after scaling when practical (at minimum distinct per voice and non-zero).\n3. setVoiceIndex(0..3) selects the table; prepare(sampleRate [, maxBlock]) allocates fixed per-stage circular buffers sized for worst-case SR scaling (no alloc in process).\n4. processSample(float x) noexcept runs all 4 stages in series; optional block process().\n5. reset() clears delay memory to 0. Magnitude-flat design \u2014 do not add shelf/gain EQ here.\n6. Total group delay remains small (few ms); no slapback intentionally.\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+                "phase": "B",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/DSP/AllpassChain.h and Source/DSP/AllpassChain.cpp exist",
+                  "AllpassChain implements N_ap=4 cascaded first-order Schroeder allpasses with default g approximately 0.6",
+                  "Per-voice delay tables match V1={13,29,47,71} V2={17,37,53,79} V3={19,41,59,83} V4={23,43,61,89} at 48 kHz reference",
+                  "Stage delays scale with sampleRate/48000 in prepare",
+                  "prepare allocates stage buffers; processSample/reset allocate nothing and are audio-thread safe",
+                  "setVoiceIndex or equivalent selects distinct per-voice delay sets",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:58:08.005215",
+                "selected_backend": "codex_cli",
+                "model": null,
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/DSP/AllpassChain.h",
+                  "Source/DSP/AllpassChain.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T21:00:55.927621",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-b.2",
+      "created_at": "2026-07-27T20:58:08.075305"
+    }
   }
 ]

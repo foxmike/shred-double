@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-b.2",
+  "plan_version": "task-b.3",
   "active_phase": "B",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "b.2",
-      "title": "AllpassChain - 4-stage coprime Schroeder allpasses, per-voice distinct coprime delays, g=0.6, sample-rate-scaled stage times",
+      "task_id": "b.3",
+      "title": "TiltFilter - first-order tilt shelf, per-voice distinct magnitudes, pivot ~700 Hz",
       "phase": "B",
-      "status": "completed",
-      "backend": "codex_cli",
-      "last_run": "2026-07-27T21:00:55.953664",
+      "status": "planned",
+      "backend": "pi_cli",
+      "last_run": null,
       "notes": ""
     }
   ],
