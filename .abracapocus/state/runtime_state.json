@@ -1,7 +1,7 @@
 {
   "project_name": "shred-double",
   "plan_version": "task-e.5",
-  "active_phase": "E",
+  "active_phase": "completed",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
@@ -216,8 +216,8 @@
     }
   ],
   "operator_overrides": {},
-  "completed_phases": [],
-  "remaining_phases": [
+  "completed_phases": [
     "E"
-  ]
+  ],
+  "remaining_phases": []
 }

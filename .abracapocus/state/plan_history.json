@@ -1,79 +1,5 @@
 [
   {
-    "created_at": "2026-07-27T20:44:27.271425",
-    "project_name": "shred-double",
-    "goal": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
-    "plan_template": {
-      "project_name": "shred-double",
-      "summary": "Task run: Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
-      "phases": [
-        {
-          "name": "A",
-          "objective": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
-          "status": "completed",
-          "tasks": [
-            {
-              "task": {
-                "task_id": "a.2",
-                "title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
-                "description": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
-                "phase": "A",
-                "dependencies": [],
-                "exclusivity_category": null,
-                "max_in_category": null,
-                "status": "completed",
-                "acceptance_criteria": [
-                  "Source/DSP/PitchShifter.h and Source/DSP/PitchShifter.cpp exist",
-                  "Source/DSP/DelayLineFrac.h and Source/DSP/DelayLineFrac.cpp exist",
-                  "Source/DSP/MonoSafetyCrossover.h and Source/DSP/MonoSafetyCrossover.cpp exist",
-                  "Source/DSP/WidthProcessor.h and Source/DSP/WidthProcessor.cpp exist",
-                  "Source/GUI/CustomLookAndFeel.h and Source/GUI/CustomLookAndFeel.cpp exist",
-                  "Source/GUI/RotarySlider.h and Source/GUI/RotarySlider.cpp exist",
-                  "Source/GUI/GoniometerComponent.h and Source/GUI/GoniometerComponent.cpp exist",
-                  "Source/GUI/CorrelationMeter.h and Source/GUI/CorrelationMeter.cpp exist",
-                  "cmp -s against each matching file under ~/dev/mike/music/plugins/shred-width/Source/ succeeds for all sixteen files (byte-identical)",
-                  "No file outside the task's allowed_write_paths is created or modified"
-                ],
-                "created_at": "2026-07-27T20:43:28.105879",
-                "selected_backend": "pi_cli",
-                "model": "openrouter/minimax/minimax-m3",
-                "task_timeout_seconds": 600.0,
-                "verification_profile": "focused",
-                "verification_commands": [],
-                "allowed_write_paths": [
-                  "Source/DSP/PitchShifter.h",
-                  "Source/DSP/PitchShifter.cpp",
-                  "Source/DSP/DelayLineFrac.h",
-                  "Source/DSP/DelayLineFrac.cpp",
-                  "Source/DSP/MonoSafetyCrossover.h",
-                  "Source/DSP/MonoSafetyCrossover.cpp",
-                  "Source/DSP/WidthProcessor.h",
-                  "Source/DSP/WidthProcessor.cpp",
-                  "Source/GUI/CustomLookAndFeel.h",
-                  "Source/GUI/CustomLookAndFeel.cpp",
-                  "Source/GUI/RotarySlider.h",
-                  "Source/GUI/RotarySlider.cpp",
-                  "Source/GUI/GoniometerComponent.h",
-                  "Source/GUI/GoniometerComponent.cpp",
-                  "Source/GUI/CorrelationMeter.h",
-                  "Source/GUI/CorrelationMeter.cpp"
-                ],
-                "forbidden_patterns_override": null
-              },
-              "dependencies": [],
-              "status": "completed"
-            }
-          ],
-          "completed": true,
-          "completed_at": "2026-07-27T20:44:27.192015",
-          "human_checkpoint": null
-        }
-      ],
-      "version": "task-a.2",
-      "created_at": "2026-07-27T20:43:28.183679"
-    }
-  },
-  {
     "created_at": "2026-07-27T20:47:42.196929",
     "project_name": "shred-double",
     "goal": "Sole PluginProcessor owner for phase a. Define stable parameter IDs and the processor spine (APVTS, buses, prepare allocations stubs, PDC hooks). Do not implement the full ShredDoubleEngine DSP yet.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/ParameterIDs.h\n- ~/dev/mike/music/plugins/shred-width/Source/PluginProcessor.h/.cpp (APVTS layout, bus checks, get/setStateInformation hooks, setLatencySamples)\n- Source/DSP/* headers copied in a.2 (include paths only)\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.9\u20134.10, 5, 8, 11\n\nImplement:\n1. Source/ParameterIDs.h under namespace ShredDouble::ParameterIDs:\n   - parameterLayoutVersion = 1 (and schemaVersion alias if matching shred-width style)\n   - string IDs never-renumber: voiceCount, timingSpread, pitchSpread, humanRate, tightness, monoXover, mix, panV1, panV2, panV3, panV4, width, latencyMode, outTrim, bypass\n   - non-parameter property name constant for masterSeed (e.g. masterSeed) documented as value-tree only, not APVTS param\n2. PluginProcessor.h/.cpp class ShredDoubleAudioProcessor:\n   - APVTS created via createParameterLayout() with ranges/defaults from spec \u00a75: voiceCount choice {2,4} default 2; timingSpread 0\u201315 default 6.0; pitchSpread 0\u201310 default 5.0; humanRate 0\u2013100 default 50; tightness 0\u2013100 default 50; monoXover 80\u2013300 default 180 with NormalisableRange log/skew \u2248 0.35; mix 0\u2013100 default 50; panV1..V4 defaults -100,+100,-60,+60; width 0\u2013200 default 100; latencyMode {Studio,Live} default Studio; outTrim -12..+12 default 0; bypass bool default false\n   - isBusesLayoutSupported: mono\u2192stereo and stereo\u2192stereo only\n   - processBlock stub: ScopedNoDenormals, clear spare channels, no DSP yet (passthrough or silence-safe stub)\n   - prepareToPlay: record sampleRate/blockSize; allocate for V=4 worst case sizing comments/members ready for later engine (4\u00d7 pitch buffers L=2048+4 intent, 4\u00d7 delay ceil(35ms*maxSR)+guard, 4\u00d7 allpass chain slots, 1\u00d7 crossover, 1\u00d7 dry-align 1024, metering FIFO capacity placeholder, 8\u00d7 PRNG POD states). Prefer lightweight member placeholders/reserves rather than inventing full Engine class here if Engine is phase later\u2014still call setLatencySamples via updateReportedLatencyFromParameter stub matching Studio/Live PDC hooks from \u00a74.9\n   - createEditor forward-declared; hasEditor true\n   - standard AudioProcessor program/name/MIDI boilerplate\n   - getStateInformation/setStateInformation may defer body details to StateManager (a.4) but must compile: either minimal APVTS XML round-trip plus masterSeed property placeholder, or call StateManager if header can be included with a thin stub\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
@@ -1191,6 +1117,62 @@
       ],
       "version": "task-e.4",
       "created_at": "2026-07-27T22:32:48.186221"
+    }
+  },
+  {
+    "created_at": "2026-07-27T22:35:47.470060",
+    "project_name": "shred-double",
+    "goal": "Author release documentation only: CI verification checklist and end-user manual. Wave-1 independent of e.1\u2013e.4.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.3\u20134.10, 5, 9\u201312, 14, 16 (humanization D3 Rate/Tightness remap, masterSeed/Re-roll D2, formats, presets, verification items, open-decision defaults)\n- Factory preset names/values from phase goal / \u00a712\n- ParameterIDs inventory (voiceCount and latencyMode automatable but load-bearing; masterSeed state-only)\n\nImplement:\n1. docs/verification/shreddouble_verification.md \u2014 checklist mapping \u00a714 CI-runnable items:\n   1 RT-safety (scripts/check_rt_safety.sh + ScopedNoDenormals + no std::random_device on audio thread)\n   2 seed-determinism (same masterSeed bit-identical; different seed differs)\n   3 bypass null\n   4 Mix=0 passthrough\n   5 mono-lows invariant\n   6 walk bounds\n   7 correlation-time sanity\n   8 voice decorrelation\n   9 tightness monotonicity (D3 depth macro)\n   10 latency report (1024 Studio / 256 Live)\n   11 pluginval VST3/CLAP strictness 8+ and LV2/Standalone smoke (scripts/run_pluginval.sh)\n   Honest note: ear-pass (\"sounds like a real double-track\") and full host matrix are manual, not CI-gated.\n   Point operators at ctest/test targets (SeedingTests, EngineTests, CorrectnessTests) and the two scripts; leave cmake resolution to build_all.sh (not on PATH).\n\n2. docs/shreddouble_manual.md \u2014 user-facing manual covering:\n   - What ShredDouble is (algorithmic rhythm doubler / virtual double-track width from one take; stochastic random-walk timing+pitch humanization \u2014 no LFO; decorrelated voices; mono-safe lows)\n   - Seeding / Re-roll workflow: masterSeed stored in plugin state; same seed+params \u21d2 identical render; Re-roll GUI button draws a new seed (not host-automatable momentary param by default)\n   - D3 Rate/Tightness remap: Rate controls walk correlation time; Tightness is the depth macro scaling excursion (not an independent second LFO rate)\n   - voiceCount (2/4) and latencyMode (Studio/Live) automation caveats \u2014 buffer repoint / voice retenancy causes brief masked crossfades; discourage live scrubbing mid-take\n   - LV2 host port-metadata / latency refresh notes\n   - Factory presets: Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking with \u00a712 numeric vignettes\n   - Formats VST3/CLAP/LV2/Standalone (no AU); Output Trim default 0 dB; default Mix 50%\n   - Brief mono-safe design note (shared-LP crossover keeps lows centered under mono fold-down)\n\nDo not edit CMakeLists, sources, presets, or scripts.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: Verification checklist and user manual (seeding/Re-roll workflow, D3 remap, automation caveats, LV2 host notes)",
+      "phases": [
+        {
+          "name": "E",
+          "objective": "Author release documentation only: CI verification checklist and end-user manual. Wave-1 independent of e.1\u2013e.4.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.3\u20134.10, 5, 9\u201312, 14, 16 (humanization D3 Rate/Tightness remap, masterSeed/Re-roll D2, formats, presets, verification items, open-decision defaults)\n- Factory preset names/values from phase goal / \u00a712\n- ParameterIDs inventory (voiceCount and latencyMode automatable but load-bearing; masterSeed state-only)\n\nImplement:\n1. docs/verification/shreddouble_verification.md \u2014 checklist mapping \u00a714 CI-runnable items:\n   1 RT-safety (scripts/check_rt_safety.sh + ScopedNoDenormals + no std::random_device on audio thread)\n   2 seed-determinism (same masterSeed bit-identical; different seed differs)\n   3 bypass null\n   4 Mix=0 passthrough\n   5 mono-lows invariant\n   6 walk bounds\n   7 correlation-time sanity\n   8 voice decorrelation\n   9 tightness monotonicity (D3 depth macro)\n   10 latency report (1024 Studio / 256 Live)\n   11 pluginval VST3/CLAP strictness 8+ and LV2/Standalone smoke (scripts/run_pluginval.sh)\n   Honest note: ear-pass (\"sounds like a real double-track\") and full host matrix are manual, not CI-gated.\n   Point operators at ctest/test targets (SeedingTests, EngineTests, CorrectnessTests) and the two scripts; leave cmake resolution to build_all.sh (not on PATH).\n\n2. docs/shreddouble_manual.md \u2014 user-facing manual covering:\n   - What ShredDouble is (algorithmic rhythm doubler / virtual double-track width from one take; stochastic random-walk timing+pitch humanization \u2014 no LFO; decorrelated voices; mono-safe lows)\n   - Seeding / Re-roll workflow: masterSeed stored in plugin state; same seed+params \u21d2 identical render; Re-roll GUI button draws a new seed (not host-automatable momentary param by default)\n   - D3 Rate/Tightness remap: Rate controls walk correlation time; Tightness is the depth macro scaling excursion (not an independent second LFO rate)\n   - voiceCount (2/4) and latencyMode (Studio/Live) automation caveats \u2014 buffer repoint / voice retenancy causes brief masked crossfades; discourage live scrubbing mid-take\n   - LV2 host port-metadata / latency refresh notes\n   - Factory presets: Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking with \u00a712 numeric vignettes\n   - Formats VST3/CLAP/LV2/Standalone (no AU); Output Trim default 0 dB; default Mix 50%\n   - Brief mono-safe design note (shared-LP crossover keeps lows centered under mono fold-down)\n\nDo not edit CMakeLists, sources, presets, or scripts.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "e.5",
+                "title": "Verification checklist and user manual (seeding/Re-roll workflow, D3 remap, automation caveats, LV2 host notes)",
+                "description": "Author release documentation only: CI verification checklist and end-user manual. Wave-1 independent of e.1\u2013e.4.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a7\u00a74.3\u20134.10, 5, 9\u201312, 14, 16 (humanization D3 Rate/Tightness remap, masterSeed/Re-roll D2, formats, presets, verification items, open-decision defaults)\n- Factory preset names/values from phase goal / \u00a712\n- ParameterIDs inventory (voiceCount and latencyMode automatable but load-bearing; masterSeed state-only)\n\nImplement:\n1. docs/verification/shreddouble_verification.md \u2014 checklist mapping \u00a714 CI-runnable items:\n   1 RT-safety (scripts/check_rt_safety.sh + ScopedNoDenormals + no std::random_device on audio thread)\n   2 seed-determinism (same masterSeed bit-identical; different seed differs)\n   3 bypass null\n   4 Mix=0 passthrough\n   5 mono-lows invariant\n   6 walk bounds\n   7 correlation-time sanity\n   8 voice decorrelation\n   9 tightness monotonicity (D3 depth macro)\n   10 latency report (1024 Studio / 256 Live)\n   11 pluginval VST3/CLAP strictness 8+ and LV2/Standalone smoke (scripts/run_pluginval.sh)\n   Honest note: ear-pass (\"sounds like a real double-track\") and full host matrix are manual, not CI-gated.\n   Point operators at ctest/test targets (SeedingTests, EngineTests, CorrectnessTests) and the two scripts; leave cmake resolution to build_all.sh (not on PATH).\n\n2. docs/shreddouble_manual.md \u2014 user-facing manual covering:\n   - What ShredDouble is (algorithmic rhythm doubler / virtual double-track width from one take; stochastic random-walk timing+pitch humanization \u2014 no LFO; decorrelated voices; mono-safe lows)\n   - Seeding / Re-roll workflow: masterSeed stored in plugin state; same seed+params \u21d2 identical render; Re-roll GUI button draws a new seed (not host-automatable momentary param by default)\n   - D3 Rate/Tightness remap: Rate controls walk correlation time; Tightness is the depth macro scaling excursion (not an independent second LFO rate)\n   - voiceCount (2/4) and latencyMode (Studio/Live) automation caveats \u2014 buffer repoint / voice retenancy causes brief masked crossfades; discourage live scrubbing mid-take\n   - LV2 host port-metadata / latency refresh notes\n   - Factory presets: Tight Metal Quad, Wide Double, Loose Garage Double, Subtle Thickener, Live Quad Tracking with \u00a712 numeric vignettes\n   - Formats VST3/CLAP/LV2/Standalone (no AU); Output Trim default 0 dB; default Mix 50%\n   - Brief mono-safe design note (shared-LP crossover keeps lows centered under mono fold-down)\n\nDo not edit CMakeLists, sources, presets, or scripts.",
+                "phase": "E",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "docs/verification/shreddouble_verification.md exists and lists \u00a714 checks 1\u201311 including RT-safety, seed-determinism, bypass, Mix=0, mono-lows, walk bounds, correlation-time sanity, voice decorrelation, tightness monotonicity, latency, pluginval",
+                  "docs/verification/shreddouble_verification.md states ear-pass and full host matrix are manual",
+                  "docs/verification/shreddouble_verification.md references scripts/check_rt_safety.sh and scripts/run_pluginval.sh",
+                  "docs/shreddouble_manual.md exists and documents masterSeed/Re-roll seeding workflow and D3 Rate/Tightness remap",
+                  "docs/shreddouble_manual.md documents voiceCount and latencyMode automation caveats, LV2 host notes, and the five factory presets",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T22:33:28.430251",
+                "selected_backend": "pi_cli",
+                "model": "openrouter/deepseek/deepseek-v4-flash",
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "docs/verification/shreddouble_verification.md",
+                  "docs/shreddouble_manual.md"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T22:35:47.371755",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-e.5",
+      "created_at": "2026-07-27T22:33:28.507670"
     }
   }
 ]

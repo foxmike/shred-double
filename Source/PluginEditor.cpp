@@ -429,9 +429,9 @@ void ShredDoubleAudioProcessorEditor::updateABButtonStates()
     bButton.setToggleState (activeSlot == StateManager::Slot::B, juce::dontSendNotification);
 
     if (activeSlot == StateManager::Slot::A)
-        copyButton.setButtonText ("Copy A \u27a1 B");
+        copyButton.setButtonText ("Copy A -> B");
     else
-        copyButton.setButtonText ("Copy B \u27a1 A");
+        copyButton.setButtonText ("Copy B -> A");
 }
 
 void ShredDoubleAudioProcessorEditor::updateVoiceCountButtonStates()
