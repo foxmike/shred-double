@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-a.2",
+  "plan_version": "task-a.3",
   "active_phase": "A",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "a.2",
-      "title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
+      "task_id": "a.3",
+      "title": "ParameterIDs.h v1 inventory (voiceCount, spreads, humanRate, tightness, pans, masterSeed non-param), APVTS with skews, bus layout, PluginProcessor spine with V=4 worst-case allocation and PDC hooks",
       "phase": "A",
-      "status": "completed",
-      "backend": "pi_cli",
-      "last_run": "2026-07-27T20:44:27.216854",
+      "status": "planned",
+      "backend": "codex_cli",
+      "last_run": null,
       "notes": ""
     }
   ],

@@ -57,5 +57,79 @@
       "version": "task-a.1",
       "created_at": "2026-07-27T20:41:28.558298"
     }
+  },
+  {
+    "created_at": "2026-07-27T20:44:27.271425",
+    "project_name": "shred-double",
+    "goal": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
+      "phases": [
+        {
+          "name": "A",
+          "objective": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "a.2",
+                "title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
+                "description": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md \u00a713 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems \u00d7 .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+                "phase": "A",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/DSP/PitchShifter.h and Source/DSP/PitchShifter.cpp exist",
+                  "Source/DSP/DelayLineFrac.h and Source/DSP/DelayLineFrac.cpp exist",
+                  "Source/DSP/MonoSafetyCrossover.h and Source/DSP/MonoSafetyCrossover.cpp exist",
+                  "Source/DSP/WidthProcessor.h and Source/DSP/WidthProcessor.cpp exist",
+                  "Source/GUI/CustomLookAndFeel.h and Source/GUI/CustomLookAndFeel.cpp exist",
+                  "Source/GUI/RotarySlider.h and Source/GUI/RotarySlider.cpp exist",
+                  "Source/GUI/GoniometerComponent.h and Source/GUI/GoniometerComponent.cpp exist",
+                  "Source/GUI/CorrelationMeter.h and Source/GUI/CorrelationMeter.cpp exist",
+                  "cmp -s against each matching file under ~/dev/mike/music/plugins/shred-width/Source/ succeeds for all sixteen files (byte-identical)",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:43:28.105879",
+                "selected_backend": "pi_cli",
+                "model": "openrouter/minimax/minimax-m3",
+                "task_timeout_seconds": 600.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/DSP/PitchShifter.h",
+                  "Source/DSP/PitchShifter.cpp",
+                  "Source/DSP/DelayLineFrac.h",
+                  "Source/DSP/DelayLineFrac.cpp",
+                  "Source/DSP/MonoSafetyCrossover.h",
+                  "Source/DSP/MonoSafetyCrossover.cpp",
+                  "Source/DSP/WidthProcessor.h",
+                  "Source/DSP/WidthProcessor.cpp",
+                  "Source/GUI/CustomLookAndFeel.h",
+                  "Source/GUI/CustomLookAndFeel.cpp",
+                  "Source/GUI/RotarySlider.h",
+                  "Source/GUI/RotarySlider.cpp",
+                  "Source/GUI/GoniometerComponent.h",
+                  "Source/GUI/GoniometerComponent.cpp",
+                  "Source/GUI/CorrelationMeter.h",
+                  "Source/GUI/CorrelationMeter.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T20:44:27.192015",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-a.2",
+      "created_at": "2026-07-27T20:43:28.183679"
+    }
   }
 ]

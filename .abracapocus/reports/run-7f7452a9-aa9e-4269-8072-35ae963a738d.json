@@ -1,0 +1,372 @@
+{
+  "plan_summary": "Task run: Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
+  "backend_executions": [
+    {
+      "backend": "pi_cli",
+      "command": [
+        "pi",
+        "-p",
+        "--provider",
+        "openrouter",
+        "--model",
+        "minimax/minimax-m3",
+        "Task: Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)\nDescription: Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md §13 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems × .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.\nPhase: A\nAcceptance criteria:\n  - Source/DSP/PitchShifter.h and Source/DSP/PitchShifter.cpp exist\n  - Source/DSP/DelayLineFrac.h and Source/DSP/DelayLineFrac.cpp exist\n  - Source/DSP/MonoSafetyCrossover.h and Source/DSP/MonoSafetyCrossover.cpp exist\n  - Source/DSP/WidthProcessor.h and Source/DSP/WidthProcessor.cpp exist\n  - Source/GUI/CustomLookAndFeel.h and Source/GUI/CustomLookAndFeel.cpp exist\n  - Source/GUI/RotarySlider.h and Source/GUI/RotarySlider.cpp exist\n  - Source/GUI/GoniometerComponent.h and Source/GUI/GoniometerComponent.cpp exist\n  - Source/GUI/CorrelationMeter.h and Source/GUI/CorrelationMeter.cpp exist\n  - cmp -s against each matching file under ~/dev/mike/music/plugins/shred-width/Source/ succeeds for all sixteen files (byte-identical)\n  - No file outside the task's allowed_write_paths is created or modified\nContext: AGENTS.md guidance:\n# AGENTS.md\n## Purpose\nThis repository is operated by an autonomous multi-agent system (abracapocus_2).\nAll agents must follow these rules when modifying the codebase.\n---\n## Core Principles\n- Minimal blast radius: only modify what is required for the task\n- Deterministic verification: all changes must be verifiable via code (tests, compile, scripts)\n- No architecture drift: do not introduce new frameworks or major design changes unless explicitly required\n- No unrelated refactors\n- All changes must be reproducible from a clean clone\n---\n## Project Structure\n- docs/ → design, plans, architecture constraints\n- plans/ → master plans\n- phases/ → phase definitions\n- tasks/ → executable task documents\n- backends/ → CLI backend adapters\n- agents/ → specialist agents\n- runtime/ → orchestration, routing, state\n...(truncated)\n\n## Language Context\n\n# C++ Language Adapter\n\n## Detection and Classification\n\n- **Language name**: `cpp`\n- **Extensions**: `.cpp`, `.cc`, `.cxx`, `.c++`, `.hpp`, `.hh`, `.hxx`,\n  `.h++`, `.ipp`, `.inl`, `.tpp`, `.ixx`, `.cppm`, and `.h`.\n- **Shared headers**: C and C++ both claim `.h`. Registry lookup with a\n  repository root or language hint selects the adapter for the detected\n  project. Context-free `.h` lookup remains assigned to C for compatibility.\n- **Project detection**: Deterministic filesystem and CMake text inspection\n  recognizes C++ source extensions, `project(... LANGUAGES ... CXX ...)`,\n  `enable_language(CXX)`, C++ target sources, JUCE CMake targets in C++\n  repositories, and `FILE_SET CXX_MODULES`. A CMake project containing only C\n  files is not identified as C++ merely because `CMakeLists.txt` exists.\n- **Classification**: C++ files are tests when their names use the supported\n  test prefixes or suffixes, or when they are under `test/` or `tests/`.\n  Established native build files are classified as configuration; other\n  supported files are source.\n- **Discovery exclusions**: `.git`, `JUCE`, `build`, `cmake-build-*`,\n  `CMakeFiles`, and `_deps` directory names are excluded. Ordinary\n  project-owned directories are not excluded merely because their name\n  contains `build`.\n\n## Extraction Logic\n\nThe adapter extracts quoted and angle-bracket includes in source order after\nmasking comments and literals. Its lightweight standard-library-only lexical\npass identifies common namespaces, types, aliases, concepts, free functions,\nmethods, constructors, destructors, qualified definitions, operators, and\nC++20 module declarations. These symbols feed shaping, context compilation,\nand narrative code review through the shared adapter paths.\n\nThe extractor is intentionally not a complete C++ parser. Complex macro\nexpansion, generated declarations, highly ambiguous declarators, dependent\ntemplate syntax, and declarations that require semantic type information may\nnot be recognized. No compiler, `clangd`, `ctags`, tree-sitter, or other\nthird-party parser is invoked.\n\n## Static CMake Model\n\nThe adapter reads CMake commands with balanced parentheses, quoted arguments,\ncomments, literal `add_subdirectory` relationships, and conservative expansion\nof simple `set(...)` and `list(APPEND ...)` variables. It recognizes:\n\n- `project`, `enable_language`, and `add_subdirectory`\n- `add_executable`, `add_library`, and `target_sources`\n- `FILE_SET HEADERS` and `FILE_SET CXX_MODULES`\n- `add_test` and relevant test-target references\n- `juce_add_plugin`, `juce_add_console_app`, `juce_add_gui_app`, and\n  `juce_add_binary_data`\n\nTouched files are grouped by their applicable top-level configure roots.\nLiteral nested subdirectories are followed while generated, JUCE, and\nvendored dependency trees are avoided. Explicit target source lists, file\nsets, and statically expanded variables establish target ownership. The\nadapter does not infer target names from filenames, product names, or directory\nnames.\n\nThis reader does not execute CMake and does not evaluate functions, macros,\ngenerator expressions in general, `FetchContent`, `ExternalProject`, package\ndownloads, configure scripts, or arbitrary CMake control flow. Unresolved\ndynamic expressions cause conservative project-wide fallback behavior.\n\n## CMake Presets\n\nRepository-owned `CMakePresets.json` configure presets are preferred when they\ncan be resolved statically. The resolver supports configure, build, and test\npreset families, inheritance through hidden base presets, literal\n`${sourceDir}` binary-directory expansion, configuration fields, and simple\nplatform conditions.\n\nHidden leaf presets, unresolved environment or vendor macros, uncertain\nconditions, and machine-local `CMakeUserPresets.json` configurations without a\nrepository preset relationship are not selected. If a configure preset is\nusable but no matching build or test preset exists, its resolved binary\ndirectory is used with ordinary build and CTest commands. Otherwise command\ngeneration falls back to the portable non-preset sequence.\n\n## Verification Commands\n\nLanguage detection and CMake availability are intentionally separate. A\nrepository can be detected as C++ from its source files before it has a CMake\nproject. Verification commands are generated only when each touched C++ file\nhas an applicable ancestor `CMakeLists.txt` within the configured target\nworking root. A statically usable repository preset is selected only for such\nan applicable project. The adapter does not treat the process current\ndirectory, the target working root by itself, or an unrelated CMake project as\nan implicit configure root.\n\nSource-only projects therefore produce no speculative CMake commands. Callers\ncan use `CppAdapter.suggest_verification()` directly against the current\nrepository state after an applicable `CMakeLists.txt` or preset exists.\nAbracapocus does not automatically inject these adapter suggestions into\nsupervisor task or phase verification. Explicitly authored verification remains\ngoverned by the existing plan and task behavior.\n\nFor a project without a deterministically usable preset, the standard sequence\nis equivalent to:\n\n```text\ncmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON\ncmake --build build --config RelWithDebInfo --parallel\nctest --test-dir build -C RelWithDebInfo --output-on-failure\n```\n\nCommands use `cmake` and `ctest` from the operator's `PATH`; no CMake path is\nhard-coded. Detection and command generation never execute CMake; they only\nreturn commands for the existing verifier.\n\nWhen touched files are explicitly owned by targets, build commands are narrowed\nto those targets in deterministic order. Explicitly owned headers and C++20\nmodule files participate in the same mapping. An unmapped header, touched build\nconfiguration, unresolved source expression, or otherwise uncertain ownership\nuses the full-project build.\n\nCTest is narrowed with a safely escaped test-name pattern only when a touched\ntest executable maps deterministically to one or more declared CTest tests.\nProduction targets and unresolved test relationships run the applicable\nproject test suite. Files spanning independent configure roots receive separate\ndeduplicated configure, build, and test sequences.\n\n## Read-Only Inspection\n\n`python -m scripts.ops language-inspect` exposes the current registry selection\nand the C++ adapter's static verification inspection for operator review. The\ninspection result comes from the same CMake root resolution, project model,\npreset selection, target ownership, CTest mapping, and command generation used\nby `suggest_verification()`. It can describe multiple independent configure\nroots and explicitly labels full-project build or CTest fallback when ownership\ncannot be resolved.\n\nThe inspection reads the repository state at invocation time. It previews\ngenerated commands but never executes them and never creates build directories,\nstate, reports, or cache files. Source-only projects without applicable CMake\nmetadata report no CMake root and no generated verification. Development-time\nadapter and inspection tests exercise this inference without creating runtime\nenforcement.\n\nLint and formatting suggestions are advisory and focused on touched\nproject-owned C++ files. `clang-tidy` suggestions include a source file and\ncompile-database location; formatting checks use\n`clang-format --dry-run --Werror` rather than scanning the whole repository.\n\n## Quality Doctrine\n\nAdvisory C++ review guidance lives at\n`abracapocus/languages/cpp/docs/quality_doctrine.md`.\n\nAGENTS.md:\n# AGENTS.md\n\n## Purpose\n\nThis repository is operated by an autonomous multi-agent system (abracapocus_2).\nAll agents must follow these rules when modifying the codebase.\n\n---\n\n## Core Principles\n\n- Minimal blast radius: only modify what is required for the task\n- Deterministic verification: all changes must be verifiable via code (tests, compile, scripts)\n- No architecture drift: do not introduce new frameworks or major design changes unless explicitly required\n- No unrelated refactors\n- All changes must be reproducible from a clean clone\n\n---\n\n## Project Structure\n\n- docs/ → design, plans, architecture constraints\n- plans/ → master plans\n- phases/ → phase definitions\n- tasks/ → executable task documents\n- backends/ → CLI backend adapters\n- agents/ → specialist agents\n- runtime/ → orchestration, routing, state\n- reports/ → execution reports (DO NOT MODIFY MANUALLY)\n- state/runtime_state.json → runtime state (DO NOT COMMIT)\n\n---\n\n## Task Execution Rules\n\n- Always operate from a task document when available\n- Respect:\n  - selected_backend\n  - verification_profile\n  - acceptance_criteria\n- If a task conflicts with architecture constraints or phase scope:\n  - STOP and report conflict\n\n---\n\n## Backend Rules\n\n- Backends must:\n  - execute commands deterministically\n  - capture stdout, stderr, exit_code\n  - not silently fail\n- Do not invent backend interfaces; use existing adapters\n- Codex CLI, Aider, Gemini, Claude Code should be invoked through backends only\n\n---\n\n## Verification Rules\n\n- Verification must be deterministic\n- Preferred checks:\n  - pytest\n  - python -m py_compile\n- Do not rely on model self-evaluation\n\n---\n\n## Git Rules\n\n- Do not commit:\n  - runtime_state.json\n  - reports/\n  - logs/\n  - virtual environments\n- Do not modify .gitignore unless required by task\n- Do not create excessive commits; prefer grouped logical commits\n\n---\n\n## Allowed Changes\n\n- Implement task requirements\n- Fix failing verification\n- Update relevant tests\n- Improve documentation tied to the task\n\n---\n\n## Forbidden Changes\n\n- Changing architecture without explicit instruction\n- Adding dependencies without justification\n- Modifying unrelated files\n- Deleting important files\n- Bypassing verification\n\n---\n\n## Planning Rules\n\n- Plans are multi-phase\n- Completed sections are immutable\n- Remaining sections may be updated\n- Tasks must align with:\n  - project brief\n  - architecture constraints\n  - active phase\n\n---\n\n## Reporting\n\n- All executions must produce structured reports\n- Reports must include:\n  - changed files\n  - verification results\n  - assessment\n\n---\n\n## Behavior\n\n- Do not ask unnecessary questions\n- Do not stall execution\n- Do not perform broad scans unless required\n- Prefer direct action over analysis\n\n---\n\n## Priority Order\n\n1. Architecture constraints\n2. Task definition\n3. Verification results\n4. Plan guidance\n\nIf conflicts occur, follow this order.\n\nAGENTS metadata:\n{\"loaded\": true, \"path\": \"/home/mike/dev/mike/abracapocus/python/abracapocus_2/AGENTS.md\", \"rule_count\": 76, \"sha256_12\": \"3678fbe37c64\"}\n"
+      ],
+      "stdout": "Implemented the ShredWidth reuse task.\n\n### Created byte-identical copies\n\n**`Source/DSP/`**\n- `PitchShifter.{h,cpp}`\n- `DelayLineFrac.{h,cpp}`\n- `MonoSafetyCrossover.{h,cpp}`\n- `WidthProcessor.{h,cpp}`\n\n**`Source/GUI/`**\n- `CustomLookAndFeel.{h,cpp}`\n- `RotarySlider.{h,cpp}`\n- `GoniometerComponent.{h,cpp}`\n- `CorrelationMeter.{h,cpp}`\n\n### Verification\n\n- Ran `cmp -s` against each corresponding ShredWidth source.\n- All **16 files** matched byte-for-byte.\n- SHA-256 source/destination hashes also matched.\n- No source contents were renamed, reformatted, or edited.\n- Existing `.abracapocus/` working-tree changes were present before this task and were not touched. Only the requested `Source/DSP/` and `Source/GUI/` files were created.\n",
+      "stderr": "Warning: Model \"minimax/minimax-m3\" not found for provider \"openrouter\". Using custom model id.\n",
+      "exit_code": 0,
+      "duration_seconds": 58.74950337409973,
+      "model": "openrouter/minimax/minimax-m3",
+      "model_tags": [],
+      "task_type": "coding",
+      "working_directory": "/home/mike/dev/mike/music/plugins/shred-double",
+      "changed_files": [
+        {
+          "path": "Source/DSP/DelayLineFrac.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/DelayLineFrac.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/MonoSafetyCrossover.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/MonoSafetyCrossover.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/PitchShifter.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/PitchShifter.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/WidthProcessor.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/DSP/WidthProcessor.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/CorrelationMeter.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/CorrelationMeter.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/CustomLookAndFeel.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/CustomLookAndFeel.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/GoniometerComponent.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/GoniometerComponent.h",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/RotarySlider.cpp",
+          "status": "untracked",
+          "code": "??"
+        },
+        {
+          "path": "Source/GUI/RotarySlider.h",
+          "status": "untracked",
+          "code": "??"
+        }
+      ],
+      "diff_summary": "git diff reported no changes",
+      "model_attempts": [
+        {
+          "backend": "pi_cli",
+          "model": "openrouter/minimax/minimax-m3",
+          "exit_code": 0,
+          "stdout": "Implemented the ShredWidth reuse task.\n\n### Created byte-identical copies\n\n**`Source/DSP/`**\n- `PitchShifter.{h,cpp}`\n- `DelayLineFrac.{h,cpp}`\n- `MonoSafetyCrossover.{h,cpp}`\n- `WidthProcessor.{h,cpp}`\n\n**`Source/GUI/`**\n- `CustomLookAndFeel.{h,cpp}`\n- `RotarySlider.{h,cpp}`\n- `GoniometerComponent.{h,cpp}`\n- `CorrelationMeter.{h,cpp}`\n\n### Verification\n\n- Ran `cmp -s` against each corresponding ShredWidth source.\n- All **16 files** matched byte-for-byte.\n- SHA-256 source/destination hashes also matched.\n- No source contents were renamed, reformatted, or edited.\n- Existing `.abracapocus/` working-tree changes were present before this task and were not touched. Only the requested `Source/DSP/` and `Source/GUI/` files were created.\n",
+          "stderr": "Warning: Model \"minimax/minimax-m3\" not found for provider \"openrouter\". Using custom model id.\n",
+          "duration_seconds": 58.74950337409973,
+          "changed_files": [
+            {
+              "path": "Source/DSP/DelayLineFrac.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/DelayLineFrac.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/MonoSafetyCrossover.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/MonoSafetyCrossover.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/PitchShifter.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/PitchShifter.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/WidthProcessor.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/DSP/WidthProcessor.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/CorrelationMeter.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/CorrelationMeter.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/CustomLookAndFeel.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/CustomLookAndFeel.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/GoniometerComponent.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/GoniometerComponent.h",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/RotarySlider.cpp",
+              "status": "untracked",
+              "code": "??"
+            },
+            {
+              "path": "Source/GUI/RotarySlider.h",
+              "status": "untracked",
+              "code": "??"
+            }
+          ],
+          "diff_summary": "git diff reported no changes",
+          "outcome_classification": "backend_completed_with_changes",
+          "backend_timeout": false,
+          "backend_verification_timeout": false,
+          "timeout_seconds": null
+        }
+      ],
+      "write_policy_violations": [],
+      "outcome_classification": "backend_completed_with_changes",
+      "backend_timeout": false,
+      "backend_verification_timeout": false,
+      "timeout_seconds": null,
+      "changed_files_at_timeout_exit": [],
+      "abracapocus_verification_ran_after_backend_timeout": false,
+      "verification_owner": "task",
+      "verification_result": "passed"
+    }
+  ],
+  "review": {
+    "status": "approved",
+    "findings": [],
+    "summary": "a.2:Review complete",
+    "created_at": "2026-07-27T20:44:27.233939"
+  },
+  "verification": {
+    "status": "passed",
+    "checks": [],
+    "created_at": "2026-07-27T20:44:27.233947",
+    "notes": "A:passed",
+    "profile": "focused"
+  },
+  "change_assessment": {
+    "task_intent": "Copy eight ShredWidth components byte-for-byte into this repo. Do not edit contents.\n\nBefore editing, inspect:\n- ~/dev/mike/music/plugins/shred-width/Source/DSP/{PitchShifter,DelayLineFrac,MonoSafetyCrossover,WidthProcessor}.{h,cpp}\n- ~/dev/mike/music/plugins/shred-width/Source/GUI/{CustomLookAndFeel,RotarySlider,GoniometerComponent,CorrelationMeter}.{h,cpp}\n- .abracapocus/ShredDouble_Build_Spec.md §13 (shared DSP/GUI reuse)\n\nActions:\n1. mkdir -p Source/DSP Source/GUI\n2. cp the sixteen files (8 stems × .h/.cpp) from shred-width into matching Source/DSP/ and Source/GUI/ paths in shred-double\n3. Verify with cmp or sha256sum that each destination matches its shred-width source\n4. Do not rename symbols, namespaces, includes, or reformat\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths.",
+    "changed_files_summary": "Change assessment disabled",
+    "verification_summary": "passed",
+    "assessment_status": "skipped",
+    "notes": "Change assessment disabled; set ABRACAPOCUS_CHANGE_ASSESSMENT_ENABLED=true to enable advisory telemetry",
+    "matches_intent": null,
+    "scope_status": "unknown",
+    "architecture_violation": false,
+    "affected_modules": [
+      "Source"
+    ],
+    "boundary_crossings": [],
+    "risk_level": "unknown",
+    "unrelated_changes": [],
+    "public_contract_changes": [],
+    "new_dependencies": [],
+    "assessment_summary": "change_assessment disabled"
+  },
+  "metadata": {
+    "run_id": "7f7452a9-aa9e-4269-8072-35ae963a738d",
+    "project_name": "shred-double",
+    "plan_version": "task-a.2",
+    "task_id": "a.2",
+    "task_title": "Copy 8 reused ShredWidth files verbatim into Source/DSP/ and Source/GUI/ (PitchShifter, DelayLineFrac, MonoSafetyCrossover, WidthProcessor, CustomLookAndFeel, RotarySlider, Goniometer, CorrelationMeter)",
+    "task_status": "completed",
+    "selected_backend": "pi_cli",
+    "verification_profile": "focused",
+    "backend_reason": "phase_based",
+    "frame_failures": [],
+    "agents_md": {
+      "loaded": true,
+      "path": "/home/mike/dev/mike/abracapocus/python/abracapocus_2/AGENTS.md",
+      "rule_count": 76,
+      "sha256_12": "3678fbe37c64"
+    },
+    "phase_results": [
+      {
+        "phase_name": "A",
+        "status": "passed",
+        "verification": "passed",
+        "task_results": [
+          {
+            "task_id": "a.2",
+            "status": "passed",
+            "acceptance_status": "accepted",
+            "backend": "pi_cli",
+            "backend_outcome_classification": "backend_completed_with_changes",
+            "changed_files": [
+              {
+                "path": "Source/DSP/DelayLineFrac.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/DelayLineFrac.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/MonoSafetyCrossover.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/MonoSafetyCrossover.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/PitchShifter.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/PitchShifter.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/WidthProcessor.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/DSP/WidthProcessor.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/CorrelationMeter.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/CorrelationMeter.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/CustomLookAndFeel.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/CustomLookAndFeel.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/GoniometerComponent.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/GoniometerComponent.h",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/RotarySlider.cpp",
+                "status": "untracked",
+                "code": "??"
+              },
+              {
+                "path": "Source/GUI/RotarySlider.h",
+                "status": "untracked",
+                "code": "??"
+              }
+            ],
+            "reconciliation_status": "satisfied",
+            "backend_timeout": false,
+            "backend_elapsed_seconds": 58.74950337409973,
+            "backend_timeout_seconds": null,
+            "changed_files_at_timeout_exit": [],
+            "abracapocus_verification_ran_after_backend_timeout": false,
+            "verification_owner": "task",
+            "verification_result": "passed",
+            "frame_failure": false,
+            "retry_attempts": []
+          }
+        ]
+      }
+    ]
+  }
+}
