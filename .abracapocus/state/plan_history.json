@@ -310,5 +310,64 @@
       "version": "task-a.5",
       "created_at": "2026-07-27T20:52:43.511266"
     }
+  },
+  {
+    "created_at": "2026-07-27T20:58:07.960659",
+    "project_name": "shred-double",
+    "goal": "Implement Source/DSP/RandomWalk.h and Source/DSP/RandomWalk.cpp \u2014 the seeded, RT-safe mean-reverting random walk per ShredDouble_Build_Spec.md \u00a74.3.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.3 (OU walk, variance norm, clamps, hop H=32, PRNG seeding), \u00a76 (smoothing/control-rate), \u00a77 (RT-safety), \u00a78 (memory)\n- Source/DSP/DelayLineFrac.h and Source/DSP/PitchShifter.h (prepare/processSample/reset style to match)\n- Source/ParameterIDs.h note on masterSeed\n\nImplement class RandomWalk (header + cpp):\n1. POD PRNG: xoshiro256++ (preferred) or xorshift128+ with no locks, no heap, no std::random_device on audio path. Provide splitmix64(uint64_t) and a seed path: seedStream(masterSeed, voiceIndex, axisTag) \u2192 seed = splitmix64(masterSeed XOR voiceIndex XOR axisTag). Axis tags are distinct constants for delay vs pitch (e.g. 0xD / 0xP style uint64 tags).\n2. Gaussian or Box-Muller / Ziggurat-free normal draw from the PRNG stream for \u03b7 ~ N(0,1) (two uniforms \u2192 Box-Muller is fine if both PRNG draws stay POD).\n3. One-pole Ornstein-Uhlenbeck at control rate:\n   - alpha = 1 - exp(-1/(tau_c * fs))\n   - u = (1-alpha)*u + alpha*eta\n   - u_tilde = u / sqrt(alpha/(2-alpha)) with safe guard when alpha\u22480\n4. Map modes (or a single axis enum / factory configuration):\n   - Delay axis: tau = clamp(nominalDelayMs + S_tau*(1-T)*u_tilde, 10.f, 35.f) ms\n   - Pitch axis: deltaC = clamp(S_c*(1-T)*u_tilde, -C_max, +C_max) with C_max slightly above pitch-spread max (e.g. 12 cents)\n5. Control-rate hop H=32: advance walk every 32 samples; store prev/next control values and linearly interpolate to audio rate on processSample/tick. setHumanRate / setCorrelationTimeMs maps Rate 0..100 \u2192 tau_c 300..100 ms (linear). setTightness T in [0,1] scales depth as (1-T). setTimingSpreadMs / setPitchSpreadCents / setNominalDelayMs as needed.\n6. API: prepare(double sampleRate) or prepare(ProcessSpec); reset() to mean (no mid-excursion start); reseed(masterSeed, voiceIndex, axisTag); processSample() or advance()+getInterpolated() returning the current axis value (ms or cents). Allocate nothing outside prepare; process path noexcept and heap/lock free.\n7. Expose last raw / interpolated value getters for DriftDisplay/metering later (plain floats or atomics only if needed; prefer plain getters for unit tests).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not touch CMakeLists, tests, Voice, AllpassChain, or TiltFilter.",
+    "plan_template": {
+      "project_name": "shred-double",
+      "summary": "Task run: RandomWalk - seeded xoshiro256++ PRNG, one-pole OU walk, variance normalization, control-rate hop H=32, linear interpolation, tightness depth scaling, splitmix64 seeding",
+      "phases": [
+        {
+          "name": "B",
+          "objective": "Implement Source/DSP/RandomWalk.h and Source/DSP/RandomWalk.cpp \u2014 the seeded, RT-safe mean-reverting random walk per ShredDouble_Build_Spec.md \u00a74.3.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.3 (OU walk, variance norm, clamps, hop H=32, PRNG seeding), \u00a76 (smoothing/control-rate), \u00a77 (RT-safety), \u00a78 (memory)\n- Source/DSP/DelayLineFrac.h and Source/DSP/PitchShifter.h (prepare/processSample/reset style to match)\n- Source/ParameterIDs.h note on masterSeed\n\nImplement class RandomWalk (header + cpp):\n1. POD PRNG: xoshiro256++ (preferred) or xorshift128+ with no locks, no heap, no std::random_device on audio path. Provide splitmix64(uint64_t) and a seed path: seedStream(masterSeed, voiceIndex, axisTag) \u2192 seed = splitmix64(masterSeed XOR voiceIndex XOR axisTag). Axis tags are distinct constants for delay vs pitch (e.g. 0xD / 0xP style uint64 tags).\n2. Gaussian or Box-Muller / Ziggurat-free normal draw from the PRNG stream for \u03b7 ~ N(0,1) (two uniforms \u2192 Box-Muller is fine if both PRNG draws stay POD).\n3. One-pole Ornstein-Uhlenbeck at control rate:\n   - alpha = 1 - exp(-1/(tau_c * fs))\n   - u = (1-alpha)*u + alpha*eta\n   - u_tilde = u / sqrt(alpha/(2-alpha)) with safe guard when alpha\u22480\n4. Map modes (or a single axis enum / factory configuration):\n   - Delay axis: tau = clamp(nominalDelayMs + S_tau*(1-T)*u_tilde, 10.f, 35.f) ms\n   - Pitch axis: deltaC = clamp(S_c*(1-T)*u_tilde, -C_max, +C_max) with C_max slightly above pitch-spread max (e.g. 12 cents)\n5. Control-rate hop H=32: advance walk every 32 samples; store prev/next control values and linearly interpolate to audio rate on processSample/tick. setHumanRate / setCorrelationTimeMs maps Rate 0..100 \u2192 tau_c 300..100 ms (linear). setTightness T in [0,1] scales depth as (1-T). setTimingSpreadMs / setPitchSpreadCents / setNominalDelayMs as needed.\n6. API: prepare(double sampleRate) or prepare(ProcessSpec); reset() to mean (no mid-excursion start); reseed(masterSeed, voiceIndex, axisTag); processSample() or advance()+getInterpolated() returning the current axis value (ms or cents). Allocate nothing outside prepare; process path noexcept and heap/lock free.\n7. Expose last raw / interpolated value getters for DriftDisplay/metering later (plain floats or atomics only if needed; prefer plain getters for unit tests).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not touch CMakeLists, tests, Voice, AllpassChain, or TiltFilter.",
+          "status": "completed",
+          "tasks": [
+            {
+              "task": {
+                "task_id": "b.1",
+                "title": "RandomWalk - seeded xoshiro256++ PRNG, one-pole OU walk, variance normalization, control-rate hop H=32, linear interpolation, tightness depth scaling, splitmix64 seeding",
+                "description": "Implement Source/DSP/RandomWalk.h and Source/DSP/RandomWalk.cpp \u2014 the seeded, RT-safe mean-reverting random walk per ShredDouble_Build_Spec.md \u00a74.3.\n\nBefore editing, inspect:\n- .abracapocus/ShredDouble_Build_Spec.md \u00a74.3 (OU walk, variance norm, clamps, hop H=32, PRNG seeding), \u00a76 (smoothing/control-rate), \u00a77 (RT-safety), \u00a78 (memory)\n- Source/DSP/DelayLineFrac.h and Source/DSP/PitchShifter.h (prepare/processSample/reset style to match)\n- Source/ParameterIDs.h note on masterSeed\n\nImplement class RandomWalk (header + cpp):\n1. POD PRNG: xoshiro256++ (preferred) or xorshift128+ with no locks, no heap, no std::random_device on audio path. Provide splitmix64(uint64_t) and a seed path: seedStream(masterSeed, voiceIndex, axisTag) \u2192 seed = splitmix64(masterSeed XOR voiceIndex XOR axisTag). Axis tags are distinct constants for delay vs pitch (e.g. 0xD / 0xP style uint64 tags).\n2. Gaussian or Box-Muller / Ziggurat-free normal draw from the PRNG stream for \u03b7 ~ N(0,1) (two uniforms \u2192 Box-Muller is fine if both PRNG draws stay POD).\n3. One-pole Ornstein-Uhlenbeck at control rate:\n   - alpha = 1 - exp(-1/(tau_c * fs))\n   - u = (1-alpha)*u + alpha*eta\n   - u_tilde = u / sqrt(alpha/(2-alpha)) with safe guard when alpha\u22480\n4. Map modes (or a single axis enum / factory configuration):\n   - Delay axis: tau = clamp(nominalDelayMs + S_tau*(1-T)*u_tilde, 10.f, 35.f) ms\n   - Pitch axis: deltaC = clamp(S_c*(1-T)*u_tilde, -C_max, +C_max) with C_max slightly above pitch-spread max (e.g. 12 cents)\n5. Control-rate hop H=32: advance walk every 32 samples; store prev/next control values and linearly interpolate to audio rate on processSample/tick. setHumanRate / setCorrelationTimeMs maps Rate 0..100 \u2192 tau_c 300..100 ms (linear). setTightness T in [0,1] scales depth as (1-T). setTimingSpreadMs / setPitchSpreadCents / setNominalDelayMs as needed.\n6. API: prepare(double sampleRate) or prepare(ProcessSpec); reset() to mean (no mid-excursion start); reseed(masterSeed, voiceIndex, axisTag); processSample() or advance()+getInterpolated() returning the current axis value (ms or cents). Allocate nothing outside prepare; process path noexcept and heap/lock free.\n7. Expose last raw / interpolated value getters for DriftDisplay/metering later (plain floats or atomics only if needed; prefer plain getters for unit tests).\n\nSTRICT FILE SCOPE: Create or modify ONLY allowed_write_paths. Do not touch CMakeLists, tests, Voice, AllpassChain, or TiltFilter.",
+                "phase": "B",
+                "dependencies": [],
+                "exclusivity_category": null,
+                "max_in_category": null,
+                "status": "completed",
+                "acceptance_criteria": [
+                  "Source/DSP/RandomWalk.h and Source/DSP/RandomWalk.cpp exist",
+                  "RandomWalk exposes prepare, reset, and a per-sample or hop+interpolate process path with no allocation outside prepare",
+                  "PRNG is POD xoshiro256++ or xorshift128+ seeded via splitmix64(masterSeed XOR voiceIndex XOR axisTag)",
+                  "Source/DSP/RandomWalk.cpp contains no std::random_device and no mutex/lock usage on the process path",
+                  "One-pole OU uses alpha = 1 - exp(-1/(tau_c * fs)) and variance normalization u_tilde = u / sqrt(alpha/(2-alpha))",
+                  "Control-rate hop H=32 with linear interpolation to audio rate is implemented",
+                  "Tightness scales excursion by (1-T); delay outputs clamp to [10,35] ms; pitch outputs clamp to approximately +/- C_max (e.g. 12 cents)",
+                  "Humanization Rate 0..100 maps tau_c to 300..100 ms",
+                  "No file outside the task's allowed_write_paths is created or modified"
+                ],
+                "created_at": "2026-07-27T20:54:22.934034",
+                "selected_backend": "codex_cli",
+                "model": null,
+                "task_timeout_seconds": 900.0,
+                "verification_profile": "focused",
+                "verification_commands": [],
+                "allowed_write_paths": [
+                  "Source/DSP/RandomWalk.h",
+                  "Source/DSP/RandomWalk.cpp"
+                ],
+                "forbidden_patterns_override": null
+              },
+              "dependencies": [],
+              "status": "completed"
+            }
+          ],
+          "completed": true,
+          "completed_at": "2026-07-27T20:58:07.839590",
+          "human_checkpoint": null
+        }
+      ],
+      "version": "task-b.1",
+      "created_at": "2026-07-27T20:54:23.033835"
+    }
   }
 ]

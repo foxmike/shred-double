@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-b.1",
+  "plan_version": "task-b.2",
   "active_phase": "B",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "b.1",
-      "title": "RandomWalk - seeded xoshiro256++ PRNG, one-pole OU walk, variance normalization, control-rate hop H=32, linear interpolation, tightness depth scaling, splitmix64 seeding",
+      "task_id": "b.2",
+      "title": "AllpassChain - 4-stage coprime Schroeder allpasses, per-voice distinct coprime delays, g=0.6, sample-rate-scaled stage times",
       "phase": "B",
-      "status": "completed",
+      "status": "planned",
       "backend": "codex_cli",
-      "last_run": "2026-07-27T20:58:07.862851",
+      "last_run": null,
       "notes": ""
     }
   ],
