@@ -1,7 +1,6 @@
 CMakeFiles/ShredDouble.dir/Source/PluginEditor.cpp.o: \
  /home/mike/dev/mike/music/plugins/shred-double/Source/PluginEditor.cpp \
  /usr/include/stdc-predef.h \
- /home/mike/dev/mike/music/plugins/shred-double/Source/PluginEditor.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/PluginProcessor.h \
  /usr/include/c++/11/array /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -958,5 +957,11 @@ CMakeFiles/ShredDouble.dir/Source/PluginEditor.cpp.o: \
  /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/AllpassChain.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/TiltFilter.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/DSP/WidthProcessor.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/PluginEditor.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/StateManager.h \
- /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.h
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/RotarySlider.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/GoniometerComponent.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CorrelationMeter.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/DriftDisplay.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/ParameterIDs.h

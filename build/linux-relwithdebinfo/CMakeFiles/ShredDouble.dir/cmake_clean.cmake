@@ -67,6 +67,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o.d"
   "CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o"
   "CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o.d"
+  "CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.o"
+  "CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.o.d"
   "CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o"
   "CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o.d"
   "CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o"

@@ -90,6 +90,7 @@ target_sources(ShredDouble
         Source/GUI/RotarySlider.cpp
         Source/GUI/GoniometerComponent.cpp
         Source/GUI/CorrelationMeter.cpp
+        Source/GUI/DriftDisplay.cpp
 )
 
 target_compile_definitions(ShredDouble

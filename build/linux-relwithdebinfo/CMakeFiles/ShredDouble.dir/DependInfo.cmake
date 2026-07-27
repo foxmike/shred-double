@@ -42,6 +42,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/mike/dev/mike/music/plugins/shred-double/Source/DSP/WidthProcessor.cpp" "CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/DSP/WidthProcessor.cpp.o.d"
   "/home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CorrelationMeter.cpp" "CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/GUI/CorrelationMeter.cpp.o.d"
   "/home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.cpp" "CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.o.d"
+  "/home/mike/dev/mike/music/plugins/shred-double/Source/GUI/DriftDisplay.cpp" "CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.o.d"
   "/home/mike/dev/mike/music/plugins/shred-double/Source/GUI/GoniometerComponent.cpp" "CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/GUI/GoniometerComponent.cpp.o.d"
   "/home/mike/dev/mike/music/plugins/shred-double/Source/GUI/RotarySlider.cpp" "CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/GUI/RotarySlider.cpp.o.d"
   "/home/mike/dev/mike/music/plugins/shred-double/Source/PluginEditor.cpp" "CMakeFiles/ShredDouble.dir/Source/PluginEditor.cpp.o" "gcc" "CMakeFiles/ShredDouble.dir/Source/PluginEditor.cpp.o.d"

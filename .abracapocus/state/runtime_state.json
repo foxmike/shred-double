@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-d.1",
+  "plan_version": "task-d.2",
   "active_phase": "D",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "d.1",
-      "title": "DriftDisplay - 2D per-voice scatter (timing vs pitch), color-coded markers, fading trail history, atomic polling, V3/V4 hidden at voiceCount==2",
+      "task_id": "d.2",
+      "title": "PluginEditor full layout - header with Re-roll, voice section with pan strips, humanization rotaries, global controls, metering column, APVTS attachments, timer, resize, CMakeLists",
       "phase": "D",
-      "status": "completed",
+      "status": "planned",
       "backend": "antigravity_cli",
-      "last_run": "2026-07-27T21:59:58.770960",
+      "last_run": null,
       "notes": ""
     }
   ],

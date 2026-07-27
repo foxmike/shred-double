@@ -961,6 +961,10 @@ CMakeFiles/ShredDouble.dir/Source/PluginProcessor.cpp.o: \
  /home/mike/dev/mike/music/plugins/shred-double/Source/PluginEditor.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/StateManager.h \
  /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CustomLookAndFeel.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/RotarySlider.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/GoniometerComponent.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/CorrelationMeter.h \
+ /home/mike/dev/mike/music/plugins/shred-double/Source/GUI/DriftDisplay.h \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
  /usr/include/c++/11/bits/random.tcc

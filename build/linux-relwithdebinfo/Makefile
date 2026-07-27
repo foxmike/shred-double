@@ -1452,6 +1452,30 @@ Source/GUI/CustomLookAndFeel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/GUI/CustomLookAndFeel.cpp.s
 .PHONY : Source/GUI/CustomLookAndFeel.cpp.s
 
+Source/GUI/DriftDisplay.o: Source/GUI/DriftDisplay.cpp.o
+.PHONY : Source/GUI/DriftDisplay.o
+
+# target to build an object file
+Source/GUI/DriftDisplay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.o
+.PHONY : Source/GUI/DriftDisplay.cpp.o
+
+Source/GUI/DriftDisplay.i: Source/GUI/DriftDisplay.cpp.i
+.PHONY : Source/GUI/DriftDisplay.i
+
+# target to preprocess a source file
+Source/GUI/DriftDisplay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.i
+.PHONY : Source/GUI/DriftDisplay.cpp.i
+
+Source/GUI/DriftDisplay.s: Source/GUI/DriftDisplay.cpp.s
+.PHONY : Source/GUI/DriftDisplay.s
+
+# target to generate assembly for a file
+Source/GUI/DriftDisplay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ShredDouble.dir/build.make CMakeFiles/ShredDouble.dir/Source/GUI/DriftDisplay.cpp.s
+.PHONY : Source/GUI/DriftDisplay.cpp.s
+
 Source/GUI/GoniometerComponent.o: Source/GUI/GoniometerComponent.cpp.o
 .PHONY : Source/GUI/GoniometerComponent.o
 
@@ -1818,6 +1842,9 @@ help:
 	@echo "... Source/GUI/CustomLookAndFeel.o"
 	@echo "... Source/GUI/CustomLookAndFeel.i"
 	@echo "... Source/GUI/CustomLookAndFeel.s"
+	@echo "... Source/GUI/DriftDisplay.o"
+	@echo "... Source/GUI/DriftDisplay.i"
+	@echo "... Source/GUI/DriftDisplay.s"
 	@echo "... Source/GUI/GoniometerComponent.o"
 	@echo "... Source/GUI/GoniometerComponent.i"
 	@echo "... Source/GUI/GoniometerComponent.s"
