@@ -9,9 +9,9 @@
       "task_id": "b.1",
       "title": "RandomWalk - seeded xoshiro256++ PRNG, one-pole OU walk, variance normalization, control-rate hop H=32, linear interpolation, tightness depth scaling, splitmix64 seeding",
       "phase": "B",
-      "status": "planned",
+      "status": "completed",
       "backend": "codex_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T20:58:07.862851",
       "notes": ""
     }
   ],
@@ -60,6 +60,15 @@
       "reviewer_status": "approved",
       "verifier_status": "passed",
       "timestamp": "2026-07-27T20:54:22.206432"
+    },
+    {
+      "run_id": "dbee008e-f899-4c1a-b4e1-85a59f3a2694",
+      "task_id": "b.1",
+      "backend": "codex_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T20:58:07.863077"
     }
   ],
   "operator_overrides": {},
