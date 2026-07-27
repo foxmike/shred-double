@@ -1,17 +1,17 @@
 {
   "project_name": "shred-double",
-  "plan_version": "task-e.3",
+  "plan_version": "task-e.4",
   "active_phase": "E",
   "default_backend": "codex_cli",
   "routing_mode": "manual",
   "tasks": [
     {
-      "task_id": "e.3",
-      "title": "RT-safety grep-gate script (forbidden processBlock calls, ScopedNoDenormals, no random_device on audio thread)",
+      "task_id": "e.4",
+      "title": "pluginval and format smoke-load script (VST3/CLAP strictness 8+, LV2/Standalone)",
       "phase": "E",
-      "status": "completed",
+      "status": "planned",
       "backend": "pi_cli",
-      "last_run": "2026-07-27T22:32:48.011627",
+      "last_run": null,
       "notes": ""
     }
   ],
