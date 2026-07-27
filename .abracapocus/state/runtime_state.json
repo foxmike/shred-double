@@ -9,13 +9,23 @@
       "task_id": "a.1",
       "title": "CMakeLists.txt, CMakePresets.json, build_all.sh (CLion-bundled cmake), JUCE submodule pinned to shred-width tag",
       "phase": "A",
-      "status": "planned",
+      "status": "completed",
       "backend": "codex_cli",
-      "last_run": null,
+      "last_run": "2026-07-27T20:43:28.003079",
       "notes": ""
     }
   ],
-  "history": [],
+  "history": [
+    {
+      "run_id": "836fa64f-bf86-4e6d-baeb-901fbff77ddf",
+      "task_id": "a.1",
+      "backend": "codex_cli",
+      "status": "ok",
+      "reviewer_status": "approved",
+      "verifier_status": "passed",
+      "timestamp": "2026-07-27T20:43:28.003170"
+    }
+  ],
   "operator_overrides": {},
   "completed_phases": [],
   "remaining_phases": [
