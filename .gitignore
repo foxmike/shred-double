@@ -59,4 +59,4 @@ Thumbs.db
 
 # --- SQLite runtime ---
 *.db-shm
-*.db-wal
+*.db-walbuild-vst3/
